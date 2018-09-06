@@ -1,0 +1,11 @@
+:tocdepth: 2
+
+.. _week1:
+           
+************
+Week 1
+************
+
+.. toctree::
+
+   basic_ops

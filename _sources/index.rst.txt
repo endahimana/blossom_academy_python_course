@@ -1,0 +1,27 @@
+.. AIMS Python documentation master file, created by
+   sphinx-quickstart on Mon Mar 19 22:39:45 2018.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to AIMS Python's documentation!
+=======================================
+
+.. toctree::
+   :maxdepth: 2
+   :numbered: 3
+   :includehidden:
+
+   introduction/main_toc
+   week1/main_toc
+
+|
+
+
+.. ADD LATER:
+
+   Indices and tables
+   ##################
+
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
