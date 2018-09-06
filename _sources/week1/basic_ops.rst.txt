@@ -2,7 +2,6 @@
 
 .. _week1_basic_ops:
 
-
 Basic operations
 ================
 
@@ -444,8 +443,8 @@ i. **floating point results may have small precision errors, making
 
 Computers are useful, but they must be used with care!
 
-Practice
-########
+Practice 1
+##########
 
 First come up with what you think the answer *should* be, and then
 check the result using an ipython terminal:
@@ -502,3 +501,84 @@ i. What are the types of each of the following?
         val2 = cval * cval
 
    
+Practice, 2
+###########
+
+The following can be done in a Jupyter Notebook, with each question in
+a separate cell (so they can be re-run and tested).
+
+1. Fix this to produce the cube root of 27 (hint: enforce correct
+   orders of operations!)::
+
+     27**1/3
+
+#. Finding+fixing troubles is part of programming. Run the
+   following and see the error message, and fix the problem
+   assignment operation:: 5squared = 5**2
+
+#. Evaluate the square of the complex number ``5+3j``.  
+
+#. Fix the following::
+
+     print("Hello')
+
+#. Fix the following::
+
+     x = 3
+     if x > 25
+         print("This number is big!")
+
+#. Fix the following::
+
+     x = 3
+     if x > 25
+         print("This number is big!")
+         else:
+             print("This number is small!")
+
+#. How many print statements get evaluated?::
+
+     x = 3
+     if x > 25:
+         print("This number is big!")
+         print("Where did you find it?")
+     print(x)
+
+#. How many print statements get evaluated?::
+
+     x = 3
+     if x > 25:
+         print("This number is big!")
+     elif x < 10:
+         print("This number is small!")
+     print(x)
+
+#. Write an ``if`` condition to check if a variable called ``test1``
+   is greater than 5.  If it is, print "Congratulations".
+
+#. Write an ``if`` condition to check if a variable called ``test2``
+   is odd.  If it is, print "I found an odd number"; otherwise,
+   print "I found an even number".
+
+#. Write an ``if`` condition to check if a variable called ``test3``
+   is *not* an int.  If it is not, then print "Fancy number".
+   Otherwise, do nothing.
+
+#. Write an ``if`` condition to check if a variable called ``test4``
+   is in the interval ``[-3, 3]``.  If it is, print "Small number!".
+   If it outside that range but in the range ``[-10, 10]``, print
+   "Medium number!"; and if it is outside of that range, print "Big
+   number!"
+
+#. Write an ``if`` condition to check if a variable called ``test5``
+   is complex or a float.  If it is complex, print "I found a complex
+   number"; if it is a float, print "I found a float"; otherwise,
+   print "Oh well".
+
+#. Write an ``if`` condition to check if a variable called ``test6``
+   is a negative integer.  If it *is*, multiply it by ``-3`` and see
+   if the result is a multiple of 9; if *that* is, then print "hello,
+   my friend".  In any other case, print "Oh, no, not you".
+
+
+
