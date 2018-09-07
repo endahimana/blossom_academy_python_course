@@ -1,0 +1,22 @@
+:tocdepth: 2
+
+.. _week1_comm_str_print:
+
+Comments, strings and print: helping humans program
+===================================================
+
+.. contents:: :local:
+
+.. highlight:: python
+
+Comments
+--------
+
+
+
+Strings
+-------
+
+
+Print
+-----

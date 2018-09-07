@@ -9,3 +9,5 @@ Week 1
 .. toctree::
 
    basic_ops
+   comm_str_print.rst
+   logic_if.rst

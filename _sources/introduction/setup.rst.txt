@@ -6,6 +6,12 @@ Setup and Python environments
 
 .. contents:: :local:
 
+.. notetoself
+
+   * just do notes for python 3! --> use notebook
+
+   
+
 The notes described here refer to Python 2.7.\*, instead of the
 loooming (and already "out there") Python 3.\*. However, where
 possible we use notation that is consistent with both, and will
@@ -150,6 +156,9 @@ useful, for example if you make a change in one cell that might affect
 the contents of others, so that they can all be reevaluated.
 
 **NTS: TAB autocomplete also exists**
+
+**NTS: middle mouse button paste does NOT work: have to use CTRL+c and
+CTRL+v :(**
 
 The notebook can be given a name at the top of the page (default is
 "Untitled"), and saved and used again later.  To directly open an

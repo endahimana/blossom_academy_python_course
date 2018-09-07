@@ -1,0 +1,106 @@
+:tocdepth: 2
+
+.. _week1_logic_if:
+
+Logic and **if** conditions
+===========================
+
+.. contents:: :local:
+
+.. highlight:: python
+
+Logic operations
+----------------
+
+
+
+
+
+
+Conditionals
+----------------
+
+tree structure example
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 90
+      
+   * - Figure 1: conditional example: decision tree structure 
+   * - .. image:: media/im00_if_decision_tree.jpg
+          :width: 100%  
+          :align: center
+
+|
+
+Practice
+##########
+
+First come up with what you think the answer *should* be, and then
+check the result using an ipython terminal:
+
+#. What are the differences in output of these?::
+        
+     False * True
+     False and True
+
+#. Fix the following::
+
+     x = 3
+     if x > 25
+         print("This number is big!")
+
+#. Fix the following::
+
+     x = 3
+     if x > 25
+         print("This number is big!")
+         else:
+             print("This number is small!")
+
+#. How many print statements get evaluated?::
+
+     x = 3
+     if x > 25:
+         print("This number is big!")
+         print("Where did you find it?")
+     print(x)
+
+#. How many print statements get evaluated?::
+
+     x = 3
+     if x > 25:
+         print("This number is big!")
+     elif x < 10:
+         print("This number is small!")
+     print(x)
+
+#. Write an ``if`` condition to check if a variable called ``test1``
+   is greater than 5.  If it is, print "Congratulations".
+
+#. Write an ``if`` condition to check if a variable called ``test2``
+   is odd.  If it is, print "I found an odd number"; otherwise,
+   print "I found an even number".
+
+#. Write an ``if`` condition to check if a variable called ``test3``
+   is *not* an int.  If it is not, then print "Fancy number".
+   Otherwise, do nothing.
+
+#. Write an ``if`` condition to check if a variable called ``test4``
+   is in the interval ``[-3, 3]``.  If it is, print "Small number!".
+   If it outside that range but in the range ``[-10, 10]``, print
+   "Medium number!"; and if it is outside of that range, print "Big
+   number!"
+
+#. Write an ``if`` condition to check if a variable called ``test5``
+   is complex or a float.  If it is complex, print "I found a complex
+   number"; if it is a float, print "I found a float"; otherwise,
+   print "Oh well".
+
+#. Write an ``if`` condition to check if a variable called ``test6``
+   is a negative integer.  If it *is*, multiply it by ``-3`` and see
+   if the result is a multiple of 9; if *that* is, then print "hello,
+   my friend".  In any other case, print "Oh, no, not you".
+
+
+

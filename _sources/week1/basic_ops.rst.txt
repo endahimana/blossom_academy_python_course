@@ -142,6 +142,10 @@ of space is allocated to fit a value.  (If the program tries to store
 a value too large for the type's allocated space, an "overflow" error
 occurs.)
 
+.. NTS
+
+   here and in table:  python3 no longer uses "long":  int is flexible
+
 Note the multiple types of integer-like quantities.  In many cases,
 simple ints are large enough for quantities.  However, if the value
 does grow too large for int, Python will automatically switch over to
@@ -512,9 +516,11 @@ a separate cell (so they can be re-run and tested).
 
      27**1/3
 
-#. Finding+fixing troubles is part of programming. Run the
-   following and see the error message, and fix the problem
-   assignment operation:: 5squared = 5**2
+#. Finding+fixing troubles is part of programming. Run the following
+   and see the error message, and fix the problem assignment
+   operation::
+
+     5squared = 5**2
 
 #. Evaluate the square of the complex number ``5+3j``.  
 
