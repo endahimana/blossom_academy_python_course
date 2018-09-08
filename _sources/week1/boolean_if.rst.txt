@@ -1,0 +1,242 @@
+:tocdepth: 2
+
+.. _week1_boolean_if:
+
+.. note to self
+
+   order of operations in math -> operator precedence in programming
+
+Comparison, logic and **if** conditions
+========================================
+
+.. contents:: :local:
+
+.. highlight:: python
+
+Boolean expressions
+-------------------
+
+We have already seen the "bool" type in Python, which has two (and
+only two) members: ``True`` and ``False``.  Expressions producing
+these values are called **Boolean expressions**, with the operators
+involved called **Boolean operators**.
+
+Relational operators
+####################
+
+One common type of Boolean expression is the family of **relational**
+(or comparative) expressions, which check the truth/falsehood of
+equalities and inequalities. It is in *this* context that we have the
+"equals" operator, which is written as ``==``, which returns a bool.
+The operator compares operands on each side, such as::
+
+  4 == 5 
+
+which returns ``False``.  Variables can be used on either side of the
+equality, as long as they have been defined previously.  And again, we
+distinguish the relational ``==`` from the assignment operator ``=``,
+which stores a value on the computer for later reference with a name
+label.  The following are all allowed::
+
+  val = 5
+  val == 5
+  5 == val
+  5 - val == 0
+  0 == val - 5
+
+After the first assignment operation, the three relational operations
+would produce the identical ``True`` result.  Note the order of
+operations in the last two lines: the subtractions are performed
+*before* the equality; in more complicated logic statements,
+parentheses may still be desired for clarity.
+
+There are several standard relational operators, each taking two
+operators.  Common ones are:
+
+  .. list-table::
+     :header-rows: 1
+     :widths:  15 35
+
+     * - Symbol
+       - Description
+     * - ``==``
+       - equal
+     * - ``!=``
+       - not equal
+     * - ``>``, ``<``
+       - greater than, less than
+     * - ``>=``, ``<=``
+       - greater than or equals, less than or equals
+
+Note that the operands' type can also matter when performing
+comparisons.  Consider the following examples (with results and notes
+shown in comments to the right of each)::
+
+  5 == 5.0            # True, even though the types differ
+  3.2 % 1 == 1.2      # False, perhaps surprisingly (float round-off error)
+  type(5) == int      # True
+  val2 = 35.0         # assignment!
+  val2 <= 50          # True
+  type(val2) != bool  # True
+  val2**0.5 - 5 < 1   # True
+  3 + ( val2 > 0 )    # 4
+
+Some things to note from those examples:
+
+* One must be careful when comparing equality of floating point
+  numbers.  The results of floating point calculations may be veeery
+  close, say differing by :math:`< 10^{-15}`, but they are still
+  different.
+
+* The type names ``int``, ``float``, etc. are in fact their own type,
+  which is named ``type`` (consistently or confusingly enough...).
+  This can be useful to check and restrict inputs to a function or
+  part of code, say if one wanted *only* integer values.
+
+* The result of a Boolean expression can be used as a quantity itself:
+  ``True`` is evaluated as 1, and ``False`` as 0.
+
+* Again, in more complicated expressions, the use of parentheses can
+  be vital to clarify desired order of operations (even if only for
+  human reading).
+
+.. note to self
+
+   here or somewhere else, note about bools and typecasting: 
+   bool( ... ) produces True for nonzero values and False for nonzero ones
+
+Logic operators
+###############
+
+An additional family of Boolean expressions are the **logic
+expressions**, with associated things like logic tables, set
+comparison and Venn diagrams. **Logic operators** include ``and``,
+``or`` and ``not``, whose names are self-descriptive. 
+
+The ``and`` and ``or`` operators each take two operands (one preceding
+and one following); ``not`` takes a single following argument and can
+also be used as a function. Consider the following examples::
+
+  True and True      # True
+  True and False     # False
+  False and False    # False
+  True or False      # True
+  not False          # True
+  not(True or False) # False
+  not(True or True)  # False
+  not True or True   # True
+
+As usual, one must be careful with the order of operations-- compare
+the difference in the result of the last two expressions above.  In
+the final expression, the ``not`` operator acts before the ``or``, so
+that ``not True`` evaluates first to ``False``, and the resulting
+``False or True`` evaluates to True.
+
+The logic and relational operators can be combined.  For example::
+
+  not 3 == 5                # True
+  not 3 != 5                # False
+  10*7 == 70 and 12 == 28   # False
+
+Conditionals: if, elif and else
+-------------------------------
+
+When performing calculations and evaluations, we might want to perform
+one set of steps or a different set depending on the outcome of a
+result.  That is, we use some result to decide what to do next.  This
+kind of branching of command flow can be done using an **conditional
+statements**.  This is perhaps where real programming starts, beyond
+basic calculation.
+
+The
+
+
+
+
+
+
+
+tree structure example
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 90
+      
+   * - Figure 1: conditional example: decision tree structure 
+   * - .. image:: media/im00_if_decision_tree.jpg
+          :width: 100%  
+          :align: center
+
+|
+
+Practice
+##########
+
+First come up with what you think the answer *should* be, and then
+check the result using an ipython terminal:
+
+#. What are the differences in output of these?::
+        
+     False * True
+     False and True
+
+#. Fix the following::
+
+     x = 3
+     if x > 25
+         print("This number is big!")
+
+#. Fix the following::
+
+     x = 3
+     if x > 25
+         print("This number is big!")
+         else:
+             print("This number is small!")
+
+#. How many print statements get evaluated?::
+
+     x = 3
+     if x > 25:
+         print("This number is big!")
+         print("Where did you find it?")
+     print(x)
+
+#. How many print statements get evaluated?::
+
+     x = 3
+     if x > 25:
+         print("This number is big!")
+     elif x < 10:
+         print("This number is small!")
+     print(x)
+
+#. Write an ``if`` condition to check if a variable called ``test1``
+   is greater than 5.  If it is, print "Congratulations".
+
+#. Write an ``if`` condition to check if a variable called ``test2``
+   is odd.  If it is, print "I found an odd number"; otherwise,
+   print "I found an even number".
+
+#. Write an ``if`` condition to check if a variable called ``test3``
+   is *not* an int.  If it is not, then print "Fancy number".
+   Otherwise, do nothing.
+
+#. Write an ``if`` condition to check if a variable called ``test4``
+   is in the interval ``[-3, 3]``.  If it is, print "Small number!".
+   If it outside that range but in the range ``[-10, 10]``, print
+   "Medium number!"; and if it is outside of that range, print "Big
+   number!"
+
+#. Write an ``if`` condition to check if a variable called ``test5``
+   is complex or a float.  If it is complex, print "I found a complex
+   number"; if it is a float, print "I found a float"; otherwise,
+   print "Oh well".
+
+#. Write an ``if`` condition to check if a variable called ``test6``
+   is a negative integer.  If it *is*, multiply it by ``-3`` and see
+   if the result is a multiple of 9; if *that* is, then print "hello,
+   my friend".  In any other case, print "Oh, no, not you".
+
+
+

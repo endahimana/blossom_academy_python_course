@@ -1,0 +1,12 @@
+:tocdepth: 2
+
+.. _week1_helpfiles:
+
+Reading help files
+===================
+
+.. contents:: :local:
+
+.. highlight:: python
+
+**add**

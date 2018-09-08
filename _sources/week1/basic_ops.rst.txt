@@ -76,6 +76,8 @@ numbers (:math:`\pi`, Euler's *e*, etc.).
    decimal value resulting from calculations, and treat such numbers as
    approximate in essentially all cases.
 
+   add in about the 5e-7, etc. notation ("e" in this context is "x10^"
+
 Type
 ####
 
@@ -181,8 +183,8 @@ the sense that int values are a subset within floats).
    add functions to do type conversion
    
 
-Assignment
-----------
+Assignment and variables
+------------------------
 
 The calculator functionality described above is useful at times, but
 it is not *really* programming, since we cannot combine results of
