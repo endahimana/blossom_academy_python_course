@@ -198,11 +198,11 @@ Python tasks):
 * ``if`` is a keyword in Python, that tells the interpreter that we
   are starting and if statement
 
-* Next is a statement that is treated as a Boolean expression: it is
-  evaluated as either ``True`` or ``False``. Note that the statement
-  may be complicated and contain several pieces (relational,
-  comparative, etc.), but it is evaluated as a single ``True`` or
-  ``False``.
+* Next is a statement ("the predicate") that is treated as a Boolean
+  expression: it is evaluated as either ``True`` or ``False``. Note
+  that the statement may be complicated and contain several pieces
+  (relational, comparative, etc.), but it is evaluated as a single
+  ``True`` or ``False``.
 
 * The line **must** end with the colon character ``:`` after the
   Boolean expression; it can basically be translated as the "then"
@@ -265,11 +265,133 @@ have been properly assigned values)::
       y = int(y)
       print("Now I have *made* it an integer value:", y)
   print("Whether you wanted it or not, you have an int now!")
-  
+
+The following would be *invalid* ``if`` conditions::
+
+  # Syntax Error: missing a colon
+  if 100 <= x and x < 1000 
+      print("Medium-sized x", x)
+
+  # Indentation Error: missing indentation
+  if 100 <= x and x < 1000 :
+  print("Medium-sized x", x)
+
+In summary, the ``if`` conditional allows us to program the following
+kinds of expressions, "If X is true, do Y," where X can be as
+complicated a True/False statement as desired, and Y can be a list of
+one or more commands.  Python demands certain syntax to be able to
+interpret this, including the colon ``:`` at the end of the predicate
+statement X and indentation of each of the conditional commands in Y.
+
 If/else statements
 ##################
 
-**add**
+The above "if" conditional only provides commands for when a statement
+is true.  The related "if/else" conditional adds the ability to
+provide alternative commands if the predicate statement is false.
+This can be referred to as "forked" decision making (like having to
+choose between paths at a fork in the road).
+
+Thus, the "if/else" conditional statement can be expressed as, "If
+some condition is met, then do this set of things; otherwise, do this
+*other* set of things." This conditional is translated into Python
+as::
+
+  if <some condition> :
+      <set of things>
+  else:
+      <other set of things>
+
+Note that all of the above rules for the ``if`` part apply, such as
+the colon and indentation.  Additionally, the Python keyword ``else``
+(the Python translation of "otherwise") is used in parallel to ``if``
+and itself followed by a colon ``:``; both are necessary aspects of
+the syntax.  Note that fact that ``else`` is not indented relative to
+``if`` closes the ``<set of things>`` list.  The same rules apply for
+the ``<other set of things>`` as for the set following ``if``: there
+may be one or more, and all must be indented by the same amount
+(standard, 4 spaces) relative to ``else``; Python again knows the end
+of the ``else`` list of commands when the next line is not indented or
+the file ends.
+
+The following is an if/else example (based on some examples in the
+``if`` section above):
+
+.. code-block:: python
+   :linenos:
+
+   if type(y) == int :
+       print("Oh good, an integer value:", y)
+   else:
+       print("Oh darn, a non-integer value:", y)
+       y = int(y)
+       print("Now I have *made* it an integer value:", y)
+   print("Whether you wanted it or not, you have an int now!")
+
+The exclusive cases of whether ``y`` is or is not an int are now dealt
+with in a single conditional.  The final ``print`` function is outside
+of the conditional (which is signaled by its lack of indentation
+relative to the ``if``\/``else`` keywords).  If ``y`` *is* an int,
+then the commands in lines 2 and 7 are executed; otherwise, those in
+lines 3-7 are executed.
+
+Again, Python's use of indentation in conditionals provides a nice,
+human-readable visual cue to check what is inside of a conditional
+branch.  We can immediately tell that there is one command following
+the ``if`` branch, and three commands following the ``else`` branch.
+
+As another example, consider translating the following into a block of
+Python code: "Let x be a number.  If it has 9 as a factor, print how
+many times 9 goes into it; otherwise, just print the original number."
+
+First, we have to translate the predicate into a mathematical Boolean
+statement.  Well, factors divide evenly into a number, so our more
+mathematical statement could be "Let x be a number.  If x divided by 9
+has zero remainer, then ..., else ..." etc.  This is now something
+that can be translated into Python code:
+
+.. code-block:: python
+   :linenos:
+
+   if x % 9 == 0 :
+      print("How many times does 9 go into x?", x/9)
+   else:
+      print("Sadly,", x, "does not have 9 as a factor").
+      
+The following are examples of *invalid* attempts to use if/else::
+
+  # Syntax Error: because the "else" does not parallel and "if"
+  if type(y) == int :
+      print("Oh good, an integer value:", y)
+      else:
+          print("Oh darn, a non-integer value:", y)
+          y = int(y)
+          print("Now I have *made* it an integer value:", y)
+  print("Whether you wanted it or not, you have an int now!")
+
+  # Indentation Error: the "y = int(y)" is not interpreted as an
+  # error by Python, but the 'print("Now ...' line is detected as
+  # indented for no reason.
+  if type(y) == int :
+      print("Oh good, an integer value:", y)
+  else:
+      print("Oh darn, a non-integer value:", y)
+  y = int(y)
+      print("Now I have *made* it an integer value:", y)
+  print("Whether you wanted it or not, you have an int now!")
+
+  # Python finds no Error!  However, we would view this as a
+  # programming mistake, because we wanted the 'print("Now ...' line 
+  # to be inside the else branch.  Careful, things like this can be 
+  # tricky to debug.
+  if type(y) == int :
+      print("Oh good, an integer value:", y)
+  else:
+      print("Oh darn, a non-integer value:", y)
+      y = int(y)
+  print("Now I have *made* it an integer value:", y)
+  print("Whether you wanted it or not, you have an int now!")
+
 
 If/elif/else statements
 ########################

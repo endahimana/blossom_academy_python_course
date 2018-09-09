@@ -20,3 +20,12 @@ Strings
 
 Print
 -----
+
+Print examples::
+
+   print(x)
+   print("string")
+   print("string", x)
+   print("string1", x, "string2", y)
+
+etc.
