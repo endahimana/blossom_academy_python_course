@@ -268,18 +268,18 @@ have been properly assigned values)::
 
 The following would be *invalid* ``if`` conditions::
 
-  # Syntax Error: missing a colon
   if 100 <= x and x < 1000 
       print("Medium-sized x", x)
+  # --> Syntax Error: missing a colon after the predicate statement
 
-  # Indentation Error: missing indentation
   if 100 <= x and x < 1000 :
   print("Medium-sized x", x)
+  # --> Indentation Error: missing indentation after the colon
 
-In summary, the ``if`` conditional allows us to program the following
-kinds of expressions, "If X is true, do Y," where X can be as
-complicated a True/False statement as desired, and Y can be a list of
-one or more commands.  Python demands certain syntax to be able to
+**In summary**, the ``if`` conditional allows us to program the
+following kinds of expressions, "If X is true, do Y," where X can be
+as complicated a True/False statement as desired, and Y can be a list
+of one or more commands.  Python demands certain syntax to be able to
 interpret this, including the colon ``:`` at the end of the predicate
 statement X and indentation of each of the conditional commands in Y.
 
@@ -360,7 +360,6 @@ that can be translated into Python code:
       
 The following are examples of *invalid* attempts to use if/else::
 
-  # Syntax Error: because the "else" does not parallel and "if"
   if type(y) == int :
       print("Oh good, an integer value:", y)
       else:
@@ -368,10 +367,8 @@ The following are examples of *invalid* attempts to use if/else::
           y = int(y)
           print("Now I have *made* it an integer value:", y)
   print("Whether you wanted it or not, you have an int now!")
+  # --> Syntax Error: because the "else" does not parallel and "if"
 
-  # Indentation Error: the "y = int(y)" is not interpreted as an
-  # error by Python, but the 'print("Now ...' line is detected as
-  # indented for no reason.
   if type(y) == int :
       print("Oh good, an integer value:", y)
   else:
@@ -379,11 +376,10 @@ The following are examples of *invalid* attempts to use if/else::
   y = int(y)
       print("Now I have *made* it an integer value:", y)
   print("Whether you wanted it or not, you have an int now!")
+  # --> Indentation Error: the "y = int(y)" is actually not interpreted
+  # as an error by Python, but the 'print("Now ...' line is detected 
+  # as indented for no reason.
 
-  # Python finds no Error!  However, we would view this as a
-  # programming mistake, because we wanted the 'print("Now ...' line 
-  # to be inside the else branch.  Careful, things like this can be 
-  # tricky to debug.
   if type(y) == int :
       print("Oh good, an integer value:", y)
   else:
@@ -391,12 +387,68 @@ The following are examples of *invalid* attempts to use if/else::
       y = int(y)
   print("Now I have *made* it an integer value:", y)
   print("Whether you wanted it or not, you have an int now!")
+  # --> Python finds no Error!  However, *we* would view this as a
+  # programming mistake, because we wanted the 'print("Now ...' line 
+  # to be inside the else branch.  Careful, things like this can be 
+  # tricky to debug.
 
+**In summary**, the ``if``\/``else`` conditional allows us to program
+the following kinds of expressions, "If X is true, do Y; else, do Z."
+The same rules as above apply to X and Y; Z also shares the same
+indentation rules as Y, and the ``else`` line ends in a colon, just as
+the ``if`` line does.  The "else" is logically parallel to the "if",
+and in programming syntax this is mirrored by the fact that ``else``
+has no indentation relative to the ``if``.
 
 If/elif/else statements
 ########################
 
-**add**
+Finally, the above "branching" conditional can be generalized to test
+more than one (exclusive) predicate statement, using one or more "else
+if" lines.
+
+Thus, the "if/elif/else" conditional statement can be expressed as,
+"If some condition is met, then do this set of things; otherwise, if
+this *other* condition is met, do this *other* set of things; otherwise,
+do this last set of things." This conditional is translated into
+Python as::
+
+  if <some condition> :
+      <set of things>
+  elif <some other condition> :
+      <other set of things>
+  else:
+      <last set of things>
+
+All the same rules apply to the ``elif`` line as to the ``if``
+line. Furthermore, note that we have only written one ``elif``
+condition, but there can be as many as desired, and the same rules
+apply to each.
+
+For example:
+
+.. code-block:: python
+   :linenos:
+
+   if dist_km > 500 :
+       print("Far distance.  Looks like I'm flyin'!")
+   elif  dist_km > 200 :
+       print("Well, I will check a train schedule!")
+   elif dist_km > 100 :
+       print("Well, guess that's a bus ride.")
+   else:
+       print("Maybe my friend can drive.")
+
+If ``dist_km`` there were, say, 1000, then each of those Boolean
+expressions after ``if`` or ``elif`` is actually true; the order of
+the statements matters, because each ``elif`` differentiates itself
+from prior cases.  Swapping lines 3 and 5 would lead to different
+outcomes (and likely incorrect ones).
+
+
+
+
+
 
 More...
 ########################

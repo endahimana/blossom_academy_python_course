@@ -317,19 +317,19 @@ have been properly assigned values):</p>
 </pre></div>
 </div>
 <p>The following would be <em>invalid</em> <code class="docutils literal"><span class="pre">if</span></code> conditions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Syntax Error: missing a colon</span>
-<span class="k">if</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1000</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1000</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Medium-sized x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="c1"># --&gt; Syntax Error: missing a colon after the predicate statement</span>
 
-<span class="c1"># Indentation Error: missing indentation</span>
 <span class="k">if</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1000</span> <span class="p">:</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Medium-sized x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="c1"># --&gt; Indentation Error: missing indentation after the colon</span>
 </pre></div>
 </div>
-<p>In summary, the <code class="docutils literal"><span class="pre">if</span></code> conditional allows us to program the following
-kinds of expressions, “If X is true, do Y,” where X can be as
-complicated a True/False statement as desired, and Y can be a list of
-one or more commands.  Python demands certain syntax to be able to
+<p><strong>In summary</strong>, the <code class="docutils literal"><span class="pre">if</span></code> conditional allows us to program the
+following kinds of expressions, “If X is true, do Y,” where X can be
+as complicated a True/False statement as desired, and Y can be a list
+of one or more commands.  Python demands certain syntax to be able to
 interpret this, including the colon <code class="docutils literal"><span class="pre">:</span></code> at the end of the predicate
 statement X and indentation of each of the conditional commands in Y.</p>
 </div>
@@ -406,18 +406,15 @@ that can be translated into Python code:</p>
 </pre></div>
 </td></tr></table></div>
 <p>The following are examples of <em>invalid</em> attempts to use if/else:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Syntax Error: because the &quot;else&quot; does not parallel and &quot;if&quot;</span>
-<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oh good, an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oh darn, a non-integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Now I have *made* it an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Whether you wanted it or not, you have an int now!&quot;</span><span class="p">)</span>
+<span class="c1"># --&gt; Syntax Error: because the &quot;else&quot; does not parallel and &quot;if&quot;</span>
 
-<span class="c1"># Indentation Error: the &quot;y = int(y)&quot; is not interpreted as an</span>
-<span class="c1"># error by Python, but the &#39;print(&quot;Now ...&#39; line is detected as</span>
-<span class="c1"># indented for no reason.</span>
 <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oh good, an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -425,11 +422,10 @@ that can be translated into Python code:</p>
 <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Now I have *made* it an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Whether you wanted it or not, you have an int now!&quot;</span><span class="p">)</span>
+<span class="c1"># --&gt; Indentation Error: the &quot;y = int(y)&quot; is actually not interpreted</span>
+<span class="c1"># as an error by Python, but the &#39;print(&quot;Now ...&#39; line is detected</span>
+<span class="c1"># as indented for no reason.</span>
 
-<span class="c1"># Python finds no Error!  However, we would view this as a</span>
-<span class="c1"># programming mistake, because we wanted the &#39;print(&quot;Now ...&#39; line</span>
-<span class="c1"># to be inside the else branch.  Careful, things like this can be</span>
-<span class="c1"># tricky to debug.</span>
 <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oh good, an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
@@ -437,12 +433,65 @@ that can be translated into Python code:</p>
     <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Now I have *made* it an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Whether you wanted it or not, you have an int now!&quot;</span><span class="p">)</span>
+<span class="c1"># --&gt; Python finds no Error!  However, *we* would view this as a</span>
+<span class="c1"># programming mistake, because we wanted the &#39;print(&quot;Now ...&#39; line</span>
+<span class="c1"># to be inside the else branch.  Careful, things like this can be</span>
+<span class="c1"># tricky to debug.</span>
 </pre></div>
 </div>
+<p><strong>In summary</strong>, the <code class="docutils literal"><span class="pre">if</span></code>/<code class="docutils literal"><span class="pre">else</span></code> conditional allows us to program
+the following kinds of expressions, “If X is true, do Y; else, do Z.”
+The same rules as above apply to X and Y; Z also shares the same
+indentation rules as Y, and the <code class="docutils literal"><span class="pre">else</span></code> line ends in a colon, just as
+the <code class="docutils literal"><span class="pre">if</span></code> line does.  The “else” is logically parallel to the “if”,
+and in programming syntax this is mirrored by the fact that <code class="docutils literal"><span class="pre">else</span></code>
+has no indentation relative to the <code class="docutils literal"><span class="pre">if</span></code>.</p>
 </div>
 <div class="section" id="if-elif-else-statements">
 <h3><a class="toc-backref" href="#id7">If/elif/else statements</a><a class="headerlink" href="#if-elif-else-statements" title="Permalink to this headline">¶</a></h3>
-<p><strong>add</strong></p>
+<p>Finally, the above “branching” conditional can be generalized to test
+more than one (exclusive) predicate statement, using one or more “else
+if” lines.</p>
+<p>Thus, the “if/elif/else” conditional statement can be expressed as,
+“If some condition is met, then do this set of things; otherwise, if
+this <em>other</em> condition is met, do this <em>other</em> set of things; otherwise,
+do this last set of things.” This conditional is translated into
+Python as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">some</span> <span class="n">condition</span><span class="o">&gt;</span> <span class="p">:</span>
+    <span class="o">&lt;</span><span class="nb">set</span> <span class="n">of</span> <span class="n">things</span><span class="o">&gt;</span>
+<span class="k">elif</span> <span class="o">&lt;</span><span class="n">some</span> <span class="n">other</span> <span class="n">condition</span><span class="o">&gt;</span> <span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">other</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">things</span><span class="o">&gt;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="o">&lt;</span><span class="n">last</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">things</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>All the same rules apply to the <code class="docutils literal"><span class="pre">elif</span></code> line as to the <code class="docutils literal"><span class="pre">if</span></code>
+line. Furthermore, note that we have only written one <code class="docutils literal"><span class="pre">elif</span></code>
+condition, but there can be as many as desired, and the same rules
+apply to each.</p>
+<p>For example:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">dist_km</span> <span class="o">&gt;</span> <span class="mi">500</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Far distance.  Looks like I&#39;m flyin&#39;!&quot;</span><span class="p">)</span>
+<span class="k">elif</span>  <span class="n">dist_km</span> <span class="o">&gt;</span> <span class="mi">200</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Well, I will check a train schedule!&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">dist_km</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Well, guess that&#39;s a bus ride.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Maybe my friend can drive.&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>If <code class="docutils literal"><span class="pre">dist_km</span></code> there were, say, 1000, then each of those Boolean
+expressions after <code class="docutils literal"><span class="pre">if</span></code> or <code class="docutils literal"><span class="pre">elif</span></code> is actually true; the order of
+the statements matters, because each <code class="docutils literal"><span class="pre">elif</span></code> differentiates itself
+from prior cases.  Swapping lines 3 and 5 would lead to different
+outcomes (and likely incorrect ones).</p>
 </div>
 <div class="section" id="more">
 <h3><a class="toc-backref" href="#id8">More…</a><a class="headerlink" href="#more" title="Permalink to this headline">¶</a></h3>
