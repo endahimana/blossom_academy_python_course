@@ -34,9 +34,10 @@ The operator compares operands on each side, such as::
 
 which returns ``False``.  Variables can be used on either side of the
 equality, as long as they have been defined previously.  And again, we
-distinguish the relational ``==`` from the assignment operator ``=``,
-which stores a value on the computer for later reference with a name
-label.  The following are all allowed::
+distinguish the relational ``==`` (the True/False statement "A equals
+B") from the assignment operator ``=`` (the declarative operation "A
+is set to be B"), with the latter storing value on the computer for
+later reference with a name label.  The following are all allowed::
 
   val = 5
   val == 5
@@ -100,6 +101,25 @@ Some things to note from those examples:
   be vital to clarify desired order of operations (even if only for
   human reading).
 
+There also can be complications based on type.  For example, this
+expression::
+
+  cval = 10-1j
+  cval > 0
+
+produces an error: ``TypeError: no ordering relation is defined for
+complex numbers``.  That is, complex numbers cannot be used as
+operands in such a relational expression.  However, this might also
+mirror a mathematical problem with the expression, with it being an
+ill-posed problem (would we want to test the real part, or just the
+imaginary, or both? what would that mean?).  However, the problem can
+be rephrased more meaningfully and tested successfully, for example::
+
+  abs(cval) > 0          # True
+  np.abs(cval) > 0       # True, using NumPy's absolute value function
+  np.real(cval) > 0      # True, evaluating the real part of cval
+  np.imag(cval) > 0      # False, evaluating the imaginary part of cval
+
 .. note to self
 
    here or somewhere else, note about bools and typecasting: 
@@ -141,20 +161,123 @@ The logic and relational operators can be combined.  For example::
 Conditionals: if, elif and else
 -------------------------------
 
-When performing calculations and evaluations, we might want to perform
-one set of steps or a different set depending on the outcome of a
-result.  That is, we use some result to decide what to do next.  For
-example, if a result is less than 50, then double it; otherwise, leave
-it as is. This kind of branching of command flow can be done using an
-**conditional statement**.  This is perhaps where real programming
-starts, beyond basic calculation.
+By default, the Python interpreter will move down the script file of
+commands, executed each successive line until it reaches the end of
+the file.  Thus, all commands would get executed, exactly once.
 
-The
+However, there might be occasions when we would like to have some
+commands executed only in the case of a particular outcome.  Or,
+perhaps we would like calculate a result, and depending on the
+outcome, *just* execute some set A of commands, or another set B (or
+aset C, or a set D, ...).  
 
+That is, we use some result to decide what to do next.  For example,
+if a result is less than 50, then double it; otherwise, leave it as
+is. This kind of branching of command flow can be done using an
+**conditional statement**.  This is perhaps where real, algorithmic
+programming starts, beyond basic calculation, since the flow of
+operations is result-dependent.
 
+If statements
+#############
 
+There is a family of if statements, with related meaning and syntax.
+We describe each briefly in turn.
 
+In words, a basic "if" conditional statement can be expressed as, "If
+some condition is met, then do this set of things."  This conditional
+is translated into Python as::
 
+  if <some condition> :
+      <set of things>
+
+There are several important things to note about this command and its
+syntax (particularly as parts of this syntax are used in several other
+Python tasks):
+
+* ``if`` is a keyword in Python, that tells the interpreter that we
+  are starting and if statement
+
+* Next is a statement that is treated as a Boolean expression: it is
+  evaluated as either ``True`` or ``False``. Note that the statement
+  may be complicated and contain several pieces (relational,
+  comparative, etc.), but it is evaluated as a single ``True`` or
+  ``False``.
+
+* The line **must** end with the colon character ``:`` after the
+  Boolean expression; it can basically be translated as the "then"
+  in the verbal expresion.
+
+* The line following the ``if`` statement **must** be indented
+  relative to the ``if`` statement; **indentation** is the set of
+  spaces at the start of the line.  The Python standard for
+  indentation is 4 spaces.
+
+* The ``<set of things>`` to be done if ``<some condition>`` is True
+  may be one or more commands.  Each command to be done must be
+  indented the same amount relative to the ``if`` statement.
+
+* The Python interpreter knows that it has reached the end of the list
+  of ``<set of things>`` to do when it either:
+  
+  1. Reaches a line that is *not* indented relative to the ``if``
+     statement, or
+
+  #. Reaches the end of file (EOF).
+
+So, for example, the conditional, "If x is greater than 10, calculate
+x-squared and print the result" could be translated as::
+
+  if x > 10 :
+      xsq = x*x
+      print("x-squared is:", xsq)
+  print("I am printing from *outside* the condition!")
+
+(This assumes that ``x`` has been assigned a value previously.)  There
+are two commands to be done if *x* is greater than ten, and Python
+knows this because there are two indented lines.  The last ``print``
+function is executed regardless of the value of ``x``, because it is
+*outside* of the conditional; its lack of indentation relative to the
+``if`` statement tell that to Python.  
+
+Indentation may be made up of spaces and/or TABs.  However, for
+portability to different computers and text editors, using *only*
+spaces is highly preferred.  The standard indent size of 4 spaces has
+been chosen to balance readability with space considerations.  On a
+human level, Python's use of indentation here makes it easy to read
+what is "inside" and "outside" of an ``if`` expression, especially as
+the conditionals get larger and more complicated.
+
+Some other examples of valid ``if`` conditions (assuming all variables
+have been properly assigned values)::
+
+  # Multiple pieces to a Boolean expression
+  if 100 <= x and x < 1000 :
+      print("Medium-sized x", x)
+
+  # More than values can be tested
+  if type(y) == int :
+      print("Oh good, an integer value:", y)
+
+  # Negation, and several things to do if True
+  if not(type(y) == int) :
+      print("Oh darn, a non-integer value:", y)
+      y = int(y)
+      print("Now I have *made* it an integer value:", y)
+  print("Whether you wanted it or not, you have an int now!")
+  
+If/else statements
+##################
+
+**add**
+
+If/elif/else statements
+########################
+
+**add**
+
+More...
+########################
 
 
 tree structure example

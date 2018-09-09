@@ -214,10 +214,11 @@ or anything like that (try it, Python will produce an
 error). 
 
 This operator "=" is an *action*, providing a reference label to a
-value that is stored on the computer.  One can read it more like "*x*
-is defined to be ...", etc.  As such, every quantity on the RHS must
-be known and have a value already. Therefore, if ``c`` has not been
-assigned a value previously, then::
+value that is stored on the computer.  In line with this concept, one
+can read it more like "*x* is defined to be ...", or "*x* is set to
+....", or "Let *x* be ...", etc.  As such, every quantity on the RHS
+must be known and have a value already. Therefore, if ``c`` has not
+been assigned a value previously, then::
     
   d = c*c - 10
   c = 4 + 8

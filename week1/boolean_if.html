@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2.3. Comparison, logic and if conditions &#8212; AIMS Python 0.1 documentation</title>
+    <title>2.5. Comparison, logic and if conditions &#8212; AIMS Python 0.1 documentation</title>
     <link rel="stylesheet" href="../_static/cloud.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=PT+Sans|Noticia+Text|Open+Sans|Droid+Sans+Mono|Roboto" type="text/css" />
@@ -30,8 +30,7 @@
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.4. Modules" href="modules.html" />
-    <link rel="prev" title="2.2. Comments, strings and print: helping humans program" href="comm_str_print.html" /> 
+    <link rel="prev" title="2.4. Reading help files" href="helpfiles.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
@@ -44,10 +43,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="modules.html" title="2.4. Modules"
-             accesskey="N">next</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="comm_str_print.html" title="2.2. Comments, strings and print: helping humans program"
+          <a href="helpfiles.html" title="2.4. Reading help files"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">AIMS Python 0.1 documentation</a> &#187;</li>
 
@@ -63,7 +59,7 @@
           <div class="body" role="main">
             
   <span class="target" id="week1-boolean-if"></span><div class="section" id="comparison-logic-and-if-conditions">
-<h1>2.3. Comparison, logic and <strong>if</strong> conditions<a class="headerlink" href="#comparison-logic-and-if-conditions" title="Permalink to this headline">¶</a></h1>
+<h1>2.5. Comparison, logic and <strong>if</strong> conditions<a class="headerlink" href="#comparison-logic-and-if-conditions" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#boolean-expressions" id="id1">Boolean expressions</a><ul>
@@ -72,13 +68,17 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#conditionals-if-elif-and-else" id="id4">Conditionals: if, elif and else</a><ul>
-<li><a class="reference internal" href="#practice" id="id5">Practice</a></li>
+<li><a class="reference internal" href="#if-statements" id="id5">If statements</a></li>
+<li><a class="reference internal" href="#if-else-statements" id="id6">If/else statements</a></li>
+<li><a class="reference internal" href="#if-elif-else-statements" id="id7">If/elif/else statements</a></li>
+<li><a class="reference internal" href="#more" id="id8">More…</a></li>
+<li><a class="reference internal" href="#practice" id="id9">Practice</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="boolean-expressions">
-<h2><a class="toc-backref" href="#id1">2.3.1. Boolean expressions</a><a class="headerlink" href="#boolean-expressions" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id1">2.5.1. Boolean expressions</a><a class="headerlink" href="#boolean-expressions" title="Permalink to this headline">¶</a></h2>
 <p>We have already seen the “bool” type in Python, which has two (and
 only two) members: <code class="docutils literal"><span class="pre">True</span></code> and <code class="docutils literal"><span class="pre">False</span></code>.  Expressions producing
 these values are called <strong>Boolean expressions</strong>, with the operators
@@ -95,9 +95,10 @@ The operator compares operands on each side, such as:</p>
 </div>
 <p>which returns <code class="docutils literal"><span class="pre">False</span></code>.  Variables can be used on either side of the
 equality, as long as they have been defined previously.  And again, we
-distinguish the relational <code class="docutils literal"><span class="pre">==</span></code> from the assignment operator <code class="docutils literal"><span class="pre">=</span></code>,
-which stores a value on the computer for later reference with a name
-label.  The following are all allowed:</p>
+distinguish the relational <code class="docutils literal"><span class="pre">==</span></code> (the True/False statement “A equals
+B”) from the assignment operator <code class="docutils literal"><span class="pre">=</span></code> (the declarative operation “A
+is set to be B”), with the latter storing value on the computer for
+later reference with a name label.  The following are all allowed:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">val</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="mi">5</span> <span class="o">==</span> <span class="n">val</span>
@@ -168,6 +169,25 @@ part of code, say if one wanted <em>only</em> integer values.</li>
 be vital to clarify desired order of operations (even if only for
 human reading).</li>
 </ul>
+<p>There also can be complications based on type.  For example, this
+expression:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">cval</span> <span class="o">=</span> <span class="mi">10</span><span class="o">-</span><span class="mi">1j</span>
+<span class="n">cval</span> <span class="o">&gt;</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>produces an error: <code class="docutils literal"><span class="pre">TypeError:</span> <span class="pre">no</span> <span class="pre">ordering</span> <span class="pre">relation</span> <span class="pre">is</span> <span class="pre">defined</span> <span class="pre">for</span>
+<span class="pre">complex</span> <span class="pre">numbers</span></code>.  That is, complex numbers cannot be used as
+operands in such a relational expression.  However, this might also
+mirror a mathematical problem with the expression, with it being an
+ill-posed problem (would we want to test the real part, or just the
+imaginary, or both? what would that mean?).  However, the problem can
+be rephrased more meaningfully and tested successfully, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="n">cval</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>          <span class="c1"># True</span>
+<span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">cval</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>       <span class="c1"># True, using NumPy&#39;s absolute value function</span>
+<span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">cval</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>      <span class="c1"># True, evaluating the real part of cval</span>
+<span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">cval</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>      <span class="c1"># False, evaluating the imaginary part of cval</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="logic-operators">
 <h3><a class="toc-backref" href="#id3">Logic operators</a><a class="headerlink" href="#logic-operators" title="Permalink to this headline">¶</a></h3>
@@ -202,15 +222,111 @@ that <code class="docutils literal"><span class="pre">not</span> <span class="pr
 </div>
 </div>
 <div class="section" id="conditionals-if-elif-and-else">
-<h2><a class="toc-backref" href="#id4">2.3.2. Conditionals: if, elif and else</a><a class="headerlink" href="#conditionals-if-elif-and-else" title="Permalink to this headline">¶</a></h2>
-<p>When performing calculations and evaluations, we might want to perform
-one set of steps or a different set depending on the outcome of a
-result.  That is, we use some result to decide what to do next.  For
-example, if a result is less than 50, then double it; otherwise, leave
-it as is. This kind of branching of command flow can be done using an
-<strong>conditional statement</strong>.  This is perhaps where real programming
-starts, beyond basic calculation.</p>
-<p>The</p>
+<h2><a class="toc-backref" href="#id4">2.5.2. Conditionals: if, elif and else</a><a class="headerlink" href="#conditionals-if-elif-and-else" title="Permalink to this headline">¶</a></h2>
+<p>By default, the Python interpreter will move down the script file of
+commands, executed each successive line until it reaches the end of
+the file.  Thus, all commands would get executed, exactly once.</p>
+<p>However, there might be occasions when we would like to have some
+commands executed only in the case of a particular outcome.  Or,
+perhaps we would like calculate a result, and depending on the
+outcome, <em>just</em> execute some set A of commands, or another set B (or
+aset C, or a set D, …).</p>
+<p>That is, we use some result to decide what to do next.  For example,
+if a result is less than 50, then double it; otherwise, leave it as
+is. This kind of branching of command flow can be done using an
+<strong>conditional statement</strong>.  This is perhaps where real, algorithmic
+programming starts, beyond basic calculation, since the flow of
+operations is result-dependent.</p>
+<div class="section" id="if-statements">
+<h3><a class="toc-backref" href="#id5">If statements</a><a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h3>
+<p>There is a family of if statements, with related meaning and syntax.
+We describe each briefly in turn.</p>
+<p>In words, a basic “if” conditional statement can be expressed as, “If
+some condition is met, then do this set of things.”  This conditional
+is translated into Python as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="o">&lt;</span><span class="n">some</span> <span class="n">condition</span><span class="o">&gt;</span> <span class="p">:</span>
+    <span class="o">&lt;</span><span class="nb">set</span> <span class="n">of</span> <span class="n">things</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>There are several important things to note about this command and its
+syntax (particularly as parts of this syntax are used in several other
+Python tasks):</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">if</span></code> is a keyword in Python, that tells the interpreter that we
+are starting and if statement</li>
+<li>Next is a statement that is treated as a Boolean expression: it is
+evaluated as either <code class="docutils literal"><span class="pre">True</span></code> or <code class="docutils literal"><span class="pre">False</span></code>. Note that the statement
+may be complicated and contain several pieces (relational,
+comparative, etc.), but it is evaluated as a single <code class="docutils literal"><span class="pre">True</span></code> or
+<code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li>The line <strong>must</strong> end with the colon character <code class="docutils literal"><span class="pre">:</span></code> after the
+Boolean expression; it can basically be translated as the “then”
+in the verbal expresion.</li>
+<li>The line following the <code class="docutils literal"><span class="pre">if</span></code> statement <strong>must</strong> be indented
+relative to the <code class="docutils literal"><span class="pre">if</span></code> statement; <strong>indentation</strong> is the set of
+spaces at the start of the line.  The Python standard for
+indentation is 4 spaces.</li>
+<li>The <code class="docutils literal"><span class="pre">&lt;set</span> <span class="pre">of</span> <span class="pre">things&gt;</span></code> to be done if <code class="docutils literal"><span class="pre">&lt;some</span> <span class="pre">condition&gt;</span></code> is True
+may be one or more commands.  Each command to be done must be
+indented the same amount relative to the <code class="docutils literal"><span class="pre">if</span></code> statement.</li>
+<li>The Python interpreter knows that it has reached the end of the list
+of <code class="docutils literal"><span class="pre">&lt;set</span> <span class="pre">of</span> <span class="pre">things&gt;</span></code> to do when it either:<ol class="arabic">
+<li>Reaches a line that is <em>not</em> indented relative to the <code class="docutils literal"><span class="pre">if</span></code>
+statement, or</li>
+<li>Reaches the end of file (EOF).</li>
+</ol>
+</li>
+</ul>
+<p>So, for example, the conditional, “If x is greater than 10, calculate
+x-squared and print the result” could be translated as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="p">:</span>
+    <span class="n">xsq</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;x-squared is:&quot;</span><span class="p">,</span> <span class="n">xsq</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am printing from *outside* the condition!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(This assumes that <code class="docutils literal"><span class="pre">x</span></code> has been assigned a value previously.)  There
+are two commands to be done if <em>x</em> is greater than ten, and Python
+knows this because there are two indented lines.  The last <code class="docutils literal"><span class="pre">print</span></code>
+function is executed regardless of the value of <code class="docutils literal"><span class="pre">x</span></code>, because it is
+<em>outside</em> of the conditional; its lack of indentation relative to the
+<code class="docutils literal"><span class="pre">if</span></code> statement tell that to Python.</p>
+<p>Indentation may be made up of spaces and/or TABs.  However, for
+portability to different computers and text editors, using <em>only</em>
+spaces is highly preferred.  The standard indent size of 4 spaces has
+been chosen to balance readability with space considerations.  On a
+human level, Python’s use of indentation here makes it easy to read
+what is “inside” and “outside” of an <code class="docutils literal"><span class="pre">if</span></code> expression, especially as
+the conditionals get larger and more complicated.</p>
+<p>Some other examples of valid <code class="docutils literal"><span class="pre">if</span></code> conditions (assuming all variables
+have been properly assigned values):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Multiple pieces to a Boolean expression</span>
+<span class="k">if</span> <span class="mi">100</span> <span class="o">&lt;=</span> <span class="n">x</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">1000</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Medium-sized x&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># More than values can be tested</span>
+<span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oh good, an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Negation, and several things to do if True</span>
+<span class="k">if</span> <span class="ow">not</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Oh darn, a non-integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Now I have *made* it an integer value:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Whether you wanted it or not, you have an int now!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="if-else-statements">
+<h3><a class="toc-backref" href="#id6">If/else statements</a><a class="headerlink" href="#if-else-statements" title="Permalink to this headline">¶</a></h3>
+<p><strong>add</strong></p>
+</div>
+<div class="section" id="if-elif-else-statements">
+<h3><a class="toc-backref" href="#id7">If/elif/else statements</a><a class="headerlink" href="#if-elif-else-statements" title="Permalink to this headline">¶</a></h3>
+<p><strong>add</strong></p>
+</div>
+<div class="section" id="more">
+<h3><a class="toc-backref" href="#id8">More…</a><a class="headerlink" href="#more" title="Permalink to this headline">¶</a></h3>
 <p>tree structure example</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
@@ -229,8 +345,9 @@ starts, beyond basic calculation.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+</div>
 <div class="section" id="practice">
-<h3><a class="toc-backref" href="#id5">Practice</a><a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id9">Practice</a><a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h3>
 <p>First come up with what you think the answer <em>should</em> be, and then
 check the result using an ipython terminal:</p>
 <ol class="arabic">
@@ -320,20 +437,24 @@ my friend”.  In any other case, print “Oh, no, not you”.</p>
 <li class="toctree-l1 current"><a class="reference internal" href="main_toc.html">2. Week 1</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="basic_ops.html">2.1. Basic operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="comm_str_print.html">2.2. Comments, strings and print: helping humans program</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2.3. Comparison, logic and <strong>if</strong> conditions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#boolean-expressions">2.3.1. Boolean expressions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">2.3. Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpfiles.html">2.4. Reading help files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Comparison, logic and <strong>if</strong> conditions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boolean-expressions">2.5.1. Boolean expressions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#relational-operators">Relational operators</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#logic-operators">Logic operators</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#conditionals-if-elif-and-else">2.3.2. Conditionals: if, elif and else</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conditionals-if-elif-and-else">2.5.2. Conditionals: if, elif and else</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#if-statements">If statements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-else-statements">If/else statements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#if-elif-else-statements">If/elif/else statements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more">More…</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#practice">Practice</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">2.4. Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="helpfiles.html">2.5. Reading help files</a></li>
 </ul>
 </li>
 </ul>
@@ -385,10 +506,7 @@ my friend”.  In any other case, print “Oh, no, not you”.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="modules.html" title="2.4. Modules"
-             >next</a> &nbsp; &nbsp;</li>
-        <li class="right" >
-          <a href="comm_str_print.html" title="2.2. Comments, strings and print: helping humans program"
+          <a href="helpfiles.html" title="2.4. Reading help files"
              >previous</a> &nbsp; &nbsp;</li>
     <li><a href="../index.html">AIMS Python 0.1 documentation</a> &#187;</li>
 
