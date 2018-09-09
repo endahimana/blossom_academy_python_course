@@ -445,13 +445,86 @@ the statements matters, because each ``elif`` differentiates itself
 from prior cases.  Swapping lines 3 and 5 would lead to different
 outcomes (and likely incorrect ones).
 
+Since the syntax and application of the ``elif`` lines really don't
+differ from the ``if`` statement, the above examples apply directly.
 
+Nested conditions
+#################
 
+Consider the basic structure of the if/else statement above::
 
+  if <some condition> :
+      <set of things>
+  else:
+      <other set of things>
 
+This very generic, and there were no restrictions on the type of
+commands that could be included in the ``<set of things>`` or ``<other
+set of things>``.  What if one of those items were another conditional
+of some kind?  
 
-More...
-########################
+That is certainly possible to have.  Conditionals inside of other
+conditionals is called **nested conditionals**.  All of the same rules
+of syntax and format from above will apply, and we just adopt the rule
+that indentation combines additively.  That is, if an ``if``
+expression starts on an already indented line, then the commands
+inside of *it* are just indented one space further (still just one
+indent relative to their associated ``if``).
+
+There quickly becomes a large number of possible ways to combine
+nested any if/elif/else structures. One example could be, "If x is an
+float, see if it is positive, negative or zero; otherwise, if it is a
+complex number, calculate its magnitude; otherwise, just print the
+number."  In translating this to a program, we just have to remember
+which of any if/elif/else statements are in parallel with each other,
+and make sure those have the same indentation; any "interior"
+conditions just start with an indent already there to add to.  It can
+be translated to:
+
+.. code-block:: python
+   :linenos:
+
+   if type(x) == float :
+       print("x is a float!")
+       if x > 0 :
+           print("... and a positive one, at that.")
+       elif x < 0:
+           print("... and a negative one, at that.")
+       else:
+           print("... and a zero-valued one, at that.")
+   elif type(x) == complex:
+       xmagn = np.abs(x)
+       print("x is a complex number of magnitude:", xmagn)
+   else:
+       print("x is neither a float nor a complex, just:", x)
+
+Each branch could contains several commands in addition to the
+conditionals.  Again, it is a very flexible structure.  However, the
+rules from earlier sections still just apply in all cases.
+
+As the branching structure gets increasingly complicated, it can be
+difficult to keep track of what is a sub-condition of what.  One way
+to help keep everythign organized is to use a decision tree diagram,
+which can be much more easily translated into a code block of
+conditionals (and referred to later to check it).  Here is an example
+decision tree for the present case:
+
+.. list-table:: 
+   :header-rows: 1
+   :widths: 90
+      
+   * - Example case of conditional decision tree 
+   * - .. image:: media/im00_if_decision_tree.jpg
+          :width: 100%  
+          :align: center
+
+Notice how the levels of the decision tree directly mirror the
+indentations of the conditions in the coded version.  The arrows in
+the diagram also map directly to the Boolean statements of each
+conditional.  
+
+|
+
 
 
 tree structure example
@@ -461,9 +534,23 @@ tree structure example
    :widths: 90
       
    * - Figure 1: conditional example: decision tree structure 
-   * - .. image:: media/im00_if_decision_tree.jpg
+   * - .. image:: media/im01_if_decision_tree.jpg
           :width: 100%  
           :align: center
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 |
 
