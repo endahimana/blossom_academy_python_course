@@ -72,14 +72,14 @@ Note that the operands' type can also matter when performing
 comparisons.  Consider the following examples (with results and notes
 shown in comments to the right of each)::
 
-  5 == 5.0            # True, even though the types differ
-  3.2 % 1 == 1.2      # False, perhaps surprisingly (float round-off error)
-  type(5) == int      # True
-  val2 = 35.0         # assignment!
-  val2 <= 50          # True
-  type(val2) != bool  # True
-  val2**0.5 - 5 < 1   # True
-  3 + ( val2 > 0 )    # 4
+  5 == 5.0               # True, even though the types differ
+  3.2 % 1 == 1.2         # False, perhaps surprisingly (float round-off error)
+  type(5) == int         # True
+  val2 = 35.0            # assignment!
+  val2 <= 50             # True
+  type(val2) != bool     # True
+  val2**0.5 - 5 < 1      # True
+  3 + ( val2 > 0 )       # 4
 
 Some things to note from those examples:
 
@@ -117,14 +117,14 @@ The ``and`` and ``or`` operators each take two operands (one preceding
 and one following); ``not`` takes a single following argument and can
 also be used as a function. Consider the following examples::
 
-  True and True      # True
-  True and False     # False
-  False and False    # False
-  True or False      # True
-  not False          # True
-  not(True or False) # False
-  not(True or True)  # False
-  not True or True   # True
+  True and True         # True
+  True and False        # False
+  False and False       # False
+  True or False         # True
+  not False             # True
+  not(True or False)    # False
+  not(True or True)     # False
+  not True or True      # True
 
 As usual, one must be careful with the order of operations-- compare
 the difference in the result of the last two expressions above.  In
@@ -143,10 +143,11 @@ Conditionals: if, elif and else
 
 When performing calculations and evaluations, we might want to perform
 one set of steps or a different set depending on the outcome of a
-result.  That is, we use some result to decide what to do next.  This
-kind of branching of command flow can be done using an **conditional
-statements**.  This is perhaps where real programming starts, beyond
-basic calculation.
+result.  That is, we use some result to decide what to do next.  For
+example, if a result is less than 50, then double it; otherwise, leave
+it as is. This kind of branching of command flow can be done using an
+**conditional statement**.  This is perhaps where real programming
+starts, beyond basic calculation.
 
 The
 

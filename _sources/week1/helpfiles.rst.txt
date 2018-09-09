@@ -10,3 +10,16 @@ Reading help files
 .. highlight:: python
 
 **add**
+
+.. notes to self:
+
+   + help(FUNC_NAME), np.info(FUNC_NAME), FUNC_NAME?
+
+   + typical structure: top usage, inputs and outputs given, examples
+     at bottom:
+
+   + how to search help file
+
+   + notation for necessary and optional arguments
+
+   + define args and kwargs (key word args)
