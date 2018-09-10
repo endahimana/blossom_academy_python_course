@@ -63,7 +63,7 @@
 <div class="contents local topic" id="contents">
 <ul class="simple">
 <li><a class="reference internal" href="#translating-vectors-to-arrays" id="id1">Translating Vectors to Arrays</a><ul>
-<li><a class="reference internal" href="#assigning-values-to-arrays" id="id2">Assigning values to arrays</a></li>
+<li><a class="reference internal" href="#creating-arrays" id="id2">Creating arrays</a></li>
 <li><a class="reference internal" href="#practice-1" id="id3">Practice 1</a></li>
 </ul>
 </li>
@@ -103,14 +103,16 @@ different programming languages have different counting systems; C and
 C++ use zero-based counting, while Fortran, R and Matlab count from
 one.)</p>
 <p>The index notation carries directly to mathematical matrices.  In
-computing, these are <strong>arrays of arrays</strong>, typically referred to as
-<strong>multidimensional arrays</strong> (and most commonly just as “arrays”, for
-brevity).  All the above notations and terms apply.  Matrices
-typically have multiple dimensions and therefore multiple indices;
-these also translate directly from subscripts in the mathematics to
-square brackets in computing.  For example, the element in the first
-row and column of a 2-dimensional matrix <span class="math">\(\mathbf{A}\)</span> would be
-<code class="docutils literal"><span class="pre">A[0,0]</span></code>; the next element in the column would be <code class="docutils literal"><span class="pre">A[1,0]</span></code>; etc.</p>
+computing, these are just referred to as multidimensional arrays, or
+more commonly just “arrays (in actual fact, a multidimensional array
+is just an array whose elements are also arrays, an “array of arrays”,
+but that normally is not relevant when using them). All the above
+notations and terms apply.  Matrices typically have multiple
+dimensions and therefore multiple indices; these also translate
+directly from subscripts in the mathematics to square brackets in
+computing.  For example, the element in the first row and column of a
+2-dimensional matrix <span class="math">\(\mathbf{A}\)</span> would be <code class="docutils literal"><span class="pre">A[0,0]</span></code>; the next
+element in the column would be <code class="docutils literal"><span class="pre">A[1,0]</span></code>; etc.</p>
 <p>The following table summarizes the translation from mathematical
 vectors to computational arrays:</p>
 <blockquote>
@@ -159,11 +161,60 @@ mathematics/physics communities, with some small notational
 differences.  And, importantly, much of the <em>mathematics</em> for
 computing with vectors will also translate directly into programs, as
 well.</p>
-<div class="section" id="assigning-values-to-arrays">
-<h3><a class="toc-backref" href="#id2">Assigning values to arrays</a><a class="headerlink" href="#assigning-values-to-arrays" title="Permalink to this headline">¶</a></h3>
-<p>There are many ways to assign values to arrays in Python.  Here and
-below, whenever using arrays, we will be importing NumPy (<code class="docutils literal"><span class="pre">import</span>
-<span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>), which contains most of the functions we will use.</p>
+<div class="section" id="creating-arrays">
+<h3><a class="toc-backref" href="#id2">Creating arrays</a><a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h3>
+<p>There are many ways to assign values to arrays in Python.  In each
+case, when we create an array we need its define:</p>
+<ol class="arabic simple">
+<li>the <strong>length</strong> or <strong>shape</strong> (dimensions),</li>
+<li>the type of its elements, and</li>
+<li>initial values for all the elements (which may be altered later).</li>
+</ol>
+<p>Note that <em>all</em> elements of an array are of a single type (i.e., one
+cannot mix floats and ints in an array); and to distinguish the issue
+of element type from the array’s own type, the former’s type is
+referring to as a <strong>datatype</strong> (or <strong>dtype</strong>, an abbreviation often
+used in helpfiles).</p>
+<p>The need to define both dimensions and element types matches both</p>
+<ul>
+<li><p class="first">formal mathematical correctness, such as stating:</p>
+<p><span class="math">\(\textbf{v} \in \mathbb{R}^4\)</span>; that is, <strong>v</strong> a vector
+contains 4 real numbers,</p>
+<p><span class="math">\(\textbf{g} \in \mathbb{R}^{4\times4}\)</span>; that is, <strong>g</strong> is a
+4-by-4 matrix of real numbers,</p>
+<p><span class="math">\(\textbf{c} \in \mathbb{C}^{2\times3}\)</span>; that is, <strong>c</strong> is a
+2-by-3 matrix of complex numbers,</p>
+<p>etc.</p>
+</li>
+<li><p class="first">and computational space requirements, so Python knows how much space
+to allocate (dimensionality determines number of total spots,
+and element datatype determines the size of each).</p>
+</li>
+</ul>
+<p>Here and below, whenever using arrays, we will be importing NumPy,
+which contains most of the functions we will use.</p>
+<ul>
+<li><p class="first">Most basically, one can make an array directly using the
+<code class="docutils literal"><span class="pre">np.array()</span></code> function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We see that <code class="docutils literal"><span class="pre">v</span></code> contains three elements, and that the [0]th is 4
+(as expected).  Each object in python has a type, and we can check
+the type of <code class="docutils literal"><span class="pre">v</span></code>.</p>
+<blockquote>
+<div><p>type(v)</p>
+</div></blockquote>
+<p>Additionally, the <em>elements</em> of <code class="docutils literal"><span class="pre">v</span></code> have a type as well:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -204,7 +255,7 @@ below, whenever using arrays, we will be importing NumPy (<code class="docutils 
 <li class="toctree-l1 current"><a class="reference internal" href="main_toc.html">3. Week 2</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Arrays</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#translating-vectors-to-arrays">3.1.1. Translating Vectors to Arrays</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#assigning-values-to-arrays">Assigning values to arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-arrays">Creating arrays</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#practice-1">Practice 1</a></li>
 </ul>
 </li>

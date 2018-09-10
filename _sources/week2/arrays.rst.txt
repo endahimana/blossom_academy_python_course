@@ -56,14 +56,16 @@ C++ use zero-based counting, while Fortran, R and Matlab count from
 one.) 
 
 The index notation carries directly to mathematical matrices.  In
-computing, these are **arrays of arrays**, typically referred to as
-**multidimensional arrays** (and most commonly just as "arrays", for
-brevity).  All the above notations and terms apply.  Matrices
-typically have multiple dimensions and therefore multiple indices;
-these also translate directly from subscripts in the mathematics to
-square brackets in computing.  For example, the element in the first
-row and column of a 2-dimensional matrix :math:`\mathbf{A}` would be
-``A[0,0]``; the next element in the column would be ``A[1,0]``; etc.
+computing, these are just referred to as multidimensional arrays, or
+more commonly just "arrays (in actual fact, a multidimensional array
+is just an array whose elements are also arrays, an "array of arrays",
+but that normally is not relevant when using them). All the above
+notations and terms apply.  Matrices typically have multiple
+dimensions and therefore multiple indices; these also translate
+directly from subscripts in the mathematics to square brackets in
+computing.  For example, the element in the first row and column of a
+2-dimensional matrix :math:`\mathbf{A}` would be ``A[0,0]``; the next
+element in the column would be ``A[1,0]``; etc.
 
 The following table summarizes the translation from mathematical
 vectors to computational arrays:
@@ -100,18 +102,66 @@ differences.  And, importantly, much of the *mathematics* for
 computing with vectors will also translate directly into programs, as
 well.
 
-Assigning values to arrays
-##########################
+Creating arrays
+###############
 
-There are many ways to assign values to arrays in Python.  Here and
-below, whenever using arrays, we will be importing NumPy (``import
-numpy as np``), which contains most of the functions we will use.
+There are many ways to assign values to arrays in Python.  In each
+case, when we create an array we need its define:
 
+1. the **length** or **shape** (dimensions),
 
+#. the type of its elements, and
 
+#. initial values for all the elements (which may be altered later).
 
+Note that *all* elements of an array are of a single type (i.e., one
+cannot mix floats and ints in an array); and to distinguish the issue
+of element type from the array's own type, the former's type is
+referring to as a **datatype** (or **dtype**, an abbreviation often
+used in helpfiles).
 
+The need to define both dimensions and element types matches both 
 
+* formal mathematical correctness, such as stating:
+
+  :math:`\textbf{v} \in \mathbb{R}^4`; that is, **v** a vector
+  contains 4 real numbers,
+
+  :math:`\textbf{g} \in \mathbb{R}^{4\times4}`; that is, **g** is a
+  4-by-4 matrix of real numbers,
+
+  :math:`\textbf{c} \in \mathbb{C}^{2\times3}`; that is, **c** is a
+  2-by-3 matrix of complex numbers,
+
+  etc.
+
+* and computational space requirements, so Python knows how much space
+  to allocate (dimensionality determines number of total spots,
+  and element datatype determines the size of each).
+  
+Here and below, whenever using arrays, we will be importing NumPy,
+which contains most of the functions we will use.
+
+* Most basically, one can make an array directly using the
+  ``np.array()`` function::
+
+    import numpy as np
+
+    v = np.array([4, 5, 6])
+    print(v)
+    print(v[0])
+
+  We see that ``v`` contains three elements, and that the [0]th is 4
+  (as expected).  Each object in python has a type, and we can check
+  the type of ``v``. 
+  
+    type(v)
+
+  Additionally, the *elements* of ``v`` have a type as well::
+
+    print(type(v[0]))
+
+    
 |
 
 |
