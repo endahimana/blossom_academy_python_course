@@ -151,16 +151,43 @@ which contains most of the functions we will use.
     print(v)
     print(v[0])
 
-  We see that ``v`` contains three elements, and that the [0]th is 4
-  (as expected).  We can also verify the type of both ``v`` and its
-  elements::
+  ``v`` contains three elements, and that the [0]th value is 4 (as
+  expected).  We can also verify the type of both ``v`` and its
+  elements (checking just one is enough, since all elements have the
+  same dtype)::
   
     print("type of v:", type(v))
     print("type of an element of v:", type(v[0]))
 
-  
+  As we entered all integer values, the dtype of the elements is an
+  integer, which is called ``int64`` in NumPy; the "64" refers to the
+  number of bits used to store each value.  
 
-    
+  The other fundamental property of any array, as mentioned above, is
+  its length or shape.  For this 1D array, we get all the information
+  needed from Python's "len()" function::
+
+    print("Length of v is:", len(v))
+
+  One can make 2D (or higher dimensional) arrays in this way.  For
+  example::
+
+    sigma2 = np.array([0, -1j],[1j, 0])
+
+  In this case the entered numbers appear to be from different sets
+  (complex and integer), but as noted above, arrays have only a single
+  dtype.  ``type(sigma2[0, 0])`` shows that the chosen type is
+  ``complex`, the more "complicated" of the types. This is verified by
+  checking the value of ``sigma2[0,0]``, which is ``0.+0.j``.
+
+  To check the dimensions of the array, we can use NumPy's "shape()"
+  function::
+
+    print("The shape of sigma2 is:", np.shape(sigma2))
+
+  As knowing the shape of an array is a key part of using it, we will
+  make much use of this function (and of len()).
+
 |
 
 |
@@ -178,7 +205,7 @@ Practice 1
 
    #. :math:`\textbf{u} = (2, 4, 6)`
 
-   #. :math:`\textbf{w} = (2+3i, -4-3j, 6)`
+   #. :math:`\textbf{w} = (2+3i, -4-3i, 6)`
 
    #. An :math:`2\times3`
 

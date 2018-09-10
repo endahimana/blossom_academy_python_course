@@ -203,13 +203,40 @@ which contains most of the functions we will use.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>We see that <code class="docutils literal"><span class="pre">v</span></code> contains three elements, and that the [0]th is 4
-(as expected).  We can also verify the type of both <code class="docutils literal"><span class="pre">v</span></code> and its
-elements:</p>
+<p><code class="docutils literal"><span class="pre">v</span></code> contains three elements, and that the [0]th value is 4 (as
+expected).  We can also verify the type of both <code class="docutils literal"><span class="pre">v</span></code> and its
+elements (checking just one is enough, since all elements have the
+same dtype):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;type of v:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;type of an element of v:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 </div>
+<p>As we entered all integer values, the dtype of the elements is an
+integer, which is called <code class="docutils literal"><span class="pre">int64</span></code> in NumPy; the “64” refers to the
+number of bits used to store each value.</p>
+<p>The other fundamental property of any array, as mentioned above, is
+its length or shape.  For this 1D array, we get all the information
+needed from Python’s “len()” function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Length of v is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>One can make 2D (or higher dimensional) arrays in this way.  For
+example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sigma2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1j</span><span class="p">],[</span><span class="mi">1j</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>In this case the entered numbers appear to be from different sets
+(complex and integer), but as noted above, arrays have only a single
+dtype.  <code class="docutils literal"><span class="pre">type(sigma2[0,</span> <span class="pre">0])</span></code> shows that the chosen type is
+<code class="docutils literal"><span class="pre">complex`,</span> <span class="pre">the</span> <span class="pre">more</span> <span class="pre">&quot;complicated&quot;</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">types.</span> <span class="pre">This</span> <span class="pre">is</span> <span class="pre">verified</span> <span class="pre">by</span>
+<span class="pre">checking</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``sigma2[0,0]</span></code>, which is <code class="docutils literal"><span class="pre">0.+0.j</span></code>.</p>
+<p>To check the dimensions of the array, we can use NumPy’s “shape()”
+function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The shape of sigma2 is:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>As knowing the shape of an array is a key part of using it, we will
+make much use of this function (and of len()).</p>
 </li>
 </ul>
 <div class="line-block">
@@ -228,7 +255,7 @@ elements:</p>
 <li>Make the following arrays:<ol class="lowerroman">
 <li><span class="math">\(\textbf{v} = (-1.1, 5, 7.6)\)</span></li>
 <li><span class="math">\(\textbf{u} = (2, 4, 6)\)</span></li>
-<li><span class="math">\(\textbf{w} = (2+3i, -4-3j, 6)\)</span></li>
+<li><span class="math">\(\textbf{w} = (2+3i, -4-3i, 6)\)</span></li>
 <li>An <span class="math">\(2\times3\)</span></li>
 <li>An array of</li>
 </ol>
