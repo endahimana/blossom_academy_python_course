@@ -192,7 +192,7 @@ body
     color: #000;
     font-family: PT Sans, sans-serif;
     font-size: 100%;
-    line-height: 1.5em;
+    line-height: 1.4em;
 
     
         margin: 1em 1em 0;
@@ -228,9 +228,9 @@ body
 div.related
 {
     margin: 0 auto;
-    max-width: 12in;
+    max-width: 14in;
     background: #800000;
-    line-height: 1.5em;
+    line-height: 1.4em;
     padding: .75em 0;
     color: #ffffff;
     text-shadow: 1px 1px 1px rgba(0,0,0,.3);
@@ -340,7 +340,7 @@ div.document
     
     position: relative;
     margin: 0 auto;
-    max-width: 12in;
+    max-width: 14in;
     background: #800000;
 
     
@@ -403,7 +403,7 @@ div.body
         
     
 
-    line-height: 1.5em;
+    line-height: 1.4em;
 
     color: #000000;
     padding: 30px 20px;
@@ -971,10 +971,10 @@ div.body h1
     
         
     font-size: 2.0em;
-    line-height: 1.5em;
-    margin: 1.5em
+    line-height: 1.4em;
+    margin: 1.4em
     0
-    1.5em
+    1.4em
     0;
 
     text-align: center;
@@ -990,9 +990,9 @@ div.body > .section > h1
     
     
         
-    margin: 0.563em
+    margin: 0.462em
     0
-    1.5em
+    1.4em
     0;
 
 }
@@ -1015,10 +1015,10 @@ div.body p.rubric
     
         
     font-size: 1.875em;
-    line-height: 1.6em;
-    margin: 0.8em
+    line-height: 1.49333333333em;
+    margin: 0.747em
     0
-    0.8em
+    0.747em
     0;
 
 }
@@ -1032,10 +1032,10 @@ div.body h3
     
         
     font-size: 1.625em;
-    line-height: 1.84615384615em;
-    margin: 0.692em
+    line-height: 1.72307692308em;
+    margin: 0.646em
     0
-    0.692em
+    0.646em
     0;
 
 }
@@ -1086,9 +1086,9 @@ h1#search-documentation
     
     
         
-    margin: 0.8em
+    margin: 0.747em
     -12px
-    0.8em
+    0.747em
     -12px;
 
 }
@@ -1102,9 +1102,9 @@ h1#search-documentation
     
     
         
-    margin: 0.923em
+    margin: 0.862em
     -12px
-    0.923em
+    0.862em
     -12px;
 
 }
@@ -1131,10 +1131,10 @@ div.body h4 {
     
         
     font-size: 1.25em;
-    line-height: 1.2em;
-    margin: 1.2em
+    line-height: 1.12em;
+    margin: 1.12em
     0
-    1.2em
+    1.12em
     0;
 
     clear: both; 
@@ -1146,10 +1146,10 @@ div.body h5 {
     
         
     font-size: 1.1em;
-    line-height: 1.36363636364em;
-    margin: 1.364em
+    line-height: 1.27272727273em;
+    margin: 1.273em
     0
-    1.364em
+    1.273em
     0;
  }
 div.body h6 { 
@@ -1159,10 +1159,10 @@ div.body h6 {
     
         
     font-size: 1.0em;
-    line-height: 1.5em;
-    margin: 1.5em
+    line-height: 1.4em;
+    margin: 1.4em
     0
-    1.5em
+    1.4em
     0;
  }#table-of-contents > h1, 
 h1#search-documentation 
@@ -1324,9 +1324,9 @@ a.headerlink:hover:active
     
     
         
-    margin: 1.5em
+    margin: 1.4em
     0
-    1.5em
+    1.4em
     0;
 
 }
@@ -1372,7 +1372,7 @@ ul + div > ul:only-child,
 div.toctree-wrapper + ul { margin-top: -1em; }
 
 
-dd ul { margin-bottom: 1.5em; }
+dd ul { margin-bottom: 1.4em; }
 
 
 li > p ~ ul.simple { margin-bottom: 1.5em; }
@@ -1508,17 +1508,17 @@ table.docutils .double-right-divider:last-child { border-right-width: 6px; borde
 
 
 
-table.field-list { margin: 1.5em 0; }
+table.field-list { margin: 1.4em 0; }
 
 
 table.field-list th { background: none;  padding: 0 0.4em 0 0; }
 
 
-table.field-list td { padding: 0 0 1.5em 0; }
+table.field-list td { padding: 0 0 1.4em 0; }
 table.field-list tr:last-child td { padding-bottom: 0; }
 
 
-td.field-body > ul.first.simple > li {  margin: 0 0 1.5em 0; }
+td.field-body > ul.first.simple > li {  margin: 0 0 1.4em 0; }
 td.field-body > ul.first.simple > li:last-child {  margin-bottom: 0; }
 
 
@@ -1527,7 +1527,7 @@ td.field-body > ul.first.simple > li > em { padding: 2px 4px; }
 
 
 td.field-body > p,
-td.field-body > ul > li > p { margin: 0 0 1.5em; }
+td.field-body > ul > li > p { margin: 0 0 1.4em; }
 
 td.field-body > p:last-child,
 td.field-body > ul > li > .admonition { margin-bottom: 0; }
@@ -1547,10 +1547,10 @@ div.admonition, p.deprecated
     
         
     font-size: 0.88em;
-    line-height: 1.70454545455em;
-    margin: 0.705em
+    line-height: 1.59090909091em;
+    margin: 0.591em
     0
-    0.705em
+    0.591em
     0;
 
     padding: .5em 1em;
@@ -1597,7 +1597,7 @@ div.admonition ol {
     
     
         
-    line-height: 1.70454545455em;
+    line-height: 1.59090909091em;
     margin: 0.0em
     0
     0.0em
@@ -1606,19 +1606,19 @@ div.admonition ol {
 }
 
 
-h1 ~ div.admonition { margin-left: 1.5em; margin-right: 1.5em; }div.admonition.float-right,
+h1 ~ div.admonition { margin-left: 1.4em; margin-right: 1.4em; }div.admonition.float-right,
 div.admonition.floater 
 {
     float: right;
     max-width: 40%;
-    margin: 0 0 1.5em 1.5em;
+    margin: 0 0 1.4em 1.4em;
 }
 
 .admonition.float-left
 {
     float: left;
     max-width: 50%;
-    margin: 0 1.5em 1.5em 0;
+    margin: 0 1.4em 1.4em 0;
 }
 
 .admonition.float-center
@@ -1712,10 +1712,10 @@ div.deprecated, div.versionchanged, div.versionadded
     
         
     font-size: 0.88em;
-    line-height: 1.70454545455em;
-    margin: 1.705em
+    line-height: 1.59090909091em;
+    margin: 1.591em
     0
-    1.705em
+    1.591em
     0;
 
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=
@@ -1735,7 +1735,7 @@ span.versionmodified
 div.highlight
 {
     background: none;
-    margin: 1.5em 0;
+    margin: 1.4em 0;
 }
 
 div.highlight pre,
@@ -1745,7 +1745,7 @@ td.linenos pre
 
     font-family: Menlo, monospace;
     font-size: 85%;
-    line-height: 1.5em;
+    line-height: 1.4em;
 }
 
 div.highlight pre
@@ -1771,7 +1771,7 @@ div.highlight pre
 
 div[class|="highlight"] + div[class|="highlight"]
 {
-    margin-top: -1.5em;
+    margin-top: -1.4em;
 }
 
 
@@ -1939,9 +1939,9 @@ div.viewcode-block:target
     
     
         
-    margin: 0.8em
+    margin: 0.747em
     0
-    0.8em
+    0.747em
     0;
 
     border-bottom: 1px dotted #008000;
@@ -2138,7 +2138,7 @@ table.indextable td > dl > dd > dl
 }
 
 
-@media only screen and (min-width: 12in)
+@media only screen and (min-width: 14in)
 {
     
     
@@ -2157,7 +2157,7 @@ table.indextable td > dl > dd > dl
 }
 
 
-@media only screen and (max-width: 12in),
+@media only screen and (max-width: 14in),
        only screen and (max-width: 700px),
        only screen and (max-device-width: 700px),
        handheld

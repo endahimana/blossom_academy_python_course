@@ -12,11 +12,11 @@ Setup and Python environments
 
    
 
-The notes described here refer to Python 2.7.\*, instead of the
-loooming (and already "out there") Python 3.\*. However, where
-possible we use notation that is consistent with both, and will
-comment on some differences.  A full list of differences between the
-versions are noted in the "What's New" documentation `HERE
+The notes described here refer to Python 3.\*, instead of the older
+Python 2.7. However, whenever possible we use notation that is
+consistent with both, and will comment on some differences throughout.
+A full list of differences between the versions are noted in the
+"What's New" documentation `HERE
 <https://docs.python.org/3/whatsnew/3.0.html>`_.
 
 We will use Python through three different interfaces or forms

@@ -25,7 +25,7 @@ basic mathematical operations, such as::
   4+8
   217.81 * 3
   18 * ( 29182 - 9382)
-  - 305.8 / 21.1
+  -305.8 / 21.1
 
 etc.  Note that the spacing between the numbers and the operators does
 not matter to the Python interpreter; however, it *is* important to
@@ -82,7 +82,7 @@ Type
 ####
 
 One question that might be asked is: what is the difference (if any)
-between the following calculations:
+in Python between the following calculations:
 
 .. code-block:: python
 
@@ -121,19 +121,30 @@ values.  Below are some examples of numerical types:
        - **bool**
        - ``False``, ``True`` (and only these!); or respectively:
          0, 1
-     * - Integers (:math:`\mathbb{Z}`), up to certain size
+     * - Integers (:math:`\mathbb{Z}`)
        - **int**
        - 0, 21, -1000
-     * - Integers (:math:`\mathbb{Z}`), up to arbitrary size (computer
-         memory!) 
-       - **long**
-       - 0, :math:`2\times10^{19}`, :math:`-3\times10^{21}` 
      * - Real numbers (:math:`\mathbb{R}`)
        - **float**
        - 0., 21.32138, -1000.312
      * - Complex numbers (:math:`\mathbb{C}`)
        - **complex**
        - 0+0j, -3+2.4j, 400.5-1j
+
+.. note to self:
+
+   in Py3, "long" is "long gone"; don't need
+     * - Integers (:math:`\mathbb{Z}`), up to arbitrary size (computer
+         memory!) 
+       - **long**
+       - 0, :math:`2\times10^{19}`, :math:`-3\times10^{21}` 
+
+
+.. NTS:
+
+   ----> is the following paragraph relevant/correct any more?  with
+    flexible float/int, I don't think this discussion space-per-type
+    is relevant.
 
 While the "type" property is analogous to the mathematical number set
 designation, type is also closely related to purely computational
@@ -148,20 +159,20 @@ occurs.)
 
    here and in table:  python3 no longer uses "long":  int is flexible
 
-Note the multiple types of integer-like quantities.  In many cases,
-simple ints are large enough for quantities.  However, if the value
-does grow too large for int, Python will automatically switch over to
-storing with a long, and can store an integer up to the amount of
-computer memory available (wow!).  This auto-switch behavior is *not*
-general to programming in other languages, where programmers must
-typically know the maximum size of numbers to expect to store; we
-highly recommend that programmers also keep track of this in Python--
-having approximate ideas of what the code *should* be doing is really
-useful to finding+fixing bugs.  Python 3 will also have different
-behavior-- it just has the int type, which can be as large as it
-needs.  We will see some other variety of ints and floats based on
-number size/computer space through the numpy module, and we will also
-meet some other, non-numerical types below, as well.
+    Note the multiple types of integer-like quantities.  In many cases,
+    simple ints are large enough for quantities.  However, if the value
+    does grow too large for int, Python will automatically switch over to
+    storing with a long, and can store an integer up to the amount of
+    computer memory available (wow!).  This auto-switch behavior is *not*
+    general to programming in other languages, where programmers must
+    typically know the maximum size of numbers to expect to store; we
+    highly recommend that programmers also keep track of this in Python--
+    having approximate ideas of what the code *should* be doing is really
+    useful to finding+fixing bugs.  Python 3 will also have different
+    behavior-- it just has the int type, which can be as large as it
+    needs.  We will see some other variety of ints and floats based on
+    number size/computer space through the numpy module, and we will also
+    meet some other, non-numerical types below, as well.
 
 When performing operations, what determines the type of the result?
 In Python, it is generally the inputs (and occasionally the operator).
@@ -173,6 +184,17 @@ What happens when types are mixed?  Evaluating ``3.0 * 4`` yields
 when mixing types in an expression, the result will be of the "most
 general" type.  In this example, the more general type is floats (in
 the sense that int values are a subset within floats).
+
+Type conversion can be performed explicitly on a quantity using
+functions named after a given type.  For example, ``float(3)`` yields
+``3.0``, and ``int(3.4)`` yields ``3``. The ``bool()`` output from any
+quantity that is nonzero will be ``True``, and ``False`` for exactly
+zero.  The complex type can be a bit tricky to deal with:
+``complex(-1.0)`` yields ``(-1+0j)``, but ``float(-1+0j)`` yields an
+error; it is not a well-defined mathematical operation, and instead
+one would have to convert just the real or imaginary parts of the
+complex number.  However, ``bool(-1+0j)`` *is* still defined-- it is
+``True`` because the complex number here is non-zero.
 
 .. note
 
@@ -360,33 +382,28 @@ Re. calcs with ints
 We saw above that the following kind of operation resulted in x being
 itself an int::
   
-  x = 5 + 2
+  x = 2 + 5
 
 What should happen here::
 
-  x = 5 / 2
+  x = 2 / 5
 
-? Mathematically, we might expect to get 2.5, but this is *not* the
-case in Python 2.7.  Since the numerator and denominator are both int,
-the result will be int, and the operation performed is called
-**integer division**.  This is also the way that the C language would
-evaluate this result.  
+? Mathematically, we might expect to get 0.4, and in Python 3.\*, even
+though it breaks the rule of returning a value of the same type, that
+is what happens.  **Sidenote**: *this is* not *the case in Python 2.7.
+Since the numerator and denominator are both int, the result is also
+int (in this case 0), and the operation performed is called* **integer
+division**.  *This is also the way that the C language would evaluate
+this result.*
 
-While at first surprising, this is consistent with other usage and
-operation we have seen.  If we wanted a floating point result, we could
-rewrite the preceding case as, for example::
+.. NTS: following not need, probably, or just part:
 
-  x = 5. / 2
-
-This is one reason why one must keep tract of the type of values used
-in code-- one doesn't want to be *surprised* by integer division.  
-
-However, this subtlety with division can sometimes lead to the
-presence of bugs in a code, and often ones that are tricky to find.
-For some people, it is so bothersome that they have decided to do away
-with this behavior. *This has resulted in a major difference in
-behavior in Python 3, where the "\/" operator will return floats, even
-when the numerator and denominator are both ints.*
+   However, this subtlety with division can sometimes lead to the
+   presence of bugs in a code, and often ones that are tricky to find.
+   For some people, it is so bothersome that they have decided to do away
+   with this behavior. *This has resulted in a major difference in
+   behavior in Python 3, where the "\/" operator will return floats, even
+   when the numerator and denominator are both ints.*
 
 There is also explicitly an integer division operator "\/\/", which
 exists in both Python 2.\* and Python 3.\*. It will always perform

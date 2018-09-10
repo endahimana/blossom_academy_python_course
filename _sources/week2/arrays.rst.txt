@@ -1,0 +1,53 @@
+:tocdepth: 2
+
+.. _week2_arrays:
+
+Arrays
+================
+
+.. contents:: :local:
+
+.. highlight:: python
+
+Vectors -> 
+----------------------
+
+
+
+Practice 1
+##########
+
+#. Make the following arrays:
+
+
+
+
+
+.. old examples
+
+    i. What are the types of each of the following?
+
+       .. code-block:: python
+          :linenos:
+
+          -1
+          20.00001
+          10**19
+          10**19 - 10**19
+          1 + 0j
+          1
+          False
+
+    #. What are the values (and types-- difficult properties to separate
+       in some cases!) of the following?::
+
+         2 + True
+         4.5 - 3
+         4.5 / 3
+         5 + 3
+         5 / 3
+         5 / 3.
+         5 // 3.
+         5 + 5.j / 3
+         5 + 5.j // 3
+         4.7 % 3

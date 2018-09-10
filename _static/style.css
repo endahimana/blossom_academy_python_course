@@ -1,18 +1,6 @@
-/* body {
-    background-color: black;
-    color: white;
-}
-div.document {
-    background-color: black;
-}
-*/
 
 .centered {
     text-align: center;
-}
-
-body {
-  font-family: PT Sans, Roboto, Helvetica, sans-serif;
 }
 
 div.body p,
@@ -22,12 +10,16 @@ table.docutils .justify-align {
     text-align:left;
 }
 
-
-.rst-content .highlight > pre {
-line-height: normal;
+body {
+  font-family: PT Sans, Roboto, Helvetica, sans-serif;
 }
 
-div[class^="highlight"] pre {
-    line-height: 1.5;
-    
+.rst-content .highlight>pre {
+    line-height: 1.4;
 }
+
+
+#div[class^="highlight"] pre {
+#    line-height: 1.5;
+#    
+#}

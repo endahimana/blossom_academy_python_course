@@ -97,7 +97,7 @@ basic mathematical operations, such as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">4</span><span class="o">+</span><span class="mi">8</span>
 <span class="mf">217.81</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="mi">18</span> <span class="o">*</span> <span class="p">(</span> <span class="mi">29182</span> <span class="o">-</span> <span class="mi">9382</span><span class="p">)</span>
-<span class="o">-</span> <span class="mf">305.8</span> <span class="o">/</span> <span class="mf">21.1</span>
+<span class="o">-</span><span class="mf">305.8</span> <span class="o">/</span> <span class="mf">21.1</span>
 </pre></div>
 </div>
 <p>etc.  Note that the spacing between the numbers and the operators does
@@ -142,7 +142,7 @@ numbers (<span class="math">\(\pi\)</span>, Euler’s <em>e</em>, etc.).</p>
 <div class="section" id="type">
 <h3><a class="toc-backref" href="#id2">Type</a><a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h3>
 <p>One question that might be asked is: what is the difference (if any)
-between the following calculations:</p>
+in Python between the following calculations:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
 <span class="mf">3.0</span> <span class="o">*</span> <span class="mf">4.0</span>
 </pre></div>
@@ -184,20 +184,15 @@ values.  Below are some examples of numerical types:</p>
 <td><code class="docutils literal"><span class="pre">False</span></code>, <code class="docutils literal"><span class="pre">True</span></code> (and only these!); or respectively:
 0, 1</td>
 </tr>
-<tr class="row-odd"><td>Integers (<span class="math">\(\mathbb{Z}\)</span>), up to certain size</td>
+<tr class="row-odd"><td>Integers (<span class="math">\(\mathbb{Z}\)</span>)</td>
 <td><strong>int</strong></td>
 <td>0, 21, -1000</td>
 </tr>
-<tr class="row-even"><td>Integers (<span class="math">\(\mathbb{Z}\)</span>), up to arbitrary size (computer
-memory!)</td>
-<td><strong>long</strong></td>
-<td>0, <span class="math">\(2\times10^{19}\)</span>, <span class="math">\(-3\times10^{21}\)</span></td>
-</tr>
-<tr class="row-odd"><td>Real numbers (<span class="math">\(\mathbb{R}\)</span>)</td>
+<tr class="row-even"><td>Real numbers (<span class="math">\(\mathbb{R}\)</span>)</td>
 <td><strong>float</strong></td>
 <td>0., 21.32138, -1000.312</td>
 </tr>
-<tr class="row-even"><td>Complex numbers (<span class="math">\(\mathbb{C}\)</span>)</td>
+<tr class="row-odd"><td>Complex numbers (<span class="math">\(\mathbb{C}\)</span>)</td>
 <td><strong>complex</strong></td>
 <td>0+0j, -3+2.4j, 400.5-1j</td>
 </tr>
@@ -212,20 +207,6 @@ amount of space allocated.  Once a type is known, the correct amount
 of space is allocated to fit a value.  (If the program tries to store
 a value too large for the type’s allocated space, an “overflow” error
 occurs.)</p>
-<p>Note the multiple types of integer-like quantities.  In many cases,
-simple ints are large enough for quantities.  However, if the value
-does grow too large for int, Python will automatically switch over to
-storing with a long, and can store an integer up to the amount of
-computer memory available (wow!).  This auto-switch behavior is <em>not</em>
-general to programming in other languages, where programmers must
-typically know the maximum size of numbers to expect to store; we
-highly recommend that programmers also keep track of this in Python–
-having approximate ideas of what the code <em>should</em> be doing is really
-useful to finding+fixing bugs.  Python 3 will also have different
-behavior– it just has the int type, which can be as large as it
-needs.  We will see some other variety of ints and floats based on
-number size/computer space through the numpy module, and we will also
-meet some other, non-numerical types below, as well.</p>
 <p>When performing operations, what determines the type of the result?
 In Python, it is generally the inputs (and occasionally the operator).
 If all ints are used in an expression, the output is typically an int,
@@ -235,6 +216,16 @@ and similarly for floats, etc., as above.</p>
 when mixing types in an expression, the result will be of the “most
 general” type.  In this example, the more general type is floats (in
 the sense that int values are a subset within floats).</p>
+<p>Type conversion can be performed explicitly on a quantity using
+functions named after a given type.  For example, <code class="docutils literal"><span class="pre">float(3)</span></code> yields
+<code class="docutils literal"><span class="pre">3.0</span></code>, and <code class="docutils literal"><span class="pre">int(3.4)</span></code> yields <code class="docutils literal"><span class="pre">3</span></code>. The <code class="docutils literal"><span class="pre">bool()</span></code> output from any
+quantity that is nonzero will be <code class="docutils literal"><span class="pre">True</span></code>, and <code class="docutils literal"><span class="pre">False</span></code> for exactly
+zero.  The complex type can be a bit tricky to deal with:
+<code class="docutils literal"><span class="pre">complex(-1.0)</span></code> yields <code class="docutils literal"><span class="pre">(-1+0j)</span></code>, but <code class="docutils literal"><span class="pre">float(-1+0j)</span></code> yields an
+error; it is not a well-defined mathematical operation, and instead
+one would have to convert just the real or imaginary parts of the
+complex number.  However, <code class="docutils literal"><span class="pre">bool(-1+0j)</span></code> <em>is</em> still defined– it is
+<code class="docutils literal"><span class="pre">True</span></code> because the complex number here is non-zero.</p>
 </div>
 </div>
 <div class="section" id="assignment-and-variables">
@@ -382,32 +373,20 @@ information does not get lost.</p>
 <h3><a class="toc-backref" href="#id6">Re. calcs with ints</a><a class="headerlink" href="#re-calcs-with-ints" title="Permalink to this headline">¶</a></h3>
 <p>We saw above that the following kind of operation resulted in x being
 itself an int:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>What should happen here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<p>? Mathematically, we might expect to get 2.5, but this is <em>not</em> the
-case in Python 2.7.  Since the numerator and denominator are both int,
-the result will be int, and the operation performed is called
-<strong>integer division</strong>.  This is also the way that the C language would
-evaluate this result.</p>
-<p>While at first surprising, this is consistent with other usage and
-operation we have seen.  If we wanted a floating point result, we could
-rewrite the preceding case as, for example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">5.</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>This is one reason why one must keep tract of the type of values used
-in code– one doesn’t want to be <em>surprised</em> by integer division.</p>
-<p>However, this subtlety with division can sometimes lead to the
-presence of bugs in a code, and often ones that are tricky to find.
-For some people, it is so bothersome that they have decided to do away
-with this behavior. <em>This has resulted in a major difference in
-behavior in Python 3, where the “/” operator will return floats, even
-when the numerator and denominator are both ints.</em></p>
+<p>? Mathematically, we might expect to get 0.4, and in Python 3.*, even
+though it breaks the rule of returning a value of the same type, that
+is what happens.  <strong>Sidenote</strong>: <em>this is</em> not <em>the case in Python 2.7.
+Since the numerator and denominator are both int, the result is also
+int (in this case 0), and the operation performed is called</em> <strong>integer
+division</strong>.  <em>This is also the way that the C language would evaluate
+this result.</em></p>
 <p>There is also explicitly an integer division operator “//”, which
 exists in both Python 2.* and Python 3.*. It will always perform
 integer division, regardless of the values used.  Note that if a float
@@ -655,9 +634,9 @@ my friend”.  In any other case, print “Oh, no, not you”.</p>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="comm_str_print.html">2.2. Comments, strings and print: helping humans program</a></li>
-<li class="toctree-l2"><a class="reference internal" href="boolean_if.html">2.3. Comparison, logic and <strong>if</strong> conditions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="modules.html">2.4. Modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="helpfiles.html">2.5. Reading help files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">2.3. Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpfiles.html">2.4. Reading help files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="boolean_if.html">2.5. Comparison, logic and <strong>if</strong> conditions</a></li>
 </ul>
 </li>
 </ul>
