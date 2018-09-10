@@ -9,8 +9,114 @@ Arrays
 
 .. highlight:: python
 
-Vectors -> 
-----------------------
+Translating Vectors to Arrays
+-----------------------------
+
+.. NTS:
+
+   note that at the moment we are ignoring differences between row/col
+   matrices?
+
+Up to this point, we have discussed storing one value at a time in a
+variable, translating scalar quantities to computational types like
+int, float, bool and complex.  What about when we have algebraic
+things like vectors and matrices?
+
+Consider an example case of a velocity vector, which might be written
+in a physics textbook as:
+  
+  :math:`\textbf{v}  = ( v_x, v_y, v_z )`
+
+Sometimes different sets of indices are used, and this could also be
+written using a common, and slightly more general, mathematical
+notation as either:
+
+  :math:`\textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm or}~~~~~~\textbf{v} = ( v_0,
+  v_1, v_2 )`
+
+In each case, the *i*\th component is referenced as :math:`v_i`, with
+allowed values of *i* determined by the length of the vector.
+
+When we translate this to Python, we have all the same parts, but some
+have slightly different names and we use just one, particular syntax.
+
+The above vector :math:`\textbf{v}` is stored as an **array** ``v``;
+there is no bold font or arrow we can use to denote it as a vector, we
+just have to remember it or perhaps reflect it in the variable
+name. Instead of "components", we refer to **elements** of ``v``, which
+would be accessed as:
+
+   ``v[0], v[1], v[2]``.
+
+We still refer to **indices**, but since we don't have subscripts, we
+put them in square brackets.  The indices are always numbers, counting
+from zero, which is called **zero-based counting**.  (Note that
+different programming languages have different counting systems; C and
+C++ use zero-based counting, while Fortran, R and Matlab count from
+one.) 
+
+The index notation carries directly to mathematical matrices.  In
+computing, these are **arrays of arrays**, typically referred to as
+**multidimensional arrays** (and most commonly just as "arrays", for
+brevity).  All the above notations and terms apply.  Matrices
+typically have multiple dimensions and therefore multiple indices;
+these also translate directly from subscripts in the mathematics to
+square brackets in computing.  For example, the element in the first
+row and column of a 2-dimensional matrix :math:`\mathbf{A}` would be
+``A[0,0]``; the next element in the column would be ``A[1,0]``; etc.
+
+The following table summarizes the translation from mathematical
+vectors to computational arrays:
+
+  .. list-table::
+     :header-rows: 1
+     :widths: 25 5 30
+
+     * - Math name 
+       - :math:`\rightarrow`
+       - Comp name
+     * - vector
+       - :math:`\rightarrow`
+       - array
+     * - component
+       - :math:`\rightarrow`
+       - element
+     * - index
+       - :math:`\rightarrow`
+       - index
+     * - subscript
+       - :math:`\rightarrow`
+       - square bracket, ``[ ]``
+     * - *example:* :math:`~~\displaystyle x_0`
+       - :math:`\rightarrow`
+       - ``x[0]``
+     * - *example:* :math:`~~\displaystyle M_{0,4}`
+       - :math:`\rightarrow`
+       - ``M[0,4]``
+
+Thus, the array notation closely follows that of the
+mathematics/physics communities, with some small notational
+differences.  And, importantly, much of the *mathematics* for
+computing with vectors will also translate directly into programs, as
+well.
+
+Assigning values to arrays
+##########################
+
+There are many ways to assign values to arrays in Python.  Here and
+below, whenever using arrays, we will be importing NumPy (``import
+numpy as np``), which contains most of the functions we will use.
+
+
+
+
+
+
+|
+
+|
+
+|
 
 
 
@@ -19,9 +125,15 @@ Practice 1
 
 #. Make the following arrays:
 
+   i. :math:`\textbf{v} = (-1.1, 5, 7.6)`
 
+   #. :math:`\textbf{u} = (2, 4, 6)`
 
+   #. :math:`\textbf{w} = (2+3i, -4-3j, 6)`
 
+   #. An :math:`2\times3`
+
+   #. An array of 
 
 .. old examples
 
