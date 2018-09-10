@@ -204,13 +204,10 @@ which contains most of the functions we will use.</p>
 </pre></div>
 </div>
 <p>We see that <code class="docutils literal"><span class="pre">v</span></code> contains three elements, and that the [0]th is 4
-(as expected).  Each object in python has a type, and we can check
-the type of <code class="docutils literal"><span class="pre">v</span></code>.</p>
-<blockquote>
-<div><p>type(v)</p>
-</div></blockquote>
-<p>Additionally, the <em>elements</em> of <code class="docutils literal"><span class="pre">v</span></code> have a type as well:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+(as expected).  We can also verify the type of both <code class="docutils literal"><span class="pre">v</span></code> and its
+elements:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;type of v:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;type of an element of v:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 </pre></div>
 </div>
 </li>

@@ -152,14 +152,13 @@ which contains most of the functions we will use.
     print(v[0])
 
   We see that ``v`` contains three elements, and that the [0]th is 4
-  (as expected).  Each object in python has a type, and we can check
-  the type of ``v``. 
+  (as expected).  We can also verify the type of both ``v`` and its
+  elements::
   
-    type(v)
+    print("type of v:", type(v))
+    print("type of an element of v:", type(v[0]))
 
-  Additionally, the *elements* of ``v`` have a type as well::
-
-    print(type(v[0]))
+  
 
     
 |
