@@ -28,4 +28,10 @@ Print examples::
    print("string", x)
    print("string1", x, "string2", y)
 
+   # arguments to print can contain operations, which are evaluated
+   # before printing
+   a = 10
+   b = 35
+   print("the difference is:", b-a)
+
 etc.

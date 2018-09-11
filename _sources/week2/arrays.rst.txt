@@ -170,8 +170,26 @@ which contains most of the functions we will use.
 
     print("Length of v is:", len(v))
 
-  One can make 2D (or higher dimensional) arrays in this way.  For
-  example::
+  If we wish to change any value in the array, that is done simply by
+  assigning a new value there.  For example, after::
+
+    v[1] = -100
+
+  printing ``v`` yields::
+
+    [   4 -100    6]
+
+  If we try inputting a float value like this, Python will convert it
+  to an int, because arrays only contain one type.  Thus::
+
+    v[2] = 99.9999
+
+  printing ``v`` yields::
+
+    [   4 -100   99]
+
+  One can make 2D (or higher dimensional) arrays in a similar way,
+  explicitly stating each element one-by-one.  For example::
 
     sigma2 = np.array([[0, -1j], [1j, 0]])
 
@@ -189,8 +207,13 @@ which contains most of the functions we will use.
 
     print("The shape of sigma2 is:", np.shape(sigma2))
 
-  As knowing the shape of an array is a key part of using it, we will
-  make much use of this function (and of "len()").
+  Note that when np.shape() returns the shape of a multidimensional
+  array, it does so as a collection of numbers in parentheses.  This
+  is actually a new Python type that will be discussed later, but it
+  is a good to think of the several numbers describing shape-- e.g.,
+  here, ``(2, 2)``-- as a single object.  As knowing the shape of an
+  array is a key part of using it, we will make much use of this
+  function (and of "len()", which always returns a single value int).
 
 * One useful family of arrays is 1D arrays with evenly spaced
   elements.  For example, when making plots, we might want evenly
@@ -277,7 +300,87 @@ which contains most of the functions we will use.
     check this in this instance, and decided on preferred properties
     in other cases.
 
-* As a final example of a NumPy function to make arrays, we 
+* As a final example of NumPy functionality to make arrays, we discuss
+  ``np.zeros()``, which makes an array in any specified shape and
+  whose elements are all zero (of a given type).
+
+  When creating a 1D array of zeros, the shape is just the length of
+  the array::
+
+    Z  = np.zeros(5)                  # def: dtype=float
+    Z2 = np.zeros(4, dtype=bool)
+    Z3 = np.zeros(6, dtype=complex)
+
+  which respectively yield::
+
+    [ 0.  0.  0.  0.  0.]
+    [False False False False]
+    [ 0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j]
+
+  In specifying a multidimensional array, the shape is a collection of
+  numbers, and as noted above, we can group them in parentheses to
+  pass them as a single argument::
+
+    Z4 = np.zeros((5,2))              # def: dtype=float
+    Z5 = np.zeros((3,4), dtype=bool)
+
+  yielding::
+
+    [[ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]
+     [ 0.  0.]]
+
+    [[False False False False]
+     [False False False False]
+     [False False False False]]
+
+  If we had tried to pass the two dimensions without the parentheses,
+  such as::
+
+    Z4 = np.zeros(5,2)  
+
+  then Python would interpret this as passing two separate arguments,
+  the first a 1D shape and the second a dtype; since ``2`` is not a
+  known type, the following error message would occur::
+
+    TypeError: data type not understood
+
+  Matrices with more than two dimension can be created in the same
+  manner.  Since we don't have higher dimensional screens, though,
+  they get displayed to the user as 2D "slices" of the full array::
+
+    Z6 = np.zeros((2,2,3), dtype=int)
+    
+  yields::
+
+    [[[0 0 0]
+     [0 0 0]]
+
+    [[0 0 0]
+     [0 0 0]]]
+
+  Why would we want an array of all zeros?  Well, it provides us an
+  easy approach for initializing an array of arbitrary size quickly.
+  We can then go through and reassign the values that we want. For
+  example, we could reassign the elements in ``Z``::
+
+    Z[0] = 0
+    Z[1] = 1
+    Z[2] = 4
+    Z[3] = 9
+    Z[4] = 16
+
+  Well, in such a case as this, why not just use ``np.array()``?  
+
+  The reason would be that many times we do not just have unrelated
+  numbers that we are putting in an array-- *we have some kind of
+  system or rule for them*.  Consider values just assigned to
+  ``Z``. We can see a relation between index and the value, which we
+  could write mathematically as this:
+
+    :math:`\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.`
 
 
 

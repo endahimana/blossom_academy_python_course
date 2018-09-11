@@ -221,8 +221,26 @@ needed from Python’s “len()” function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Length of v is:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>One can make 2D (or higher dimensional) arrays in this way.  For
-example:</p>
+<p>If we wish to change any value in the array, that is done simply by
+assigning a new value there.  For example, after:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>
+</pre></div>
+</div>
+<p>printing <code class="docutils literal"><span class="pre">v</span></code> yields:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mi">4</span> <span class="o">-</span><span class="mi">100</span>    <span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>If we try inputting a float value like this, Python will convert it
+to an int, because arrays only contain one type.  Thus:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">99.9999</span>
+</pre></div>
+</div>
+<p>printing <code class="docutils literal"><span class="pre">v</span></code> yields:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span>   <span class="mi">4</span> <span class="o">-</span><span class="mi">100</span>   <span class="mi">99</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>One can make 2D (or higher dimensional) arrays in a similar way,
+explicitly stating each element one-by-one.  For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sigma2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1j</span><span class="p">],</span> <span class="p">[</span><span class="mi">1j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 </pre></div>
 </div>
@@ -239,8 +257,13 @@ function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The shape of sigma2 is:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>As knowing the shape of an array is a key part of using it, we will
-make much use of this function (and of “len()”).</p>
+<p>Note that when np.shape() returns the shape of a multidimensional
+array, it does so as a collection of numbers in parentheses.  This
+is actually a new Python type that will be discussed later, but it
+is a good to think of the several numbers describing shape– e.g.,
+here, <code class="docutils literal"><span class="pre">(2,</span> <span class="pre">2)</span></code>– as a single object.  As knowing the shape of an
+array is a key part of using it, we will make much use of this
+function (and of “len()”, which always returns a single value int).</p>
 </li>
 <li><p class="first">One useful family of arrays is 1D arrays with evenly spaced
 elements.  For example, when making plots, we might want evenly
@@ -329,7 +352,86 @@ in other cases.</p>
 </li>
 </ul>
 </li>
-<li><p class="first">As a final example of a NumPy function to make arrays, we</p>
+<li><p class="first">As a final example of NumPy functionality to make arrays, we discuss
+<code class="docutils literal"><span class="pre">np.zeros()</span></code>, which makes an array in any specified shape and
+whose elements are all zero (of a given type).</p>
+<p>When creating a 1D array of zeros, the shape is just the length of
+the array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                  <span class="c1"># def: dtype=float</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">Z3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which respectively yield:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+<span class="p">[</span><span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span><span class="p">]</span>
+<span class="p">[</span> <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In specifying a multidimensional array, the shape is a collection of
+numbers, and as noted above, we can group them in parentheses to
+pass them as a single argument:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>              <span class="c1"># def: dtype=float</span>
+<span class="n">Z5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>yielding:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>  <span class="mf">0.</span><span class="p">]]</span>
+
+<span class="p">[[</span><span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span><span class="p">]</span>
+ <span class="p">[</span><span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span><span class="p">]</span>
+ <span class="p">[</span><span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span> <span class="bp">False</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>If we had tried to pass the two dimensions without the parentheses,
+such as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>then Python would interpret this as passing two separate arguments,
+the first a 1D shape and the second a dtype; since <code class="docutils literal"><span class="pre">2</span></code> is not a
+known type, the following error message would occur:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ne">TypeError</span><span class="p">:</span> <span class="n">data</span> <span class="nb">type</span> <span class="ow">not</span> <span class="n">understood</span>
+</pre></div>
+</div>
+<p>Matrices with more than two dimension can be created in the same
+manner.  Since we don’t have higher dimensional screens, though,
+they get displayed to the user as 2D “slices” of the full array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>yields:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[[[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]]]</span>
+</pre></div>
+</div>
+<p>Why would we want an array of all zeros?  Well, it provides us an
+easy approach for initializing an array of arbitrary size quickly.
+We can then go through and reassign the values that we want. For
+example, we could reassign the elements in <code class="docutils literal"><span class="pre">Z</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">Z</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">Z</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span>
+</pre></div>
+</div>
+<p>Well, in such a case as this, why not just use <code class="docutils literal"><span class="pre">np.array()</span></code>?</p>
+<p>The reason would be that many times we do not just have unrelated
+numbers that we are putting in an array– <em>we have some kind of
+system or rule for them</em>.  Consider values just assigned to
+<code class="docutils literal"><span class="pre">Z</span></code>. We can see a relation between index and the value, which we
+could write mathematically as this:</p>
+<blockquote>
+<div><p><span class="math">\(\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.\)</span></p>
+</div></blockquote>
 </li>
 </ul>
 <div class="line-block">
