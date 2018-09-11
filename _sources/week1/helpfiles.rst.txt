@@ -23,3 +23,6 @@ Reading help files
    + notation for necessary and optional arguments
 
    + define args and kwargs (key word args)
+
+   + good examples of helpfiles: np.zeros and np.arange, because they
+     have the different types of kwargs and args mixed together

@@ -9,8 +9,8 @@ Arrays
 
 .. highlight:: python
 
-Translating Vectors to Arrays
------------------------------
+Translating Vectors and Matrices to Arrays
+------------------------------------------
 
 .. NTS:
 
@@ -64,8 +64,8 @@ notations and terms apply.  Matrices typically have multiple
 dimensions and therefore multiple indices; these also translate
 directly from subscripts in the mathematics to square brackets in
 computing.  For example, the element in the first row and column of a
-2-dimensional matrix :math:`\mathbf{A}` would be ``A[0,0]``; the next
-element in the column would be ``A[1,0]``; etc.
+2-dimensional matrix :math:`\mathbf{A}` would be ``A[0, 0]``; the next
+element in the column would be ``A[1, 0]``; etc.
 
 The following table summarizes the translation from mathematical
 vectors to computational arrays:
@@ -112,7 +112,8 @@ case, when we create an array we need its define:
 
 #. the type of its elements, and
 
-#. initial values for all the elements (which may be altered later).
+#. initial values for all the elements, which may be altered later.
+   This is called **initialization**.
 
 Note that *all* elements of an array are of a single type (i.e., one
 cannot mix floats and ints in an array); and to distinguish the issue
@@ -177,7 +178,7 @@ which contains most of the functions we will use.
   In this case the entered numbers appear to be from different sets
   (complex and integer), but as noted above, arrays have only a single
   dtype.  ``type(sigma2[0, 0])`` shows that the chosen type is
-  ``complex`, the more "complicated" of the types. This is verified by
+  ``complex``, the more "complicated" of the types. This is verified by
   checking the value of ``sigma2[0,0]``, which is ``0.+0.j``.
 
   To check the dimensions of the array, we can use NumPy's "shape()"
@@ -186,7 +187,7 @@ which contains most of the functions we will use.
     print("The shape of sigma2 is:", np.shape(sigma2))
 
   As knowing the shape of an array is a key part of using it, we will
-  make much use of this function (and of len()).
+  make much use of this function (and of "len()").
 
 |
 
@@ -199,17 +200,52 @@ which contains most of the functions we will use.
 Practice 1
 ##########
 
-#. Make the following arrays:
+#. Make the following arrays with NumPy functions:
 
-   i. :math:`\textbf{v} = (-1.1, 5, 7.6)`
+   i. :math:`\displaystyle \textbf{v} = (-1.1, 5, 7.6)`.
 
-   #. :math:`\textbf{u} = (2, 4, 6)`
+   #. :math:`\displaystyle \textbf{u} = (2, 4, 6)`.
 
-   #. :math:`\textbf{w} = (2+3i, -4-3i, 6)`
+   #. :math:`\displaystyle \textbf{w} = (2+3i, -4-3i, 6)`.
 
-   #. An :math:`2\times3`
+   #. An :math:`\displaystyle 2\times3` matrix of bools, with the
+      first row ``True`` and the second row ``False``.
 
-   #. An array of 
+   #. A matrix of zeros: :math:`~~\displaystyle \texttt{Mint} \in
+      \mathbf{Z}^{5\times10}`.
+
+   #. A matrix of zeros: :math:`~~\displaystyle \texttt{Mfl} \in
+      \mathbf{R}^{2\times3\times4}`.  Print the shape of ``Mfl`` to
+      verify its dimensions.
+
+   #. An array ``A`` of integers in the range :math:`[0, 11]`.
+
+   #. An array ``xint`` of integers in the range :math:`[-15, 15]`.
+
+   #. An array ``t`` of 81 evenly spaced values in the range
+      :math:`[0, 20]`.
+
+#. Use ``for`` loops to make the following:
+
+   i. :math:`~\displaystyle x_i = i^2`, for :math:`~\displaystyle i
+      = 0, ..., 10`
+
+   #. :math:`~\displaystyle y_n = \sqrt{4n}+1`, for
+      :math:`~\displaystyle 0\leq n < 17`
+
+   #. :math:`~\displaystyle z_k = (3k + 4i)^3`, for
+      :math:`~\displaystyle k \in [0, 20]`. Note that ``i`` in this
+      expression is the imaginary number.
+
+   #. An array ``zabs`` whose values are the absolute values of ``z``
+      from the previous question.
+
+   #. :math:`~\displaystyle M_{i,j} = 30 - 6i - j`, for
+      :math:`~\displaystyle i = 0, ..., 5;~ j = 0, ..., 4`
+
+
+
+
 
 .. old examples
 

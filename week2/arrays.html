@@ -62,15 +62,15 @@
 <span id="week2-arrays"></span><h1>3.1. Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#translating-vectors-to-arrays" id="id1">Translating Vectors to Arrays</a><ul>
+<li><a class="reference internal" href="#translating-vectors-and-matrices-to-arrays" id="id1">Translating Vectors and Matrices to Arrays</a><ul>
 <li><a class="reference internal" href="#creating-arrays" id="id2">Creating arrays</a></li>
 <li><a class="reference internal" href="#practice-1" id="id3">Practice 1</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="translating-vectors-to-arrays">
-<h2><a class="toc-backref" href="#id1">3.1.1. Translating Vectors to Arrays</a><a class="headerlink" href="#translating-vectors-to-arrays" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="translating-vectors-and-matrices-to-arrays">
+<h2><a class="toc-backref" href="#id1">3.1.1. Translating Vectors and Matrices to Arrays</a><a class="headerlink" href="#translating-vectors-and-matrices-to-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Up to this point, we have discussed storing one value at a time in a
 variable, translating scalar quantities to computational types like
 int, float, bool and complex.  What about when we have algebraic
@@ -111,8 +111,8 @@ notations and terms apply.  Matrices typically have multiple
 dimensions and therefore multiple indices; these also translate
 directly from subscripts in the mathematics to square brackets in
 computing.  For example, the element in the first row and column of a
-2-dimensional matrix <span class="math">\(\mathbf{A}\)</span> would be <code class="docutils literal"><span class="pre">A[0,0]</span></code>; the next
-element in the column would be <code class="docutils literal"><span class="pre">A[1,0]</span></code>; etc.</p>
+2-dimensional matrix <span class="math">\(\mathbf{A}\)</span> would be <code class="docutils literal"><span class="pre">A[0,</span> <span class="pre">0]</span></code>; the next
+element in the column would be <code class="docutils literal"><span class="pre">A[1,</span> <span class="pre">0]</span></code>; etc.</p>
 <p>The following table summarizes the translation from mathematical
 vectors to computational arrays:</p>
 <blockquote>
@@ -168,7 +168,8 @@ case, when we create an array we need its define:</p>
 <ol class="arabic simple">
 <li>the <strong>length</strong> or <strong>shape</strong> (dimensions),</li>
 <li>the type of its elements, and</li>
-<li>initial values for all the elements (which may be altered later).</li>
+<li>initial values for all the elements, which may be altered later.
+This is called <strong>initialization</strong>.</li>
 </ol>
 <p>Note that <em>all</em> elements of an array are of a single type (i.e., one
 cannot mix floats and ints in an array); and to distinguish the issue
@@ -228,15 +229,15 @@ example:</p>
 <p>In this case the entered numbers appear to be from different sets
 (complex and integer), but as noted above, arrays have only a single
 dtype.  <code class="docutils literal"><span class="pre">type(sigma2[0,</span> <span class="pre">0])</span></code> shows that the chosen type is
-<code class="docutils literal"><span class="pre">complex`,</span> <span class="pre">the</span> <span class="pre">more</span> <span class="pre">&quot;complicated&quot;</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">types.</span> <span class="pre">This</span> <span class="pre">is</span> <span class="pre">verified</span> <span class="pre">by</span>
-<span class="pre">checking</span> <span class="pre">the</span> <span class="pre">value</span> <span class="pre">of</span> <span class="pre">``sigma2[0,0]</span></code>, which is <code class="docutils literal"><span class="pre">0.+0.j</span></code>.</p>
+<code class="docutils literal"><span class="pre">complex</span></code>, the more “complicated” of the types. This is verified by
+checking the value of <code class="docutils literal"><span class="pre">sigma2[0,0]</span></code>, which is <code class="docutils literal"><span class="pre">0.+0.j</span></code>.</p>
 <p>To check the dimensions of the array, we can use NumPy’s “shape()”
 function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The shape of sigma2 is:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>As knowing the shape of an array is a key part of using it, we will
-make much use of this function (and of len()).</p>
+make much use of this function (and of “len()”).</p>
 </li>
 </ul>
 <div class="line-block">
@@ -252,12 +253,35 @@ make much use of this function (and of len()).</p>
 <div class="section" id="practice-1">
 <h3><a class="toc-backref" href="#id3">Practice 1</a><a class="headerlink" href="#practice-1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Make the following arrays:<ol class="lowerroman">
-<li><span class="math">\(\textbf{v} = (-1.1, 5, 7.6)\)</span></li>
-<li><span class="math">\(\textbf{u} = (2, 4, 6)\)</span></li>
-<li><span class="math">\(\textbf{w} = (2+3i, -4-3i, 6)\)</span></li>
-<li>An <span class="math">\(2\times3\)</span></li>
-<li>An array of</li>
+<li>Make the following arrays with NumPy functions:<ol class="lowerroman">
+<li><span class="math">\(\displaystyle \textbf{v} = (-1.1, 5, 7.6)\)</span>.</li>
+<li><span class="math">\(\displaystyle \textbf{u} = (2, 4, 6)\)</span>.</li>
+<li><span class="math">\(\displaystyle \textbf{w} = (2+3i, -4-3i, 6)\)</span>.</li>
+<li>An <span class="math">\(\displaystyle 2\times3\)</span> matrix of bools, with the
+first row <code class="docutils literal"><span class="pre">True</span></code> and the second row <code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li>A matrix of zeros: <span class="math">\(~~\displaystyle \texttt{Mint} \in
+\mathbf{Z}^{5\times10}\)</span>.</li>
+<li>A matrix of zeros: <span class="math">\(~~\displaystyle \texttt{Mfl} \in
+\mathbf{R}^{2\times3\times4}\)</span>.  Print the shape of <code class="docutils literal"><span class="pre">Mfl</span></code> to
+verify its dimensions.</li>
+<li>An array <code class="docutils literal"><span class="pre">A</span></code> of integers in the range <span class="math">\([0, 11]\)</span>.</li>
+<li>An array <code class="docutils literal"><span class="pre">xint</span></code> of integers in the range <span class="math">\([-15, 15]\)</span>.</li>
+<li>An array <code class="docutils literal"><span class="pre">t</span></code> of 81 evenly spaced values in the range
+<span class="math">\([0, 20]\)</span>.</li>
+</ol>
+</li>
+<li>Use <code class="docutils literal"><span class="pre">for</span></code> loops to make the following:<ol class="lowerroman">
+<li><span class="math">\(~\displaystyle x_i = i^2\)</span>, for <span class="math">\(~\displaystyle i
+= 0, ..., 10\)</span></li>
+<li><span class="math">\(~\displaystyle y_n = \sqrt{4n}+1\)</span>, for
+<span class="math">\(~\displaystyle 0\leq n &lt; 17\)</span></li>
+<li><span class="math">\(~\displaystyle z_k = (3k + 4i)^3\)</span>, for
+<span class="math">\(~\displaystyle k \in [0, 20]\)</span>. Note that <code class="docutils literal"><span class="pre">i</span></code> in this
+expression is the imaginary number.</li>
+<li>An array <code class="docutils literal"><span class="pre">zabs</span></code> whose values are the absolute values of <code class="docutils literal"><span class="pre">z</span></code>
+from the previous question.</li>
+<li><span class="math">\(~\displaystyle M_{i,j} = 30 - 6i - j\)</span>, for
+<span class="math">\(~\displaystyle i = 0, ..., 5;~ j = 0, ..., 4\)</span></li>
 </ol>
 </li>
 </ol>
@@ -278,7 +302,7 @@ make much use of this function (and of len()).</p>
 <li class="toctree-l1"><a class="reference internal" href="../week1/main_toc.html">2. Week 1</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="main_toc.html">3. Week 2</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.1. Arrays</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#translating-vectors-to-arrays">3.1.1. Translating Vectors to Arrays</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#translating-vectors-and-matrices-to-arrays">3.1.1. Translating Vectors and Matrices to Arrays</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#creating-arrays">Creating arrays</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#practice-1">Practice 1</a></li>
 </ul>
