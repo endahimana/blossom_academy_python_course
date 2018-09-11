@@ -25,14 +25,14 @@ things like vectors and matrices?
 Consider an example case of a velocity vector, which might be written
 in a physics textbook as:
   
-  :math:`\textbf{v}  = ( v_x, v_y, v_z )`
+  :math:`\displaystyle \textbf{v}  = ( v_x, v_y, v_z )`
 
 Sometimes different sets of indices are used, and this could also be
 written using a common, and slightly more general, mathematical
 notation as either:
 
-  :math:`\textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm or}~~~~~~\textbf{v} = ( v_0,
-  v_1, v_2 )`
+  :math:`\displaystyle \textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm
+  or}~~~~~~\textbf{v} = ( v_0, v_1, v_2 )`
 
 In each case, the *i*\th component is referenced as :math:`v_i`, with
 allowed values of *i* determined by the length of the vector.
@@ -173,13 +173,16 @@ which contains most of the functions we will use.
   One can make 2D (or higher dimensional) arrays in this way.  For
   example::
 
-    sigma2 = np.array([0, -1j],[1j, 0])
+    sigma2 = np.array([[0, -1j], [1j, 0]])
 
-  In this case the entered numbers appear to be from different sets
-  (complex and integer), but as noted above, arrays have only a single
-  dtype.  ``type(sigma2[0, 0])`` shows that the chosen type is
-  ``complex``, the more "complicated" of the types. This is verified by
-  checking the value of ``sigma2[0,0]``, which is ``0.+0.j``.
+  (Firstly, comparing the use of square brackets with the 1D examples
+  above might explain why multidimensional arrays are called "arrays
+  of arrays".)  In this case the entered numbers appear to be from
+  different sets (complex and integer), but as noted above, arrays
+  have only a single dtype.  ``type(sigma2[0, 0])`` shows that the
+  chosen type is ``complex``, the more "complicated" of the
+  types. This is verified by checking the value of ``sigma2[0,0]``,
+  which is ``0.+0.j``.
 
   To check the dimensions of the array, we can use NumPy's "shape()"
   function::
@@ -189,7 +192,94 @@ which contains most of the functions we will use.
   As knowing the shape of an array is a key part of using it, we will
   make much use of this function (and of "len()").
 
-|
+* One useful family of arrays is 1D arrays with evenly spaced
+  elements.  For example, when making plots, we might want evenly
+  spaced values along the x-axis.  In general, these work by
+  specifying a desired interval of values and then *either* the number
+  of elements *N* in the array *or* the step-size interval between
+  elements.
+
+  - For ``np.arange()``, we specify the desired interval of values as
+    ``[A, B)`` and the step size between elements. The usage for this
+    function is shown from the top of its help doc-string
+    (``np.arange?``):
+
+    .. code-block:: python
+       :linenos:
+
+       Docstring:
+       arange([start,] stop[, step,], dtype=None)
+          
+       Return evenly spaced values within a given interval.
+
+       Values are generated within the half-open interval ``[start, stop)``
+
+    Thus, there is one *required* argument, the ``stop`` value, and we
+    can choose to enter our own ``start`` and ``step`` (or use the
+    default values, which the help file also lists as ``0`` and ``1``,
+    respectively).  In each case, the number of elements *N* in the
+    array is determined according to the following relation:
+
+       ``N = int( (stop - start)/step )``
+
+    .. code-block:: python
+
+       D1 = np.arange(10)          # def: start = 0, step = 1
+       D2 = np.arange(-4, 8)       # def: step = 1
+       D3 = np.arange(-15, 15, 3) 
+
+    These yield the following, respectively::
+
+      [0 1 2 3 4 5 6 7 8 9]
+      [-4 -3 -2 -1  0  1  2  3  4  5  6  7]
+      [-15 -12  -9  -6  -3   0   3   6   9  12]
+
+    Readers can verify that the expected values and number of elements
+    occur in each case.  We highlight, however, that the single
+    argument example ``np.arange(N)`` used to make ``D1`` is a very
+    efficient way to generate all of the element indices in an array
+    of length *N* (more on this soon).
+    
+  - ``np.linspace()`` is a similar function, but for it we specify the
+    desired interval of values as ``[A, B]`` (doubly-inclusive!)  and
+    the total number of elements; the step size will be calculated
+    internally based on the following:
+
+       ``step = (stop - start)/(N - 1)``
+
+    .. code-block:: python
+
+       L1 = np.linspace(10, 20)        # def: N = 50
+       L2 = np.linspace(-2, 2, 11)
+
+    These yield the following, respectively::
+
+      [ 10.        ,  10.20408163,  10.40816327,  10.6122449 ,  10.81632653,
+        11.02040816,  11.2244898 ,  11.42857143,  11.63265306,  11.83673469,
+        12.04081633,  12.24489796,  12.44897959,  12.65306122,  12.85714286,
+        13.06122449,  13.26530612,  13.46938776,  13.67346939,  13.87755102,
+        14.08163265,  14.28571429,  14.48979592,  14.69387755,  14.89795918,
+        15.10204082,  15.30612245,  15.51020408,  15.71428571,  15.91836735,
+        16.12244898,  16.32653061,  16.53061224,  16.73469388,  16.93877551,
+        17.14285714,  17.34693878,  17.55102041,  17.75510204,  17.95918367,
+        18.16326531,  18.36734694,  18.57142857,  18.7755102 ,  18.97959184,
+        19.18367347,  19.3877551 ,  19.59183673,  19.79591837,  20.        ]
+
+      [-2. , -1.6, -1.2, -0.8, -0.4,  0. ,  0.4,  0.8,  1.2,  1.6,  2. ]
+
+    Again, the reader can check the length of each array for expected
+    behavior.  Looking at the above arrays, we might notice a looooot
+    of significant digits in each of the ``L1`` elements.  While this
+    may not matter (numbers are just numbers), in some cases one might
+    prefer "cleaner" ``step`` sizes with fewer numbers of significant
+    digits.  Looking at the formula for ``step`` with linspace,
+    perhaps an odd number like 51 would provide such?  The reader can
+    check this in this instance, and decided on preferred properties
+    in other cases.
+
+* As a final example of a NumPy function to make arrays, we 
+
+
 
 |
 

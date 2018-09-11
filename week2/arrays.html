@@ -78,13 +78,13 @@ things like vectors and matrices?</p>
 <p>Consider an example case of a velocity vector, which might be written
 in a physics textbook as:</p>
 <blockquote>
-<div><span class="math">\(\textbf{v}  = ( v_x, v_y, v_z )\)</span></div></blockquote>
+<div><span class="math">\(\displaystyle \textbf{v}  = ( v_x, v_y, v_z )\)</span></div></blockquote>
 <p>Sometimes different sets of indices are used, and this could also be
 written using a common, and slightly more general, mathematical
 notation as either:</p>
 <blockquote>
-<div><span class="math">\(\textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm or}~~~~~~\textbf{v} = ( v_0,
-v_1, v_2 )\)</span></div></blockquote>
+<div><span class="math">\(\displaystyle \textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm
+or}~~~~~~\textbf{v} = ( v_0, v_1, v_2 )\)</span></div></blockquote>
 <p>In each case, the <em>i</em>th component is referenced as <span class="math">\(v_i\)</span>, with
 allowed values of <em>i</em> determined by the length of the vector.</p>
 <p>When we translate this to Python, we have all the same parts, but some
@@ -223,14 +223,17 @@ needed from Python’s “len()” function:</p>
 </div>
 <p>One can make 2D (or higher dimensional) arrays in this way.  For
 example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sigma2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1j</span><span class="p">],[</span><span class="mi">1j</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">sigma2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1j</span><span class="p">],</span> <span class="p">[</span><span class="mi">1j</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>In this case the entered numbers appear to be from different sets
-(complex and integer), but as noted above, arrays have only a single
-dtype.  <code class="docutils literal"><span class="pre">type(sigma2[0,</span> <span class="pre">0])</span></code> shows that the chosen type is
-<code class="docutils literal"><span class="pre">complex</span></code>, the more “complicated” of the types. This is verified by
-checking the value of <code class="docutils literal"><span class="pre">sigma2[0,0]</span></code>, which is <code class="docutils literal"><span class="pre">0.+0.j</span></code>.</p>
+<p>(Firstly, comparing the use of square brackets with the 1D examples
+above might explain why multidimensional arrays are called “arrays
+of arrays”.)  In this case the entered numbers appear to be from
+different sets (complex and integer), but as noted above, arrays
+have only a single dtype.  <code class="docutils literal"><span class="pre">type(sigma2[0,</span> <span class="pre">0])</span></code> shows that the
+chosen type is <code class="docutils literal"><span class="pre">complex</span></code>, the more “complicated” of the
+types. This is verified by checking the value of <code class="docutils literal"><span class="pre">sigma2[0,0]</span></code>,
+which is <code class="docutils literal"><span class="pre">0.+0.j</span></code>.</p>
 <p>To check the dimensions of the array, we can use NumPy’s “shape()”
 function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The shape of sigma2 is:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">sigma2</span><span class="p">))</span>
@@ -239,10 +242,96 @@ function:</p>
 <p>As knowing the shape of an array is a key part of using it, we will
 make much use of this function (and of “len()”).</p>
 </li>
-</ul>
-<div class="line-block">
-<div class="line"><br /></div>
+<li><p class="first">One useful family of arrays is 1D arrays with evenly spaced
+elements.  For example, when making plots, we might want evenly
+spaced values along the x-axis.  In general, these work by
+specifying a desired interval of values and then <em>either</em> the number
+of elements <em>N</em> in the array <em>or</em> the step-size interval between
+elements.</p>
+<ul>
+<li><p class="first">For <code class="docutils literal"><span class="pre">np.arange()</span></code>, we specify the desired interval of values as
+<code class="docutils literal"><span class="pre">[A,</span> <span class="pre">B)</span></code> and the step size between elements. The usage for this
+function is shown from the top of its help doc-string
+(<code class="docutils literal"><span class="pre">np.arange?</span></code>):</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">Docstring</span><span class="p">:</span>
+<span class="n">arange</span><span class="p">([</span><span class="n">start</span><span class="p">,]</span> <span class="n">stop</span><span class="p">[,</span> <span class="n">step</span><span class="p">,],</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="n">Return</span> <span class="n">evenly</span> <span class="n">spaced</span> <span class="n">values</span> <span class="n">within</span> <span class="n">a</span> <span class="n">given</span> <span class="n">interval</span><span class="o">.</span>
+
+<span class="n">Values</span> <span class="n">are</span> <span class="n">generated</span> <span class="n">within</span> <span class="n">the</span> <span class="n">half</span><span class="o">-</span><span class="nb">open</span> <span class="n">interval</span> <span class="sb">``</span><span class="p">[</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span><span class="sb">``</span>
+</pre></div>
+</td></tr></table></div>
+<p>Thus, there is one <em>required</em> argument, the <code class="docutils literal"><span class="pre">stop</span></code> value, and we
+can choose to enter our own <code class="docutils literal"><span class="pre">start</span></code> and <code class="docutils literal"><span class="pre">step</span></code> (or use the
+default values, which the help file also lists as <code class="docutils literal"><span class="pre">0</span></code> and <code class="docutils literal"><span class="pre">1</span></code>,
+respectively).  In each case, the number of elements <em>N</em> in the
+array is determined according to the following relation:</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">int(</span> <span class="pre">(stop</span> <span class="pre">-</span> <span class="pre">start)/step</span> <span class="pre">)</span></code></p>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">D1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>          <span class="c1"># def: start = 0, step = 1</span>
+<span class="n">D2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>       <span class="c1"># def: step = 1</span>
+<span class="n">D3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
 </div>
+<p>These yield the following, respectively:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">1</span>  <span class="mi">0</span>  <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>  <span class="mi">5</span>  <span class="mi">6</span>  <span class="mi">7</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">15</span> <span class="o">-</span><span class="mi">12</span>  <span class="o">-</span><span class="mi">9</span>  <span class="o">-</span><span class="mi">6</span>  <span class="o">-</span><span class="mi">3</span>   <span class="mi">0</span>   <span class="mi">3</span>   <span class="mi">6</span>   <span class="mi">9</span>  <span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Readers can verify that the expected values and number of elements
+occur in each case.  We highlight, however, that the single
+argument example <code class="docutils literal"><span class="pre">np.arange(N)</span></code> used to make <code class="docutils literal"><span class="pre">D1</span></code> is a very
+efficient way to generate all of the element indices in an array
+of length <em>N</em> (more on this soon).</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">np.linspace()</span></code> is a similar function, but for it we specify the
+desired interval of values as <code class="docutils literal"><span class="pre">[A,</span> <span class="pre">B]</span></code> (doubly-inclusive!)  and
+the total number of elements; the step size will be calculated
+internally based on the following:</p>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">step</span> <span class="pre">=</span> <span class="pre">(stop</span> <span class="pre">-</span> <span class="pre">start)/(N</span> <span class="pre">-</span> <span class="pre">1)</span></code></p>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">L1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>        <span class="c1"># def: N = 50</span>
+<span class="n">L2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These yield the following, respectively:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="mf">10.</span>        <span class="p">,</span>  <span class="mf">10.20408163</span><span class="p">,</span>  <span class="mf">10.40816327</span><span class="p">,</span>  <span class="mf">10.6122449</span> <span class="p">,</span>  <span class="mf">10.81632653</span><span class="p">,</span>
+  <span class="mf">11.02040816</span><span class="p">,</span>  <span class="mf">11.2244898</span> <span class="p">,</span>  <span class="mf">11.42857143</span><span class="p">,</span>  <span class="mf">11.63265306</span><span class="p">,</span>  <span class="mf">11.83673469</span><span class="p">,</span>
+  <span class="mf">12.04081633</span><span class="p">,</span>  <span class="mf">12.24489796</span><span class="p">,</span>  <span class="mf">12.44897959</span><span class="p">,</span>  <span class="mf">12.65306122</span><span class="p">,</span>  <span class="mf">12.85714286</span><span class="p">,</span>
+  <span class="mf">13.06122449</span><span class="p">,</span>  <span class="mf">13.26530612</span><span class="p">,</span>  <span class="mf">13.46938776</span><span class="p">,</span>  <span class="mf">13.67346939</span><span class="p">,</span>  <span class="mf">13.87755102</span><span class="p">,</span>
+  <span class="mf">14.08163265</span><span class="p">,</span>  <span class="mf">14.28571429</span><span class="p">,</span>  <span class="mf">14.48979592</span><span class="p">,</span>  <span class="mf">14.69387755</span><span class="p">,</span>  <span class="mf">14.89795918</span><span class="p">,</span>
+  <span class="mf">15.10204082</span><span class="p">,</span>  <span class="mf">15.30612245</span><span class="p">,</span>  <span class="mf">15.51020408</span><span class="p">,</span>  <span class="mf">15.71428571</span><span class="p">,</span>  <span class="mf">15.91836735</span><span class="p">,</span>
+  <span class="mf">16.12244898</span><span class="p">,</span>  <span class="mf">16.32653061</span><span class="p">,</span>  <span class="mf">16.53061224</span><span class="p">,</span>  <span class="mf">16.73469388</span><span class="p">,</span>  <span class="mf">16.93877551</span><span class="p">,</span>
+  <span class="mf">17.14285714</span><span class="p">,</span>  <span class="mf">17.34693878</span><span class="p">,</span>  <span class="mf">17.55102041</span><span class="p">,</span>  <span class="mf">17.75510204</span><span class="p">,</span>  <span class="mf">17.95918367</span><span class="p">,</span>
+  <span class="mf">18.16326531</span><span class="p">,</span>  <span class="mf">18.36734694</span><span class="p">,</span>  <span class="mf">18.57142857</span><span class="p">,</span>  <span class="mf">18.7755102</span> <span class="p">,</span>  <span class="mf">18.97959184</span><span class="p">,</span>
+  <span class="mf">19.18367347</span><span class="p">,</span>  <span class="mf">19.3877551</span> <span class="p">,</span>  <span class="mf">19.59183673</span><span class="p">,</span>  <span class="mf">19.79591837</span><span class="p">,</span>  <span class="mf">20.</span>        <span class="p">]</span>
+
+<span class="p">[</span><span class="o">-</span><span class="mf">2.</span> <span class="p">,</span> <span class="o">-</span><span class="mf">1.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span>  <span class="mf">0.</span> <span class="p">,</span>  <span class="mf">0.4</span><span class="p">,</span>  <span class="mf">0.8</span><span class="p">,</span>  <span class="mf">1.2</span><span class="p">,</span>  <span class="mf">1.6</span><span class="p">,</span>  <span class="mf">2.</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>Again, the reader can check the length of each array for expected
+behavior.  Looking at the above arrays, we might notice a looooot
+of significant digits in each of the <code class="docutils literal"><span class="pre">L1</span></code> elements.  While this
+may not matter (numbers are just numbers), in some cases one might
+prefer “cleaner” <code class="docutils literal"><span class="pre">step</span></code> sizes with fewer numbers of significant
+digits.  Looking at the formula for <code class="docutils literal"><span class="pre">step</span></code> with linspace,
+perhaps an odd number like 51 would provide such?  The reader can
+check this in this instance, and decided on preferred properties
+in other cases.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">As a final example of a NumPy function to make arrays, we</p>
+</li>
+</ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>

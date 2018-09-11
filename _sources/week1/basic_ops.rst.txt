@@ -146,6 +146,11 @@ values.  Below are some examples of numerical types:
     flexible float/int, I don't think this discussion space-per-type
     is relevant.
 
+.. NTS:
+
+   put in method to extract real and complex parts from complex vals:
+   C.real and C.imag
+
 While the "type" property is analogous to the mathematical number set
 designation, type is also closely related to purely computational
 features.  For example, anything stored on a computer must occupy an
