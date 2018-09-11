@@ -103,7 +103,7 @@ computing with vectors will also translate directly into programs, as
 well.
 
 Creating arrays
-###############
+---------------
 
 There are many ways to assign values to arrays in Python.  In each
 case, when we create an array we need its define:
@@ -143,277 +143,286 @@ The need to define both dimensions and element types matches both
 Here and below, whenever using arrays, we will be importing NumPy,
 which contains most of the functions we will use.
 
-* Most basically, one can make an array directly using the
-  ``np.array()`` function::
-
-    import numpy as np
-
-    v = np.array([4, 5, 6])
-    print(v)
-    print(v[0])
-
-  ``v`` contains three elements, and that the [0]th value is 4 (as
-  expected).  We can also verify the type of both ``v`` and its
-  elements (checking just one is enough, since all elements have the
-  same dtype)::
+``np.array``: Arrays with all known values
+###########################################
   
-    print("type of v:", type(v))
-    print("type of an element of v:", type(v[0]))
+Most basically, one can make an array directly using the
+``np.array()`` function::
 
-  As we entered all integer values, the dtype of the elements is an
-  integer, which is called ``int64`` in NumPy; the "64" refers to the
-  number of bits used to store each value.  
+  import numpy as np
 
-  The other fundamental property of any array, as mentioned above, is
-  its length or shape.  For this 1D array, we get all the information
-  needed from Python's "len()" function::
+  v = np.array([4, 5, 6])
+  print(v)
+  print(v[0])
 
-    print("Length of v is:", len(v))
+``v`` contains three elements, and that the [0]th value is 4 (as
+expected).  We can also verify the type of both ``v`` and its
+elements (checking just one is enough, since all elements have the
+same dtype)::
 
-  If we wish to change any value in the array, that is done simply by
-  assigning a new value there.  For example, after::
+  print("type of v:", type(v))
+  print("type of an element of v:", type(v[0]))
 
-    v[1] = -100
+As we entered all integer values, the dtype of the elements is an
+integer, which is called ``int64`` in NumPy; the "64" refers to the
+number of bits used to store each value.  
 
-  printing ``v`` yields::
+The other fundamental property of any array, as mentioned above, is
+its length or shape.  For this 1D array, we get all the information
+needed from Python's "len()" function::
 
-    [   4 -100    6]
+  print("Length of v is:", len(v))
 
-  If we try inputting a float value like this, Python will convert it
-  to an int, because arrays only contain one type.  Thus::
+If we wish to change any value in the array, that is done simply by
+assigning a new value there.  For example, after::
 
-    v[2] = 99.9999
+  v[1] = -100
 
-  printing ``v`` yields::
+printing ``v`` yields::
 
-    [   4 -100   99]
+  [   4 -100    6]
 
-  One can make 2D (or higher dimensional) arrays in a similar way,
-  explicitly stating each element one-by-one.  For example::
+If we try inputting a float value like this, Python will convert it
+to an int, because arrays only contain one type.  Thus::
 
-    sigma2 = np.array([[0, -1j], [1j, 0]])
+  v[2] = 99.9999
 
-  (Firstly, comparing the use of square brackets with the 1D examples
-  above might explain why multidimensional arrays are called "arrays
-  of arrays".)  In this case the entered numbers appear to be from
-  different sets (complex and integer), but as noted above, arrays
-  have only a single dtype.  ``type(sigma2[0, 0])`` shows that the
-  chosen type is ``complex``, the more "complicated" of the
-  types. This is verified by checking the value of ``sigma2[0,0]``,
-  which is ``0.+0.j``.
+printing ``v`` yields::
 
-  To check the dimensions of the array, we can use NumPy's "shape()"
-  function::
+  [   4 -100   99]
 
-    print("The shape of sigma2 is:", np.shape(sigma2))
+One can make 2D (or higher dimensional) arrays in a similar way,
+explicitly stating each element one-by-one.  For example::
 
-  Note that when np.shape() returns the shape of a multidimensional
-  array, it does so as a collection of numbers in parentheses.  This
-  is actually a new Python type that will be discussed later, but it
-  is a good to think of the several numbers describing shape-- e.g.,
-  here, ``(2, 2)``-- as a single object.  As knowing the shape of an
-  array is a key part of using it, we will make much use of this
-  function (and of "len()", which always returns a single value int).
+  sigma2 = np.array([[0, -1j], [1j, 0]])
 
-* One useful family of arrays is 1D arrays with evenly spaced
-  elements.  For example, when making plots, we might want evenly
-  spaced values along the x-axis.  In general, these work by
-  specifying a desired interval of values and then *either* the number
-  of elements *N* in the array *or* the step-size interval between
-  elements.
+(Firstly, comparing the use of square brackets with the 1D examples
+above might explain why multidimensional arrays are called "arrays
+of arrays".)  In this case the entered numbers appear to be from
+different sets (complex and integer), but as noted above, arrays
+have only a single dtype.  ``type(sigma2[0, 0])`` shows that the
+chosen type is ``complex``, the more "complicated" of the
+types. This is verified by checking the value of ``sigma2[0,0]``,
+which is ``0.+0.j``.
 
-  - For ``np.arange()``, we specify the desired interval of values as
-    ``[A, B)`` and the step size between elements. The usage for this
-    function is shown from the top of its help doc-string
-    (``np.arange?``):
+To check the dimensions of the array, we can use NumPy's "shape()"
+function::
 
-    .. code-block:: python
-       :linenos:
+  print("The shape of sigma2 is:", np.shape(sigma2))
 
-       Docstring:
-       arange([start,] stop[, step,], dtype=None)
-          
-       Return evenly spaced values within a given interval.
+Note that when np.shape() returns the shape of a multidimensional
+array, it does so as a collection of numbers in parentheses.  This
+is actually a new Python type that will be discussed later, but it
+is a good to think of the several numbers describing shape-- e.g.,
+here, ``(2, 2)``-- as a single object.  As knowing the shape of an
+array is a key part of using it, we will make much use of this
+function (and of "len()", which always returns a single value int).
 
-       Values are generated within the half-open interval ``[start, stop)``
+``np.arange`` and ``np.linspace``: Evenly spaced arrays
+#######################################################
 
-    Thus, there is one *required* argument, the ``stop`` value, and we
-    can choose to enter our own ``start`` and ``step`` (or use the
-    default values, which the help file also lists as ``0`` and ``1``,
-    respectively).  In each case, the number of elements *N* in the
-    array is determined according to the following relation:
+One useful family of arrays is 1D arrays with evenly spaced
+elements.  For example, when making plots, we might want evenly
+spaced values along the x-axis.  In general, these work by
+specifying a desired interval of values and then *either* the number
+of elements *N* in the array *or* the step-size interval between
+elements.
 
-       ``N = int( (stop - start)/step )``
+- For ``np.arange()``, we specify the desired interval of values as
+  ``[A, B)`` and the step size between elements. The usage for this
+  function is shown from the top of its help doc-string
+  (``np.arange?``):
 
-    .. code-block:: python
+  .. code-block:: python
+     :linenos:
 
-       D1 = np.arange(10)          # def: start = 0, step = 1
-       D2 = np.arange(-4, 8)       # def: step = 1
-       D3 = np.arange(-15, 15, 3) 
+     Docstring:
+     arange([start,] stop[, step,], dtype=None)
+        
+     Return evenly spaced values within a given interval.
 
-    These yield the following, respectively::
+     Values are generated within the half-open interval ``[start, stop)``
 
-      [0 1 2 3 4 5 6 7 8 9]
-      [-4 -3 -2 -1  0  1  2  3  4  5  6  7]
-      [-15 -12  -9  -6  -3   0   3   6   9  12]
+  Thus, there is one *required* argument, the ``stop`` value, and we
+  can choose to enter our own ``start`` and ``step`` (or use the
+  default values, which the help file also lists as ``0`` and ``1``,
+  respectively).  In each case, the number of elements *N* in the
+  array is determined according to the following relation:
 
-    Readers can verify that the expected values and number of elements
-    occur in each case.  We highlight, however, that the single
-    argument example ``np.arange(N)`` used to make ``D1`` is a very
-    efficient way to generate all of the element indices in an array
-    of length *N* (more on this soon).
-    
-  - ``np.linspace()`` is a similar function, but for it we specify the
-    desired interval of values as ``[A, B]`` (doubly-inclusive!)  and
-    the total number of elements; the step size will be calculated
-    internally based on the following:
+     ``N = int( (stop - start)/step )``
 
-       ``step = (stop - start)/(N - 1)``
+  .. code-block:: python
 
-    .. code-block:: python
+     D1 = np.arange(10)          # def: start = 0, step = 1
+     D2 = np.arange(-4, 8)       # def: step = 1
+     D3 = np.arange(-15, 15, 3) 
 
-       L1 = np.linspace(10, 20)        # def: N = 50
-       L2 = np.linspace(-2, 2, 11)
+  These yield the following, respectively::
 
-    These yield the following, respectively::
+    [0 1 2 3 4 5 6 7 8 9]
+    [-4 -3 -2 -1  0  1  2  3  4  5  6  7]
+    [-15 -12  -9  -6  -3   0   3   6   9  12]
 
-      [ 10.        ,  10.20408163,  10.40816327,  10.6122449 ,  10.81632653,
-        11.02040816,  11.2244898 ,  11.42857143,  11.63265306,  11.83673469,
-        12.04081633,  12.24489796,  12.44897959,  12.65306122,  12.85714286,
-        13.06122449,  13.26530612,  13.46938776,  13.67346939,  13.87755102,
-        14.08163265,  14.28571429,  14.48979592,  14.69387755,  14.89795918,
-        15.10204082,  15.30612245,  15.51020408,  15.71428571,  15.91836735,
-        16.12244898,  16.32653061,  16.53061224,  16.73469388,  16.93877551,
-        17.14285714,  17.34693878,  17.55102041,  17.75510204,  17.95918367,
-        18.16326531,  18.36734694,  18.57142857,  18.7755102 ,  18.97959184,
-        19.18367347,  19.3877551 ,  19.59183673,  19.79591837,  20.        ]
+  Readers can verify that the expected values and number of elements
+  occur in each case.  We highlight, however, that the single
+  argument example ``np.arange(N)`` used to make ``D1`` is a very
+  efficient way to generate all of the element indices in an array
+  of length *N* (more on this soon).
+  
+- ``np.linspace()`` is a similar function, but for it we specify the
+  desired interval of values as ``[A, B]`` (doubly-inclusive!)  and
+  the total number of elements; the step size will be calculated
+  internally based on the following:
 
-      [-2. , -1.6, -1.2, -0.8, -0.4,  0. ,  0.4,  0.8,  1.2,  1.6,  2. ]
+     ``step = (stop - start)/(N - 1)``
 
-    Again, the reader can check the length of each array for expected
-    behavior.  Looking at the above arrays, we might notice a looooot
-    of significant digits in each of the ``L1`` elements.  While this
-    may not matter (numbers are just numbers), in some cases one might
-    prefer "cleaner" ``step`` sizes with fewer numbers of significant
-    digits.  Looking at the formula for ``step`` with linspace,
-    perhaps an odd number like 51 would provide such?  The reader can
-    check this in this instance, and decided on preferred properties
-    in other cases.
+  .. code-block:: python
 
-* As a final example of NumPy functionality to make arrays, we discuss
-  ``np.zeros()``, which makes an array in any specified shape and
-  whose elements are all zero of a given type.  (We note that a
-  similar function called ``np.ones()`` also exists, with all comments
-  below applying; it initializes all values in an array to unity, and
-  we will see uses for it later.)
+     L1 = np.linspace(10, 20)        # def: N = 50
+     L2 = np.linspace(-2, 2, 11)
 
-  When creating a 1D array of zeros, the shape is just the length of
-  the array::
+  These yield the following, respectively::
 
-    Z  = np.zeros(5)                  # def: dtype=float
-    Z2 = np.zeros(4, dtype=bool)
-    Z3 = np.zeros(6, dtype=complex)
+    [ 10.        ,  10.20408163,  10.40816327,  10.6122449 ,  10.81632653,
+      11.02040816,  11.2244898 ,  11.42857143,  11.63265306,  11.83673469,
+      12.04081633,  12.24489796,  12.44897959,  12.65306122,  12.85714286,
+      13.06122449,  13.26530612,  13.46938776,  13.67346939,  13.87755102,
+      14.08163265,  14.28571429,  14.48979592,  14.69387755,  14.89795918,
+      15.10204082,  15.30612245,  15.51020408,  15.71428571,  15.91836735,
+      16.12244898,  16.32653061,  16.53061224,  16.73469388,  16.93877551,
+      17.14285714,  17.34693878,  17.55102041,  17.75510204,  17.95918367,
+      18.16326531,  18.36734694,  18.57142857,  18.7755102 ,  18.97959184,
+      19.18367347,  19.3877551 ,  19.59183673,  19.79591837,  20.        ]
 
-  which respectively yield::
+    [-2. , -1.6, -1.2, -0.8, -0.4,  0. ,  0.4,  0.8,  1.2,  1.6,  2. ]
 
-    [ 0.  0.  0.  0.  0.]
-    [False False False False]
-    [ 0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j]
+  Again, the reader can check the length of each array for expected
+  behavior.  Looking at the above arrays, we might notice a looooot
+  of significant digits in each of the ``L1`` elements.  While this
+  may not matter (numbers are just numbers), in some cases one might
+  prefer "cleaner" ``step`` sizes with fewer numbers of significant
+  digits.  Looking at the formula for ``step`` with linspace,
+  perhaps an odd number like 51 would provide such?  The reader can
+  check this in this instance, and decided on preferred properties
+  in other cases.
 
-  In specifying a multidimensional array, the shape is a collection of
-  numbers, and as noted above, we can group them in parentheses to
-  pass them as a single argument::
+``np.zeros``: Initialize arrays with zeros
+##########################################
 
-    Z4 = np.zeros((5,2))              # def: dtype=float
-    Z5 = np.zeros((3,4), dtype=bool)
+As a final example of NumPy functionality to make arrays, we discuss
+``np.zeros()``, which makes an array in any specified shape and
+whose elements are all zero of a given type.  (We note that a
+similar function called ``np.ones()`` also exists, with all comments
+below applying; it initializes all values in an array to unity, and
+we will see uses for it later.)
 
-  yielding::
+When creating a 1D array of zeros, the shape is just the length of
+the array::
 
-    [[ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]
-     [ 0.  0.]]
+  Z  = np.zeros(5)                  # def: dtype=float
+  Z2 = np.zeros(4, dtype=bool)
+  Z3 = np.zeros(6, dtype=complex)
 
-    [[False False False False]
-     [False False False False]
-     [False False False False]]
+which respectively yield::
 
-  If we had tried to pass the two dimensions without the parentheses,
-  such as::
+  [ 0.  0.  0.  0.  0.]
+  [False False False False]
+  [ 0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j]
 
-    Z4 = np.zeros(5,2)  
+In specifying a multidimensional array, the shape is a collection of
+numbers, and as noted above, we can group them in parentheses to
+pass them as a single argument::
 
-  then Python would interpret this as passing two separate arguments,
-  the first a 1D shape and the second a dtype; since ``2`` is not a
-  known type, the following error message would occur::
+  Z4 = np.zeros((5,2))              # def: dtype=float
+  Z5 = np.zeros((3,4), dtype=bool)
 
-    TypeError: data type not understood
+yielding::
 
-  Matrices with more than two dimension can be created in the same
-  manner.  Since we don't have higher dimensional screens, though,
-  they get displayed to the user as 2D "slices" of the full array::
+  [[ 0.  0.]
+   [ 0.  0.]
+   [ 0.  0.]
+   [ 0.  0.]
+   [ 0.  0.]]
 
-    Z6 = np.zeros((2,2,3), dtype=int)
-    
-  yields::
+  [[False False False False]
+   [False False False False]
+   [False False False False]]
 
-    [[[0 0 0]
-     [0 0 0]]
+If we had tried to pass the two dimensions without the parentheses,
+such as::
 
-    [[0 0 0]
-     [0 0 0]]]
+  Z4 = np.zeros(5,2)  
 
-  Why would we want an array of all zeros?  Well, it provides us an
-  easy approach for initializing an array of arbitrary size quickly.
-  We can then go through and reassign the values that we want. For
-  example, we could reassign the elements in ``Z``::
+then Python would interpret this as passing two separate arguments,
+the first a 1D shape and the second a dtype; since ``2`` is not a
+known type, the following error message would occur::
 
-    Z[0] = 0
-    Z[1] = 1
-    Z[2] = 4
-    Z[3] = 9
-    Z[4] = 16
+  TypeError: data type not understood
 
-  Well, in such a case as this, why not just use ``np.array()``?  
+Matrices with more than two dimension can be created in the same
+manner.  Since we don't have higher dimensional screens, though,
+they get displayed to the user as 2D "slices" of the full array::
 
-  The reason would be that many times we do not just have unrelated
-  numbers that we are putting in an array-- *there is some kind of
-  system or rule for them*.  Consider values just assigned to
-  ``Z``. We can see a relation between each index and value, which we
-  could write mathematically as this:
+  Z6 = np.zeros((2,2,3), dtype=int)
+  
+yields::
 
-    :math:`\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.`
+  [[[0 0 0]
+   [0 0 0]]
 
-  The first "rule" part of that can be expressed directly in
-  programming-ese: ``Z[i] = i**2``.  The second part just says to
-  iterate through values of ``i`` in a specified range; that
-  translates to a control statement in programming (appropriately)
-  called a **for loop**.  The full Python translation of the above
-  would be::
+  [[0 0 0]
+   [0 0 0]]]
 
-    for i in range(5):
-        Z[i] = i**2
+Why would we want an array of all zeros?  Well, it provides us an
+easy approach for initializing an array of arbitrary size quickly.
+We can then go through and reassign the values that we want. For
+example, we could reassign the elements in ``Z``::
 
-  The ``range(5)`` is like running ``np.arange(5)``, which makes an
-  order set of ints ``[0, 1, 2, 3, 4]``.  Python will assign ``i`` the
-  first value in the list ``0``, then perform the indented commands
-  (``Z[0] = 0**2``), then loop back to the ``for`` line and assign
-  ``i`` the next value ``1``, then perform the indented commands
-  (``Z[1] = 1**2``), etc. until it is through its appointed values of
-  ``i``.  More is discussed about this in the next section, but it is
-  the basis of extremely powerful and useful programming
-  functionality.  
+  Z[0] = 0
+  Z[1] = 1
+  Z[2] = 4
+  Z[3] = 9
+  Z[4] = 16
 
-  The key part for the array in this is to store values, but the full
-  array of correct type **must** be initialized before using the for
-  loop.  ``np.zeros`` provides a useful way to initialize all values
-  to a null value, so that one can see later if a mistake was made
-  with counting/indexing, for example if the array is left with lots
-  of zeros.
+Well, in such a case as this, why not just use ``np.array()``?  
+
+The reason would be that many times we do not just have unrelated
+numbers that we are putting in an array-- *there is some kind of
+system or rule for them*.  Consider values just assigned to
+``Z``. We can see a relation between each index and value, which we
+could write mathematically as this:
+
+  :math:`\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.`
+
+The first "rule" part of that can be expressed directly in
+programming-ese: ``Z[i] = i**2``.  The second part just says to
+iterate through values of ``i`` in a specified range; that
+translates to a control statement in programming (appropriately)
+called a **for loop**.  The full Python translation of the above
+would be::
+
+  for i in range(5):
+      Z[i] = i**2
+
+The ``range(5)`` is like running ``np.arange(5)``, which makes an
+order set of ints ``[0, 1, 2, 3, 4]``.  Python will assign ``i`` the
+first value in the list ``0``, then perform the indented commands
+(``Z[0] = 0**2``), then loop back to the ``for`` line and assign
+``i`` the next value ``1``, then perform the indented commands
+(``Z[1] = 1**2``), etc. until it is through its appointed values of
+``i``.  More is discussed about this in the next section, but it is
+the basis of extremely powerful and useful programming
+functionality.  
+
+The key part for the array in this is to store values, but the full
+array of correct type **must** be initialized before using the for
+loop.  ``np.zeros`` provides a useful way to initialize all values
+to a null value, so that one can see later if a mistake was made
+with counting/indexing, for example if the array is left with lots
+of zeros.
 
 Practice 1
-##########
+-------------
 
 #. Make the following arrays with NumPy functions:
 
