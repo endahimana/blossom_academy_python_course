@@ -354,7 +354,10 @@ in other cases.</p>
 </li>
 <li><p class="first">As a final example of NumPy functionality to make arrays, we discuss
 <code class="docutils literal"><span class="pre">np.zeros()</span></code>, which makes an array in any specified shape and
-whose elements are all zero (of a given type).</p>
+whose elements are all zero of a given type.  (We note that a
+similar function called <code class="docutils literal"><span class="pre">np.ones()</span></code> also exists, with all comments
+below applying; it initializes all values in an array to unity, and
+we will see uses for it later.)</p>
 <p>When creating a 1D array of zeros, the shape is just the length of
 the array:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>                  <span class="c1"># def: dtype=float</span>
@@ -425,21 +428,40 @@ example, we could reassign the elements in <code class="docutils literal"><span 
 </div>
 <p>Well, in such a case as this, why not just use <code class="docutils literal"><span class="pre">np.array()</span></code>?</p>
 <p>The reason would be that many times we do not just have unrelated
-numbers that we are putting in an array– <em>we have some kind of
+numbers that we are putting in an array– <em>there is some kind of
 system or rule for them</em>.  Consider values just assigned to
-<code class="docutils literal"><span class="pre">Z</span></code>. We can see a relation between index and the value, which we
+<code class="docutils literal"><span class="pre">Z</span></code>. We can see a relation between each index and value, which we
 could write mathematically as this:</p>
 <blockquote>
 <div><p><span class="math">\(\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.\)</span></p>
 </div></blockquote>
+<p>The first “rule” part of that can be expressed directly in
+programming-ese: <code class="docutils literal"><span class="pre">Z[i]</span> <span class="pre">=</span> <span class="pre">i**2</span></code>.  The second part just says to
+iterate through values of <code class="docutils literal"><span class="pre">i</span></code> in a specified range; that
+translates to a control statement in programming (appropriately)
+called a <strong>for loop</strong>.  The full Python translation of the above
+would be:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">range(5)</span></code> is like running <code class="docutils literal"><span class="pre">np.arange(5)</span></code>, which makes an
+order set of ints <code class="docutils literal"><span class="pre">[0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4]</span></code>.  Python will assign <code class="docutils literal"><span class="pre">i</span></code> the
+first value in the list <code class="docutils literal"><span class="pre">0</span></code>, then perform the indented commands
+(<code class="docutils literal"><span class="pre">Z[0]</span> <span class="pre">=</span> <span class="pre">0**2</span></code>), then loop back to the <code class="docutils literal"><span class="pre">for</span></code> line and assign
+<code class="docutils literal"><span class="pre">i</span></code> the next value <code class="docutils literal"><span class="pre">1</span></code>, then perform the indented commands
+(<code class="docutils literal"><span class="pre">Z[1]</span> <span class="pre">=</span> <span class="pre">1**2</span></code>), etc. until it is through its appointed values of
+<code class="docutils literal"><span class="pre">i</span></code>.  More is discussed about this in the next section, but it is
+the basis of extremely powerful and useful programming
+functionality.</p>
+<p>The key part for the array in this is to store values, but the full
+array of correct type <strong>must</strong> be initialized before using the for
+loop.  <code class="docutils literal"><span class="pre">np.zeros</span></code> provides a useful way to initialize all values
+to a null value, so that one can see later if a mistake was made
+with counting/indexing, for example if the array is left with lots
+of zeros.</p>
 </li>
 </ul>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 </div>
 <div class="section" id="practice-1">
 <h3><a class="toc-backref" href="#id3">Practice 1</a><a class="headerlink" href="#practice-1" title="Permalink to this headline">¶</a></h3>

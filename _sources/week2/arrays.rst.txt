@@ -302,7 +302,10 @@ which contains most of the functions we will use.
 
 * As a final example of NumPy functionality to make arrays, we discuss
   ``np.zeros()``, which makes an array in any specified shape and
-  whose elements are all zero (of a given type).
+  whose elements are all zero of a given type.  (We note that a
+  similar function called ``np.ones()`` also exists, with all comments
+  below applying; it initializes all values in an array to unity, and
+  we will see uses for it later.)
 
   When creating a 1D array of zeros, the shape is just the length of
   the array::
@@ -375,20 +378,39 @@ which contains most of the functions we will use.
   Well, in such a case as this, why not just use ``np.array()``?  
 
   The reason would be that many times we do not just have unrelated
-  numbers that we are putting in an array-- *we have some kind of
+  numbers that we are putting in an array-- *there is some kind of
   system or rule for them*.  Consider values just assigned to
-  ``Z``. We can see a relation between index and the value, which we
+  ``Z``. We can see a relation between each index and value, which we
   could write mathematically as this:
 
     :math:`\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.`
 
+  The first "rule" part of that can be expressed directly in
+  programming-ese: ``Z[i] = i**2``.  The second part just says to
+  iterate through values of ``i`` in a specified range; that
+  translates to a control statement in programming (appropriately)
+  called a **for loop**.  The full Python translation of the above
+  would be::
 
+    for i in range(5):
+        Z[i] = i**2
 
-|
+  The ``range(5)`` is like running ``np.arange(5)``, which makes an
+  order set of ints ``[0, 1, 2, 3, 4]``.  Python will assign ``i`` the
+  first value in the list ``0``, then perform the indented commands
+  (``Z[0] = 0**2``), then loop back to the ``for`` line and assign
+  ``i`` the next value ``1``, then perform the indented commands
+  (``Z[1] = 1**2``), etc. until it is through its appointed values of
+  ``i``.  More is discussed about this in the next section, but it is
+  the basis of extremely powerful and useful programming
+  functionality.  
 
-|
-
-
+  The key part for the array in this is to store values, but the full
+  array of correct type **must** be initialized before using the for
+  loop.  ``np.zeros`` provides a useful way to initialize all values
+  to a null value, so that one can see later if a mistake was made
+  with counting/indexing, for example if the array is left with lots
+  of zeros.
 
 Practice 1
 ##########
