@@ -252,8 +252,9 @@ make much use of this function (and of “len()”).</p>
 </div>
 <div class="section" id="practice-1">
 <h3><a class="toc-backref" href="#id3">Practice 1</a><a class="headerlink" href="#practice-1" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Make the following arrays with NumPy functions:<ol class="lowerroman">
+<ol class="arabic">
+<li><p class="first">Make the following arrays with NumPy functions:</p>
+<ol class="lowerroman simple">
 <li><span class="math">\(\displaystyle \textbf{v} = (-1.1, 5, 7.6)\)</span>.</li>
 <li><span class="math">\(\displaystyle \textbf{u} = (2, 4, 6)\)</span>.</li>
 <li><span class="math">\(\displaystyle \textbf{w} = (2+3i, -4-3i, 6)\)</span>.</li>
@@ -266,22 +267,50 @@ first row <code class="docutils literal"><span class="pre">True</span></code> an
 verify its dimensions.</li>
 <li>An array <code class="docutils literal"><span class="pre">A</span></code> of integers in the range <span class="math">\([0, 11]\)</span>.</li>
 <li>An array <code class="docutils literal"><span class="pre">xint</span></code> of integers in the range <span class="math">\([-15, 15]\)</span>.</li>
-<li>An array <code class="docutils literal"><span class="pre">t</span></code> of 81 evenly spaced values in the range
+<li>An array <code class="docutils literal"><span class="pre">xfl</span></code> of 81 evenly spaced values in the range
 <span class="math">\([0, 20]\)</span>.</li>
 </ol>
 </li>
-<li>Use <code class="docutils literal"><span class="pre">for</span></code> loops to make the following:<ol class="lowerroman">
-<li><span class="math">\(~\displaystyle x_i = i^2\)</span>, for <span class="math">\(~\displaystyle i
-= 0, ..., 10\)</span></li>
+<li><p class="first">Use <code class="docutils literal"><span class="pre">for</span></code> loops to make the following:</p>
+<ol class="lowerroman simple">
+<li><span class="math">\(~\displaystyle x_i = \log_{10}(i+1)\)</span>, for
+<span class="math">\(~\displaystyle i = 0, ..., 10\)</span></li>
 <li><span class="math">\(~\displaystyle y_n = \sqrt{4n}+1\)</span>, for
 <span class="math">\(~\displaystyle 0\leq n &lt; 17\)</span></li>
 <li><span class="math">\(~\displaystyle z_k = (3k + 4i)^3\)</span>, for
 <span class="math">\(~\displaystyle k \in [0, 20]\)</span>. Note that <code class="docutils literal"><span class="pre">i</span></code> in this
 expression is the imaginary number.</li>
+<li>Define an array <code class="docutils literal"><span class="pre">flip</span></code> as follows: <code class="docutils literal"><span class="pre">flip[i]</span></code> equals
+<span class="math">\(\displaystyle i^3\)</span> for even <code class="docutils literal"><span class="pre">i</span></code> and
+<span class="math">\(\displaystyle i^2\)</span> for odd <code class="docutils literal"><span class="pre">i</span></code>, over the
+interval <span class="math">\(~\displaystyle 0\leq i &lt; 20\)</span></li>
 <li>An array <code class="docutils literal"><span class="pre">zabs</span></code> whose values are the absolute values of <code class="docutils literal"><span class="pre">z</span></code>
 from the previous question.</li>
 <li><span class="math">\(~\displaystyle M_{i,j} = 30 - 6i - j\)</span>, for
 <span class="math">\(~\displaystyle i = 0, ..., 5;~ j = 0, ..., 4\)</span></li>
+</ol>
+</li>
+<li><p class="first">Use whatever seems best to make the following:</p>
+<ol class="lowerroman">
+<li><p class="first">An array <code class="docutils literal"><span class="pre">t</span></code> of <em>N = 25</em> evenly spaced values between [-10,
+10].</p>
+</li>
+<li><p class="first">Using the above result, <span class="math">\(~\displaystyle s_n = \sin(2\pi
+t_n)\)</span>, over the <code class="docutils literal"><span class="pre">len(t)</span></code> (i.e., over all the values in <code class="docutils literal"><span class="pre">t</span></code>).</p>
+</li>
+<li><p class="first">Make sure your code answering the first two parts makes it easy
+to adjust the number of elements in <code class="docutils literal"><span class="pre">t</span></code> and have the number of
+elements in <code class="docutils literal"><span class="pre">s</span></code> adjust automatically.  Plot the results from
+above using, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Does your result look like what is expected?  What happens as
+you increase <em>N</em>?</p>
+</li>
 </ol>
 </li>
 </ol>

@@ -222,13 +222,13 @@ Practice 1
 
    #. An array ``xint`` of integers in the range :math:`[-15, 15]`.
 
-   #. An array ``t`` of 81 evenly spaced values in the range
+   #. An array ``xfl`` of 81 evenly spaced values in the range
       :math:`[0, 20]`.
 
 #. Use ``for`` loops to make the following:
 
-   i. :math:`~\displaystyle x_i = i^2`, for :math:`~\displaystyle i
-      = 0, ..., 10`
+   i. :math:`~\displaystyle x_i = \log_{10}(i+1)`, for
+      :math:`~\displaystyle i = 0, ..., 10`
 
    #. :math:`~\displaystyle y_n = \sqrt{4n}+1`, for
       :math:`~\displaystyle 0\leq n < 17`
@@ -237,12 +237,37 @@ Practice 1
       :math:`~\displaystyle k \in [0, 20]`. Note that ``i`` in this
       expression is the imaginary number.
 
+   #. Define an array ``flip`` as follows: ``flip[i]`` equals
+      :math:`\displaystyle i^3` for even ``i`` and
+      :math:`\displaystyle i^2` for odd ``i``, over the
+      interval :math:`~\displaystyle 0\leq i < 20`
+
    #. An array ``zabs`` whose values are the absolute values of ``z``
       from the previous question.
 
    #. :math:`~\displaystyle M_{i,j} = 30 - 6i - j`, for
       :math:`~\displaystyle i = 0, ..., 5;~ j = 0, ..., 4`
 
+#. Use whatever seems best to make the following:
+
+   i. An array ``t`` of *N = 25* evenly spaced values between [-10,
+      10].
+
+   #. Using the above result, :math:`~\displaystyle s_n = \sin(2\pi
+      t_n)`, over the ``len(t)`` (i.e., over all the values in ``t``).
+
+   #. Make sure your code answering the first two parts makes it easy
+      to adjust the number of elements in ``t`` and have the number of
+      elements in ``s`` adjust automatically.  Plot the results from
+      above using, for example::
+
+        import matplotlib.pyplot as plt
+
+        plt.plot(t, s)
+        plt.show()
+
+      Does your result look like what is expected?  What happens as
+      you increase *N*?
 
 
 
