@@ -303,19 +303,24 @@ variable names, their values, their type and other properties.</p>
 </div>
 <div class="section" id="variable-names">
 <h2><a class="toc-backref" href="#id4">2.1.3. Variable names</a><a class="headerlink" href="#variable-names" title="Permalink to this headline">¶</a></h2>
-<p>There are some rules for variable names to keep in mind.  They must be
-made up only of <em>alphanumeric</em> characters, meaning:</p>
+<p>There are some rules for variable names to keep in mind:</p>
 <ul class="simple">
-<li>a-z</li>
-<li>A-Z</li>
-<li>0-9</li>
+<li>They must be made up only of <em>alphanumeric</em> characters (<code class="docutils literal"><span class="pre">a-z</span></code>,
+<code class="docutils literal"><span class="pre">A-Z</span></code>, <code class="docutils literal"><span class="pre">0-9</span></code>) and the underscore character <code class="docutils literal"><span class="pre">_</span></code>.</li>
+<li>The variable cannot <em>start</em> with a number, but the number may appear
+anywhere else.</li>
+<li><em>Un</em>usable characters: Special character such as <code class="docutils literal"><span class="pre">\,</span> <span class="pre">$,</span> <span class="pre">%,</span> <span class="pre">!,</span></code>
+etc. cannot* be used, nor can commas <code class="docutils literal"><span class="pre">,</span></code>, periods <code class="docutils literal"><span class="pre">.</span></code> or
+dashes <code class="docutils literal"><span class="pre">-</span></code>, as those all have special other meanings.  Spaces
+`` `` cannot be used, as those separate different words.</li>
+<li>A variable name <em>cannot</em> be a reserved word or a key word (such as
+<code class="docutils literal"><span class="pre">for</span></code>, <code class="docutils literal"><span class="pre">if</span></code>, <code class="docutils literal"><span class="pre">def</span></code>, etc.).  It also <em>should not</em> be word with
+special meaning (<code class="docutils literal"><span class="pre">int</span></code>, <code class="docutils literal"><span class="pre">True</span></code>, <code class="docutils literal"><span class="pre">type</span></code>, etc.) because the
+functionality of those original meanings should be maintained.</li>
+<li>Variables are case sensitive (indeed, all words in Python are).
+That is, Python distinguishes between upper and lower case, so that
+<code class="docutils literal"><span class="pre">Age</span></code>, <code class="docutils literal"><span class="pre">age</span></code> and <code class="docutils literal"><span class="pre">aGe</span></code> are three different variables.</li>
 </ul>
-<p>as well as the underscore “_”. The variable cannot <em>start</em> with a
-number, but the number may appear anywhere else.  Special character
-such as <code class="docutils literal"><span class="pre">\,</span> <span class="pre">$,</span> <span class="pre">%,</span> <span class="pre">!,</span></code> etc. can<em>not</em> be used, nor can commas <code class="docutils literal"><span class="pre">,</span></code>,
-periods <code class="docutils literal"><span class="pre">.</span></code> or dashes <code class="docutils literal"><span class="pre">-</span></code>, as those all have special other
-meanings.  Spaces `` `` cannot be used, as those separate different
-words.</p>
 <p>Please do remember to make meaningful variable names.  For example, we
 emphasize here translating mathematics/physics/etc. from paper
 calculations to programs.  Therefore, you should employ the same

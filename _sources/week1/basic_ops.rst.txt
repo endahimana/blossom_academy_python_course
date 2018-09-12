@@ -308,19 +308,27 @@ variable names, their values, their type and other properties.
 Variable names
 --------------
 
-There are some rules for variable names to keep in mind.  They must be
-made up only of *alphanumeric* characters, meaning:
+There are some rules for variable names to keep in mind:
 
-* a-z
-* A-Z
-* 0-9
+* They must be made up only of *alphanumeric* characters (``a-z``,
+  ``A-Z``, ``0-9``) and the underscore character ``_``.
 
-as well as the underscore "_". The variable cannot *start* with a
-number, but the number may appear anywhere else.  Special character
-such as ``\, $, %, !,`` etc. can\ *not* be used, nor can commas ``,``,
-periods ``.`` or dashes ``-``, as those all have special other
-meanings.  Spaces `` `` cannot be used, as those separate different
-words.
+* The variable cannot *start* with a number, but the number may appear
+  anywhere else.
+
+* *Un*\usable characters: Special character such as ``\, $, %, !,``
+  etc. can\ not* be used, nor can commas ``,``, periods ``.`` or
+  dashes ``-``, as those all have special other meanings.  Spaces 
+  `` `` cannot be used, as those separate different words.
+
+* A variable name *cannot* be a reserved word or a key word (such as
+  ``for``, ``if``, ``def``, etc.).  It also *should not* be word with
+  special meaning (``int``, ``True``, ``type``, etc.) because the
+  functionality of those original meanings should be maintained.
+
+* Variables are case sensitive (indeed, all words in Python are).
+  That is, Python distinguishes between upper and lower case, so that
+  ``Age``, ``age`` and ``aGe`` are three different variables.
 
 Please do remember to make meaningful variable names.  For example, we
 emphasize here translating mathematics/physics/etc. from paper
