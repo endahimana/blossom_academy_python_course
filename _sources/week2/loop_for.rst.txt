@@ -1,0 +1,17 @@
+:tocdepth: 2
+
+.. _week2_loop_for:
+
+Loops:  **for**
+================
+
+.. contents:: :local:
+
+.. highlight:: python
+
+
+
+No notes on this here (yet), but
+
+you can download :download:`this PDF of practice questions
+<media/prac_prob_01.pdf>`.
