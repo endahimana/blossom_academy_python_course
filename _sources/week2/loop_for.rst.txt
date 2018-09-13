@@ -15,3 +15,31 @@ No notes on this here (yet), but
 
 you can download :download:`this PDF of practice questions
 <media/prac_prob_01.pdf>`.
+
+
+
+Practice (various topics)
+-------------------------
+
+1. How many four-digit numbers are divisible by both 3 and 7?
+
+#. Across *all* numbers, what is the 1000th number divisible by both 3
+   and 7?
+
+#. Write a code block that prints all the factors of a positive integer.
+
+
+
+Write a function to do each of the following:
+
+3. Print "Nanga def?"
+
+#. Calculate the geometric area of a rectangle from an input length and
+   width.
+
+#. Have the user input two numbers, an "x" value, and a "sigma" value
+   (whose default is 1).  Calculate the value G(x, sigma), where G is
+   Gaussian function.
+
+#. Output +1 if an input number is even, -1 one if it is odd,
+   0 if it is zero, and -7 if the number is not an int.
