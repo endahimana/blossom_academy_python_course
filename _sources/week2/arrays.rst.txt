@@ -17,6 +17,15 @@ Translating Vectors and Matrices to Arrays
    note that at the moment we are ignoring differences between row/col
    matrices?
 
+   - maybe for a "more about arrays" page
+     include points about copying arrays: 
+     good because it ties in with how data is stored on the disk
+     ---> np.copy() for arrays
+     ---> in later conversation about other types, like list, etc., can mention
+          copy.deepcopy()
+   - slices, have start:stop:step notation
+   
+
 Up to this point, we have discussed storing one value at a time in a
 variable, translating scalar quantities to computational types like
 int, float, bool and complex.  What about when we have algebraic
