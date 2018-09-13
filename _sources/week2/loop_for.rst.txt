@@ -21,7 +21,18 @@ you can download :download:`this PDF of practice questions
 Practice (various topics)
 -------------------------
 
-1. How many four-digit numbers are divisible by both 3 and 7?
+1. Make an array whose values are :math:`P = \cos(3\pi t)`, for
+   :math:`t \in [-5,5]`. Also make an array whose values are :math:`Q =
+   \sin(5.5\pi t)`, for :math:`t \in [-5,5]`.
+
+   Plot:  P vs t and Q vs t on the same graph.
+
+   Plot:  on a separate graph, P vs Q.
+
+#. Make a list of your name, the name of the person to your left and
+   right, and then sort the list alphabetically.
+
+#. How many four-digit numbers are divisible by both 3 and 7?
 
 #. Across *all* numbers, what is the 1000th number divisible by both 3
    and 7 but not 21 or 9?
