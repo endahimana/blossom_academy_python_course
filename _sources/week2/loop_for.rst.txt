@@ -35,7 +35,7 @@ Practice (various topics)
 #. How many four-digit numbers are divisible by both 3 and 7?
 
 #. Across *all* numbers, what is the 1000th number divisible by both 3
-   and 7 but not 21 or 9?
+   and 7 but not by either 14 or 9?
 
 #. Write a code block that prints all the factors of a positive integer.
 
