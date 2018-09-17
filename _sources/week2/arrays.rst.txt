@@ -111,6 +111,9 @@ differences.  And, importantly, much of the *mathematics* for
 computing with vectors will also translate directly into programs, as
 well.
 
+
+.. _week2_arrays_creating:
+
 Creating arrays
 ---------------
 
@@ -315,8 +318,8 @@ elements.
   check this in this instance, and decided on preferred properties
   in other cases.
 
-``np.zeros``: Initialize arrays with zeros
-##########################################
+``np.zeros`` (and ``np.ones``): Initialize arrays with zeros (or ones)
+######################################################################
 
 As a final example of NumPy functionality to make arrays, we discuss
 ``np.zeros()``, which makes an array in any specified shape and
@@ -337,6 +340,8 @@ which respectively yield::
   [ 0.  0.  0.  0.  0.]
   [False False False False]
   [ 0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j  0.+0.j]
+
+Such arrays of zeros are often referred to as **empty arrays**.
 
 In specifying a multidimensional array, the shape is a collection of
 numbers, and as noted above, we can group them in parentheses to
@@ -382,10 +387,13 @@ yields::
   [[0 0 0]
    [0 0 0]]]
 
-Why would we want an array of all zeros?  Well, it provides us an
-easy approach for initializing an array of arbitrary size quickly.
-We can then go through and reassign the values that we want. For
-example, we could reassign the elements in ``Z``::
+Generalizing: arrays with formulas (intro)
+######################################################################
+
+Why would we want an "empty array" of all zeros?  Well, it provides us
+an easy approach for initializing an array of arbitrary size quickly.
+We can then go through and reassign the values that we want ("filling"
+the array). For example, we could reassign the elements in ``Z``::
 
   Z[0] = 0
   Z[1] = 1
@@ -401,7 +409,7 @@ system or rule for them*.  Consider values just assigned to
 ``Z``. We can see a relation between each index and value, which we
 could write mathematically as this:
 
-  :math:`\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.`
+  :math:`\displaystyle Z_i = i^2, ~~{\rm for}~0 \leq i < 5.`
 
 The first "rule" part of that can be expressed directly in
 programming-ese: ``Z[i] = i**2``.  The second part just says to
@@ -461,7 +469,7 @@ Practice 1
 #. Use ``for`` loops to make the following:
 
    i. :math:`~\displaystyle x_i = \log_{10}(i+1)`, for
-      :math:`~\displaystyle i = 0, ..., 10`
+      :math:`~\displaystyle 0 \leq i < 11`
 
    #. :math:`~\displaystyle y_n = \sqrt{4n}+1`, for
       :math:`~\displaystyle 0\leq n < 17`
@@ -479,7 +487,7 @@ Practice 1
       from the previous question.
 
    #. :math:`~\displaystyle M_{i,j} = 30 - 6i - j`, for
-      :math:`~\displaystyle i = 0, ..., 5;~ j = 0, ..., 4`
+      :math:`~\displaystyle 0 \leq i < 6;~ 0 \leq j < 5`
 
 #. Use whatever seems best to make the following:
 

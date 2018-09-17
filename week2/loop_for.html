@@ -62,13 +62,124 @@
 <span id="week2-loop-for"></span><h1>3.2. Loops:  <strong>for</strong><a class="headerlink" href="#loops-for" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#practice-various-topics" id="id1">Practice (various topics)</a></li>
+<li><a class="reference internal" href="#for-basic-syntax-and-repetition" id="id1"><code class="docutils literal"><span class="pre">for</span></code>: basic syntax and repetition</a></li>
+<li><a class="reference internal" href="#for-combined-with-arrays" id="id2"><code class="docutils literal"><span class="pre">for</span></code>: combined with arrays</a></li>
+<li><a class="reference internal" href="#practice-various-topics" id="id3">Practice (various topics)</a></li>
 </ul>
 </div>
-<p>No notes on this here (yet), but</p>
-<p>you can download <a class="reference download internal" href="../_downloads/prac_prob_01.pdf" download=""><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">PDF</span> <span class="pre">of</span> <span class="pre">practice</span> <span class="pre">questions</span></code></a>.</p>
+<p>We noted earlier how Python will generally interpret a script file: it
+starts and the top and moves downward, executing each line of commands
+one time.  We also saw one way we could affect this, <a class="reference internal" href="../week1/boolean_if.html#week1-boolean-if"><span class="std std-ref">using the
+if/elif/else conditionals</span></a> to control this a bit:
+we could direct the interpreter to execute some commands <em>only if</em>
+some condition(s) were true and skip others, etc.  Even in that case,
+however, each set of commands in a conditional branch were only
+executed once.  In the present section, we introduce a control
+statement to repeatedly execute a set of commands, tell Python to
+“loop” back through a set of lines repeatedly, using a <strong>for loop</strong>.</p>
+<div class="section" id="for-basic-syntax-and-repetition">
+<h2><a class="toc-backref" href="#id1">3.2.1. <code class="docutils literal"><span class="pre">for</span></code>: basic syntax and repetition</a><a class="headerlink" href="#for-basic-syntax-and-repetition" title="Permalink to this headline">¶</a></h2>
+<p>The primary purpose of the <code class="docutils literal"><span class="pre">for</span></code> loop is to allow us to repeat a set
+of commands a specific number of times.  The most basic syntax to
+iterate through a set of commands, say, 4 times is:</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="o">&lt;</span><span class="nb">set</span> <span class="n">of</span> <span class="n">some</span> <span class="n">commands</span><span class="o">&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>In this case, Python will use <code class="docutils literal"><span class="pre">range</span></code> to make a list of integers in
+the interval [0, 4), and then <code class="docutils literal"><span class="pre">i</span></code> will take the value of the first
+element of that list, <code class="docutils literal"><span class="pre">0</span></code>; then the <code class="docutils literal"><span class="pre">set</span> <span class="pre">of</span> <span class="pre">commands</span></code> will be
+executed, but instead of continuing to line 3, the interpreter “loops
+back” to line 1, and <code class="docutils literal"><span class="pre">i</span></code> is assigned the next value in the list, <code class="docutils literal"><span class="pre">;</span>
+<span class="pre">then</span> <span class="pre">the</span> <span class="pre">``set</span> <span class="pre">of</span> <span class="pre">commands</span></code> is executed, etc. until <code class="docutils literal"><span class="pre">i</span></code> has been
+given each value in the list.  Since there are 4 elements in the list,
+the set of commands are executed 4 times in total here.  Here, <code class="docutils literal"><span class="pre">i</span></code>
+is called the <strong>index</strong> of the loop.</p>
+<p>Note the similar syntax to other Python control statements: the
+initial line ends with a colon <code class="docutils literal"><span class="pre">:</span></code>.  The lines controlled by the
+<code class="docutils literal"><span class="pre">for</span></code> all follow and are indented equal amounts (they are “inside
+the loop”; when the indentation stops, so does the list of commands
+(those are “outside the loop”).  For example, consider</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am inside the loop :)&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am also in the loop ;)&quot;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am outside :(&quot;</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+<p>which produces:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">am</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">:)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">also</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">;)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">:)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">also</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">;)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">:)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">also</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">;)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">:)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">also</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">loop</span> <span class="p">;)</span>
+<span class="n">I</span> <span class="n">am</span> <span class="n">outside</span> <span class="p">:(</span>
+</pre></div>
+</div>
+<p>It is important to note that each time we are executed, <code class="docutils literal"><span class="pre">i</span></code> takes a
+new value from its designated interval: line 1 (<code class="docutils literal"><span class="pre">i=0</span></code>), line 2, line
+3, line 1 (<code class="docutils literal"><span class="pre">i=1</span></code>), line 2, line 3, line 1 (<code class="docutils literal"><span class="pre">i=2</span></code>), … After four
+repetitions, Python exits the loop, and line 4 is executed; <code class="docutils literal"><span class="pre">i</span></code>
+retains its final value.  We can see all these aspects by
+considering:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;The value of i is:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;The *final* value i is:&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which produces:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">i</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">i</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">i</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">The</span> <span class="n">value</span> <span class="n">of</span> <span class="n">i</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">The</span> <span class="o">*</span><span class="n">final</span><span class="o">*</span> <span class="n">value</span> <span class="n">i</span> <span class="ow">is</span><span class="p">:</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-combined-with-arrays">
+<h2><a class="toc-backref" href="#id2">3.2.2. <code class="docutils literal"><span class="pre">for</span></code>: combined with arrays</a><a class="headerlink" href="#for-combined-with-arrays" title="Permalink to this headline">¶</a></h2>
+<p>One of the deepest utilities of the <code class="docutils literal"><span class="pre">for</span></code> loop comes when it is
+combined with arrays.  Why is that?  Consider the following:</p>
+<ul class="simple">
+<li>In an array of length <em>N</em>, what are the values of the indices across
+all its elements?</li>
+<li>In a <code class="docutils literal"><span class="pre">for</span></code> loop specified as <code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(N):</span></code>, what are the
+values that <code class="docutils literal"><span class="pre">i</span></code> takes across all repetitions?</li>
+</ul>
+<p><strong>The answer to both questions is</strong> <span class="math">\(\displaystyle 0 \leq i &lt;
+N\)</span>.</p>
+<p>We can now think back to the <a class="reference internal" href="arrays.html#week2-arrays-creating"><span class="std std-ref">discussion of putting values into
+arrays</span></a>.  If we have a single rule for putting
+values at each index in an array, then we can use a for loop to repeat
+that rule for all elements, with the added bonus that the loop index
+can be used in the formula, if needed, as well.</p>
+<p>Consider for example, wanting to make values</p>
+<blockquote>
+<div><span class="math">\(\displaystyle b_i = 3i^2 - 4i +2,~~{\rm for}~~ 0\leq i &lt; 8.\)</span></div></blockquote>
+<p>(note that <em>i</em> is an index here, not the imaginary number).  Well, we
+can translate each <span class="math">\(\displaystyle b_i \rightarrow \texttt{b[i]\)</span>,
+elements in a matrix; we know how many there are, so we initialize an
+“empty” array of zeros of that size; and then we can apply the
+specified rule <strong>for</strong> each element in <code class="docutils literal"><span class="pre">b</span></code>, i.e., use a for
+loop. Therefore the above mathematical sequence would be stored in an
+array using:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Note how similar the mathematical formula and the programmed version
+are!</p>
+<p><strong>more to come…</strong></p>
+</div>
 <div class="section" id="practice-various-topics">
-<h2><a class="toc-backref" href="#id1">3.2.1. Practice (various topics)</a><a class="headerlink" href="#practice-various-topics" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">3.2.3. Practice (various topics)</a><a class="headerlink" href="#practice-various-topics" title="Permalink to this headline">¶</a></h2>
+<p>Firstly, you can download <a class="reference download internal" href="../_downloads/prac_prob_01.pdf" download=""><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">PDF</span> <span class="pre">of</span> <span class="pre">practice</span> <span class="pre">questions</span></code></a>.</p>
 <ol class="arabic">
 <li><p class="first">Make an array whose values are <span class="math">\(P = \cos(3\pi t)\)</span>, for
 <span class="math">\(t \in [-5,5]\)</span>. Also make an array whose values are <span class="math">\(Q =
@@ -124,7 +235,9 @@ Gaussian function.</li>
 <li class="toctree-l1 current"><a class="reference internal" href="main_toc.html">3. Week 2</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="arrays.html">3.1. Arrays</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. Loops:  <strong>for</strong></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#practice-various-topics">3.2.1. Practice (various topics)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-basic-syntax-and-repetition">3.2.1. <code class="docutils literal"><span class="pre">for</span></code>: basic syntax and repetition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-combined-with-arrays">3.2.2. <code class="docutils literal"><span class="pre">for</span></code>: combined with arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practice-various-topics">3.2.3. Practice (various topics)</a></li>
 </ul>
 </li>
 </ul>

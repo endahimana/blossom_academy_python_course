@@ -70,10 +70,11 @@
 <li><a class="reference internal" href="#creating-arrays" id="id2">Creating arrays</a><ul>
 <li><a class="reference internal" href="#np-array-arrays-with-all-known-values" id="id3"><code class="docutils literal"><span class="pre">np.array</span></code>: Arrays with all known values</a></li>
 <li><a class="reference internal" href="#np-arange-and-np-linspace-evenly-spaced-arrays" id="id4"><code class="docutils literal"><span class="pre">np.arange</span></code> and <code class="docutils literal"><span class="pre">np.linspace</span></code>: Evenly spaced arrays</a></li>
-<li><a class="reference internal" href="#np-zeros-initialize-arrays-with-zeros" id="id5"><code class="docutils literal"><span class="pre">np.zeros</span></code>: Initialize arrays with zeros</a></li>
+<li><a class="reference internal" href="#np-zeros-and-np-ones-initialize-arrays-with-zeros-or-ones" id="id5"><code class="docutils literal"><span class="pre">np.zeros</span></code> (and <code class="docutils literal"><span class="pre">np.ones</span></code>): Initialize arrays with zeros (or ones)</a></li>
+<li><a class="reference internal" href="#generalizing-arrays-with-formulas-intro" id="id6">Generalizing: arrays with formulas (intro)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#practice-1" id="id6">Practice 1</a></li>
+<li><a class="reference internal" href="#practice-1" id="id7">Practice 1</a></li>
 </ul>
 </div>
 <div class="section" id="translating-vectors-and-matrices-to-arrays">
@@ -170,7 +171,7 @@ computing with vectors will also translate directly into programs, as
 well.</p>
 </div>
 <div class="section" id="creating-arrays">
-<h2><a class="toc-backref" href="#id2">3.1.2. Creating arrays</a><a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
+<span id="week2-arrays-creating"></span><h2><a class="toc-backref" href="#id2">3.1.2. Creating arrays</a><a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
 <p>There are many ways to assign values to arrays in Python.  In each
 case, when we create an array we need its define:</p>
 <ol class="arabic simple">
@@ -363,8 +364,8 @@ in other cases.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="np-zeros-initialize-arrays-with-zeros">
-<h3><a class="toc-backref" href="#id5"><code class="docutils literal"><span class="pre">np.zeros</span></code>: Initialize arrays with zeros</a><a class="headerlink" href="#np-zeros-initialize-arrays-with-zeros" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="np-zeros-and-np-ones-initialize-arrays-with-zeros-or-ones">
+<h3><a class="toc-backref" href="#id5"><code class="docutils literal"><span class="pre">np.zeros</span></code> (and <code class="docutils literal"><span class="pre">np.ones</span></code>): Initialize arrays with zeros (or ones)</a><a class="headerlink" href="#np-zeros-and-np-ones-initialize-arrays-with-zeros-or-ones" title="Permalink to this headline">¶</a></h3>
 <p>As a final example of NumPy functionality to make arrays, we discuss
 <code class="docutils literal"><span class="pre">np.zeros()</span></code>, which makes an array in any specified shape and
 whose elements are all zero of a given type.  (We note that a
@@ -384,6 +385,7 @@ the array:</p>
 <span class="p">[</span> <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span>  <span class="mf">0.</span><span class="o">+</span><span class="mf">0.j</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Such arrays of zeros are often referred to as <strong>empty arrays</strong>.</p>
 <p>In specifying a multidimensional array, the shape is a collection of
 numbers, and as noted above, we can group them in parentheses to
 pass them as a single argument:</p>
@@ -428,10 +430,13 @@ they get displayed to the user as 2D “slices” of the full array:</p>
  <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]]]</span>
 </pre></div>
 </div>
-<p>Why would we want an array of all zeros?  Well, it provides us an
-easy approach for initializing an array of arbitrary size quickly.
-We can then go through and reassign the values that we want. For
-example, we could reassign the elements in <code class="docutils literal"><span class="pre">Z</span></code>:</p>
+</div>
+<div class="section" id="generalizing-arrays-with-formulas-intro">
+<h3><a class="toc-backref" href="#id6">Generalizing: arrays with formulas (intro)</a><a class="headerlink" href="#generalizing-arrays-with-formulas-intro" title="Permalink to this headline">¶</a></h3>
+<p>Why would we want an “empty array” of all zeros?  Well, it provides us
+an easy approach for initializing an array of arbitrary size quickly.
+We can then go through and reassign the values that we want (“filling”
+the array). For example, we could reassign the elements in <code class="docutils literal"><span class="pre">Z</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">Z</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">Z</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
@@ -446,7 +451,7 @@ system or rule for them</em>.  Consider values just assigned to
 <code class="docutils literal"><span class="pre">Z</span></code>. We can see a relation between each index and value, which we
 could write mathematically as this:</p>
 <blockquote>
-<div><span class="math">\(\displaystyle Z_i = i^2, ~~{\rm for}~i=0,\dots,4.\)</span></div></blockquote>
+<div><span class="math">\(\displaystyle Z_i = i^2, ~~{\rm for}~0 \leq i &lt; 5.\)</span></div></blockquote>
 <p>The first “rule” part of that can be expressed directly in
 programming-ese: <code class="docutils literal"><span class="pre">Z[i]</span> <span class="pre">=</span> <span class="pre">i**2</span></code>.  The second part just says to
 iterate through values of <code class="docutils literal"><span class="pre">i</span></code> in a specified range; that
@@ -475,7 +480,7 @@ of zeros.</p>
 </div>
 </div>
 <div class="section" id="practice-1">
-<h2><a class="toc-backref" href="#id6">3.1.3. Practice 1</a><a class="headerlink" href="#practice-1" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">3.1.3. Practice 1</a><a class="headerlink" href="#practice-1" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">Make the following arrays with NumPy functions:</p>
 <ol class="lowerroman simple">
@@ -498,7 +503,7 @@ verify its dimensions.</li>
 <li><p class="first">Use <code class="docutils literal"><span class="pre">for</span></code> loops to make the following:</p>
 <ol class="lowerroman simple">
 <li><span class="math">\(~\displaystyle x_i = \log_{10}(i+1)\)</span>, for
-<span class="math">\(~\displaystyle i = 0, ..., 10\)</span></li>
+<span class="math">\(~\displaystyle 0 \leq i &lt; 11\)</span></li>
 <li><span class="math">\(~\displaystyle y_n = \sqrt{4n}+1\)</span>, for
 <span class="math">\(~\displaystyle 0\leq n &lt; 17\)</span></li>
 <li><span class="math">\(~\displaystyle z_k = (3k + 4i)^3\)</span>, for
@@ -511,7 +516,7 @@ interval <span class="math">\(~\displaystyle 0\leq i &lt; 20\)</span></li>
 <li>An array <code class="docutils literal"><span class="pre">zabs</span></code> whose values are the absolute values of <code class="docutils literal"><span class="pre">z</span></code>
 from the previous question.</li>
 <li><span class="math">\(~\displaystyle M_{i,j} = 30 - 6i - j\)</span>, for
-<span class="math">\(~\displaystyle i = 0, ..., 5;~ j = 0, ..., 4\)</span></li>
+<span class="math">\(~\displaystyle 0 \leq i &lt; 6;~ 0 \leq j &lt; 5\)</span></li>
 </ol>
 </li>
 <li><p class="first">Use whatever seems best to make the following:</p>
@@ -558,7 +563,8 @@ you increase <em>N</em>?</p>
 <li class="toctree-l3"><a class="reference internal" href="#creating-arrays">3.1.2. Creating arrays</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#np-array-arrays-with-all-known-values"><code class="docutils literal"><span class="pre">np.array</span></code>: Arrays with all known values</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#np-arange-and-np-linspace-evenly-spaced-arrays"><code class="docutils literal"><span class="pre">np.arange</span></code> and <code class="docutils literal"><span class="pre">np.linspace</span></code>: Evenly spaced arrays</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#np-zeros-initialize-arrays-with-zeros"><code class="docutils literal"><span class="pre">np.zeros</span></code>: Initialize arrays with zeros</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#np-zeros-and-np-ones-initialize-arrays-with-zeros-or-ones"><code class="docutils literal"><span class="pre">np.zeros</span></code> (and <code class="docutils literal"><span class="pre">np.ones</span></code>): Initialize arrays with zeros (or ones)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generalizing-arrays-with-formulas-intro">Generalizing: arrays with formulas (intro)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#practice-1">3.1.3. Practice 1</a></li>
