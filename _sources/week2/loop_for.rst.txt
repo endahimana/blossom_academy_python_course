@@ -114,7 +114,7 @@ Consider for example, wanting to make values
    :math:`\displaystyle b_i = 3i^2 - 4i +2,~~{\rm for}~~ 0\leq i < 8.`
 
 (note that *i* is an index here, not the imaginary number).  Well, we
-can translate each :math:`\displaystyle b_i \rightarrow \texttt{b[i]`,
+can translate each :math:`\displaystyle b_i \rightarrow \texttt{b[i]}`,
 elements in a matrix; we know how many there are, so we initialize an
 "empty" array of zeros of that size; and then we can apply the
 specified rule **for** each element in ``b``, i.e., use a for
@@ -149,8 +149,9 @@ Firstly, you can download :download:`this PDF of practice questions
 
 #. How many four-digit numbers are divisible by both 3 and 7?
 
-#. Across *all* numbers, what is the 1000th number divisible by both 3
-   and 7 but not by either 14 or 9?
+#. Across *all* positive integers, what is the 1000th number divisible
+   by both 3 and 7 but not by either 14 or 9 (e.g., 21 would be
+   counted, but not 42)?
 
 #. Write a code block that prints all the factors of a positive integer.
 
