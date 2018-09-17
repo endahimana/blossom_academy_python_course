@@ -25,23 +25,24 @@ statement to repeatedly execute a set of commands, tell Python to
 
 The primary purpose of the ``for`` loop is to allow us to repeat a set
 of commands a specific number of times.  The most basic syntax to
-iterate through a set of commands, say, 4 times is:
+iterate through some commands, say, 4 times is:
 
 .. code-block:: python
    :linenos:
 
    for i in range(4):
-       <set of some commands>
+       <some commands>
+   <other commands>
 
 In this case, Python will use ``range`` to make a list of integers in
 the interval [0, 4), and then ``i`` will take the value of the first
-element of that list, ``0``; then the ``set of commands`` will be
-executed, but instead of continuing to line 3, the interpreter "loops
-back" to line 1, and ``i`` is assigned the next value in the list, ``;
-then the ``set of commands`` is executed, etc. until ``i`` has been
-given each value in the list.  Since there are 4 elements in the list,
-the set of commands are executed 4 times in total here.  Here, ``i``
-is called the **index** of the loop.
+element of that list, ``0``; then the set of ``some commands`` will be
+executed, but instead of continuing to ``other commands``, the
+interpreter "loops back" to line 1, and ``i`` is assigned the next
+value in the list; then ``some commands`` are executed, etc. until
+``i`` has been given each value in the list.  Since there are 4
+elements in the list, the set of commands are executed 4 times in
+total here.  Here, ``i`` is called the **index** of the loop.
 
 Note the similar syntax to other Python control statements: the
 initial line ends with a colon ``:``.  The lines controlled by the
@@ -111,21 +112,48 @@ can be used in the formula, if needed, as well.
 
 Consider for example, wanting to make values 
 
-   :math:`\displaystyle b_i = 3i^2 - 4i +2,~~{\rm for}~~ 0\leq i < 8.`
+   :math:`\displaystyle b_i = 3i^2 - 4i + 2,~~{\rm for}~~ 0\leq i < 8.`
 
 (note that *i* is an index here, not the imaginary number).  Well, we
-can translate each :math:`\displaystyle b_i \rightarrow \texttt{b[i]}`,
-elements in a matrix; we know how many there are, so we initialize an
-"empty" array of zeros of that size; and then we can apply the
-specified rule **for** each element in ``b``, i.e., use a for
-loop. Therefore the above mathematical sequence would be stored in an
-array using::
+can translate each of the pieces as follows:
+
+  .. list-table::
+     :header-rows: 1
+     :widths: 25 5 30
+
+     * - Math name 
+       - :math:`\rightarrow`
+       - Comp name
+     * - :math:`\displaystyle b_i`
+       - :math:`\rightarrow`
+       - ``b[i]``
+     * - :math:`\displaystyle 3i^2 - 4i + 2`
+       - :math:`\rightarrow`
+       - ``3*i**2 - 4*i + 2``
+     * - :math:`\displaystyle {\rm for}~~ 0\leq i < 8`
+       - :math:`\rightarrow`
+       - ``for i in range(8)``
+
+We know how many elements there are, and we can apply the specified
+rule **for** each element in ``b``, i.e., use a for loop. Therefore
+the above mathematical sequence would be stored in an array using::
 
   for i in range(8):
       b[i] = 3*i**2 - 4*i + 2
 
-Note how similar the mathematical formula and the programmed version
-are!
+*Note how similar the mathematical formula and the programmed version
+are!* In actual fact, when implementing in Python we also have one
+additional step to do, namely *initializing* the array.  We can make
+an "empty" array of zeros, and also define a single variable *N* to
+refer to the size/length in the several places it is used::
+
+  N = 8
+  b = np.zeros(N)
+
+  for i in range(N):
+      b[i] = 3*i**2 - 4*i + 2
+
+
 
 **more to come...**
 
