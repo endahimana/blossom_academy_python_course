@@ -1,7 +1,7 @@
 :tocdepth: 2
 
 .. _week3_importing:
-
+ 
 Making and importing our own modules
 ===================================================
 
