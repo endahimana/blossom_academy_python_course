@@ -14,6 +14,7 @@ Welcome to AIMS Python's documentation!
    introduction/main_toc
    week1/main_toc
    week2/main_toc
+   week3/main_toc
 
 |
 

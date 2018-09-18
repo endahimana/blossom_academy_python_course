@@ -230,6 +230,8 @@ here, ``(2, 2)``-- as a single object.  As knowing the shape of an
 array is a key part of using it, we will make much use of this
 function (and of "len()", which always returns a single value int).
 
+.. _week2_arrays_arange_linspace:
+
 ``np.arange`` and ``np.linspace``: Evenly spaced arrays
 #######################################################
 
