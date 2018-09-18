@@ -30,6 +30,7 @@
     <script type="text/javascript" src="../_static/cloud.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Week 3" href="../week3/main_toc.html" />
     <link rel="prev" title="3.1. Arrays" href="arrays.html" /> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -42,6 +43,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../week3/main_toc.html" title="4. Week 3"
+             accesskey="N">next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="arrays.html" title="3.1. Arrays"
              accesskey="P">previous</a> &nbsp; &nbsp;</li>
@@ -64,8 +68,9 @@
 <ul class="simple">
 <li><a class="reference internal" href="#for-basic-syntax-and-repetition" id="id1"><code class="docutils literal"><span class="pre">for</span></code>: basic syntax and repetition</a></li>
 <li><a class="reference internal" href="#for-with-arrays" id="id2"><code class="docutils literal"><span class="pre">for</span></code>: with arrays</a></li>
-<li><a class="reference internal" href="#for-more-range-syntax" id="id3"><code class="docutils literal"><span class="pre">for</span></code>: more range syntax</a></li>
-<li><a class="reference internal" href="#practice-various-topics" id="id4">Practice (various topics)</a></li>
+<li><a class="reference internal" href="#for-more-with-arrays" id="id3"><code class="docutils literal"><span class="pre">for</span></code>: more with arrays</a></li>
+<li><a class="reference internal" href="#for-more-range-syntax" id="id4"><code class="docutils literal"><span class="pre">for</span></code>: more range syntax</a></li>
+<li><a class="reference internal" href="#practice-various-topics" id="id5">Practice (various topics)</a></li>
 </ul>
 </div>
 <p>We noted earlier how Python will generally interpret a script file: it
@@ -236,8 +241,100 @@ values with a formula based on index, relatable to one and even with
 other types of formulas, a “for” loop is likely to be the best thing
 to implement.</p>
 </div>
+<div class="section" id="for-more-with-arrays">
+<h2><a class="toc-backref" href="#id3">3.2.3. <code class="docutils literal"><span class="pre">for</span></code>: more with arrays</a><a class="headerlink" href="#for-more-with-arrays" title="Permalink to this headline">¶</a></h2>
+<p>This convenient pairing of arrays with for loops applies generally to
+arrays of any size/shape.  Consider a 2D matrix <strong>M</strong> with 3 rows and
+5 columns; it is made up of elements <span class="math">\(\displaystyle M_{i,j} ~~
+{\rm for}~~ 0\leq i &lt; 3, ~0\leq j &lt; 5\)</span>.  Well, if we want to go
+through each <em>row</em>, we can generate those indices with <code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span>
+<span class="pre">range(3):</span></code>.  And if we want to go through each <em>column</em>, we can
+generate those indices with <code class="docutils literal"><span class="pre">for</span> <span class="pre">j</span> <span class="pre">in</span> <span class="pre">range(5):</span></code>.  However, if we
+just code something like:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i =&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;j =&quot;</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>then we will just see the 3 row indices and 5 column indices.  We want
+the full, <span class="math">\(\displaystyle 3 \times 5 = 15\)</span> <em>pairs</em> of indices,
+like <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">0)</span></code>, <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">1)</span></code>, <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">2)</span></code>, etc.  That is, we want to
+loop through each row index and <em>for each</em> row, generate <em>each</em> of the
+column indices. This is done by putting one <code class="docutils literal"><span class="pre">for</span></code> loop inside of the
+other, as</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;i, j =&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Placing one “for” loop inside another is called a <strong>nested “for”
+loop</strong>, and the above prints out the fifteen pairs of indices that
+would be each of <span class="math">\(\displaystyle M_{i,j}\)</span>‘s values:</p>
+<blockquote>
+<div><div class="highlight-none"><div class="highlight"><pre><span></span>i, j = 0 0
+i, j = 0 1
+i, j = 0 2
+i, j = 0 3
+i, j = 0 4
+i, j = 1 0
+i, j = 1 1
+i, j = 1 2
+    ...
+</pre></div>
+</div>
+</div></blockquote>
+<p>etc.  Now that we know how to use nested “for” loops to generate the
+indices, we could use these to assign values to each matrix element
+according to some rule, such as</p>
+<blockquote>
+<div><span class="math">\(\displaystyle M_{i,j} = 5i + j, ~~{\rm for}~~ 0\leq i &lt; 3,
+~0\leq j &lt; 5\)</span>,</div></blockquote>
+<p>which can be translated to:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>  <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span>
+<span class="k">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>producing:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mi">0</span>   <span class="mi">1</span>   <span class="mi">2</span>   <span class="mi">3</span>   <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>While that shows the close relation to the mathematical form,
+programmatically we might prefer to write it in a more generalizable
+manner:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Nrow</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Ncol</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">Nrow</span><span class="p">,</span> <span class="n">Ncol</span><span class="p">),</span>  <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Nrow</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ncol</span><span class="p">):</span>
+        <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Ncol</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>In this way, we only have to set the “shape” variables once.  If we
+want a larger/smaller matrix now, we just have to change any dimension
+once, and everything adjusts appropriately.</p>
+<p>And importantly, this combination of for loops with arrays generalizes
+to an array with any number of dimensions.</p>
+</div>
 <div class="section" id="for-more-range-syntax">
-<h2><a class="toc-backref" href="#id3">3.2.3. <code class="docutils literal"><span class="pre">for</span></code>: more range syntax</a><a class="headerlink" href="#for-more-range-syntax" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">3.2.4. <code class="docutils literal"><span class="pre">for</span></code>: more range syntax</a><a class="headerlink" href="#for-more-range-syntax" title="Permalink to this headline">¶</a></h2>
 <p>The above examples all specified intervals of the loop index starting
 from 0, by including a single argument to be the “stop” value.
 However, <code class="docutils literal"><span class="pre">range</span></code> can take up to three arguments, changing the
@@ -261,7 +358,7 @@ Python style the interval is half open, specified as <code class="docutils liter
 <p><strong>more to come…</strong></p>
 </div>
 <div class="section" id="practice-various-topics">
-<h2><a class="toc-backref" href="#id4">3.2.4. Practice (various topics)</a><a class="headerlink" href="#practice-various-topics" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">3.2.5. Practice (various topics)</a><a class="headerlink" href="#practice-various-topics" title="Permalink to this headline">¶</a></h2>
 <p>Firstly, you can download <a class="reference download internal" href="../_downloads/prac_prob_01.pdf" download=""><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">PDF</span> <span class="pre">of</span> <span class="pre">practice</span> <span class="pre">questions</span></code></a>.</p>
 <ol class="arabic">
 <li><p class="first">Make an array whose values are <span class="math">\(P = \cos(3\pi t)\)</span>, for
@@ -321,12 +418,14 @@ Gaussian function.</li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">3.2. Loops:  <strong>for</strong></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#for-basic-syntax-and-repetition">3.2.1. <code class="docutils literal"><span class="pre">for</span></code>: basic syntax and repetition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#for-with-arrays">3.2.2. <code class="docutils literal"><span class="pre">for</span></code>: with arrays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#for-more-range-syntax">3.2.3. <code class="docutils literal"><span class="pre">for</span></code>: more range syntax</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#practice-various-topics">3.2.4. Practice (various topics)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-more-with-arrays">3.2.3. <code class="docutils literal"><span class="pre">for</span></code>: more with arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-more-range-syntax">3.2.4. <code class="docutils literal"><span class="pre">for</span></code>: more range syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practice-various-topics">3.2.5. Practice (various topics)</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/main_toc.html">4. Week 3</a></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
@@ -375,6 +474,9 @@ Gaussian function.</li>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="../week3/main_toc.html" title="4. Week 3"
+             >next</a> &nbsp; &nbsp;</li>
         <li class="right" >
           <a href="arrays.html" title="3.1. Arrays"
              >previous</a> &nbsp; &nbsp;</li>

@@ -168,6 +168,102 @@ values with a formula based on index, relatable to one and even with
 other types of formulas, a "for" loop is likely to be the best thing
 to implement.
 
+``for``: more with arrays
+--------------------------------------------------------------------------
+
+This convenient pairing of arrays with for loops applies generally to
+arrays of any size/shape.  Consider a 2D matrix **M** with 3 rows and
+5 columns; it is made up of elements :math:`\displaystyle M_{i,j} ~~
+{\rm for}~~ 0\leq i < 3, ~0\leq j < 5`.  Well, if we want to go
+through each *row*, we can generate those indices with ``for i in
+range(3):``.  And if we want to go through each *column*, we can
+generate those indices with ``for j in range(5):``.  However, if we
+just code something like:
+
+  .. code-block:: python
+
+     for i in range(3):
+         print("i =", i)
+     for j in range(5):
+         print("j =", j)
+
+then we will just see the 3 row indices and 5 column indices.  We want
+the full, :math:`\displaystyle 3 \times 5 = 15` *pairs* of indices,
+like ``(0, 0)``, ``(0, 1)``, ``(0, 2)``, etc.  That is, we want to
+loop through each row index and *for each* row, generate *each* of the
+column indices. This is done by putting one ``for`` loop inside of the
+other, as 
+
+  .. code-block:: python
+ 
+     for i in range(3):
+         for j in range(5):
+             print("i, j =", i, j)
+
+Placing one "for" loop inside another is called a **nested "for"
+loop**, and the above prints out the fifteen pairs of indices that
+would be each of :math:`\displaystyle M_{i,j}`'s values:
+
+   .. code-block:: none
+
+      i, j = 0 0
+      i, j = 0 1
+      i, j = 0 2
+      i, j = 0 3
+      i, j = 0 4
+      i, j = 1 0
+      i, j = 1 1
+      i, j = 1 2
+          ...
+
+etc.  Now that we know how to use nested "for" loops to generate the
+indices, we could use these to assign values to each matrix element
+according to some rule, such as
+
+   :math:`\displaystyle M_{i,j} = 5i + j, ~~{\rm for}~~ 0\leq i < 3,
+   ~0\leq j < 5`,
+
+which can be translated to:
+
+  .. code-block:: python
+ 
+     M = np.zeros((3, 5),  dtype=int)
+
+     for i in range(3):
+         for j in range(5):
+             M[i, j] = 5 * i + j
+     print(M)
+
+producing:
+
+  .. code-block:: python
+
+
+     [[ 0   1   2   3   4] 
+      [ 5   6   7   8   9] 
+      [10  11  12  13  14]]
+
+While that shows the close relation to the mathematical form,
+programmatically we might prefer to write it in a more generalizable
+manner:
+
+  .. code-block:: python
+ 
+     Nrow = 3
+     Ncol = 5
+     M = np.zeros((Nrow, Ncol),  dtype=int)
+
+     for i in range(Nrow):
+         for j in range(Ncol):
+             M[i, j] = Ncol * i + j
+
+In this way, we only have to set the "shape" variables once.  If we
+want a larger/smaller matrix now, we just have to change any dimension
+once, and everything adjusts appropriately.
+
+And importantly, this combination of for loops with arrays generalizes
+to an array with any number of dimensions.
+
 ``for``: more range syntax
 --------------------------------------------------------------------------
 
