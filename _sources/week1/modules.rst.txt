@@ -103,8 +103,8 @@ community.
          random numbers, index operations, polynomials, Fourier
          transform
      * - `SciPy <https://docs.scipy.org/doc/scipy/reference/>`_
-       - ``import scipy.integrate as integrate``
-         ``import scipy.special as special``
+       - | ``import scipy.integrate as integrate``
+         | ``import scipy.special as special``
        - Packages for: interpolation, integration, linear algebra,
          dealing with sparse matrices, image processing, optimization
      * - `matplotlib <https://matplotlib.org/>`_

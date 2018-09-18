@@ -1,12 +1,11 @@
 :tocdepth: 2
 
-.. _week2:
+.. _week3:
            
 ************
-Week 2
+Week 3
 ************
 
 .. toctree::
 
-   arrays
-   loop_for
+   importing
