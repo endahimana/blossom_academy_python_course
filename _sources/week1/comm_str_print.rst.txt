@@ -18,6 +18,8 @@ Strings
 -------
 
 
+.. _week1_comm_str_print_print:
+
 Print
 -----
 
