@@ -15,7 +15,7 @@ Writing files
 
 Example to download here:
 
-* :download:`prog_file_00.py <media/do_make_testfile.py>`
+* :download:`do_make_testfile.py <media/do_make_testfile.py>`
 
 
 Reading files
