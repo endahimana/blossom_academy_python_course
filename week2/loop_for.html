@@ -24,7 +24,6 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.base.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
@@ -173,8 +172,8 @@ all its elements?</li>
 <li>In a <code class="docutils literal"><span class="pre">for</span></code> loop specified as <code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(N):</span></code>, what are the
 values that <code class="docutils literal"><span class="pre">i</span></code> takes across all repetitions?</li>
 </ul>
-<p><strong>The answer to both questions is</strong> <span class="math">\(\displaystyle 0 \leq i &lt;
-N\)</span>.</p>
+<p><strong>The answer to both questions is</strong> <img class="math" src="../_images/math/ca3b548c0039a94234ac5298d4c609f7466ab426.svg" alt="\displaystyle 0 \leq i &lt;
+N"/>.</p>
 <p>We can now think back to the <a class="reference internal" href="arrays.html#week2-arrays-creating"><span class="std std-ref">discussion of putting values into
 arrays</span></a>.  If we have a single rule for putting
 values at each index in an array, then we can use a for loop to repeat
@@ -182,7 +181,7 @@ that rule for all elements, with the added bonus that the loop index
 can be used in the formula, if needed, as well.</p>
 <p>Consider for example, wanting to make values</p>
 <blockquote>
-<div><span class="math">\(\displaystyle b_i = 3i^2 - 4i + 2,~~{\rm for}~~ 0\leq i &lt; 8.\)</span></div></blockquote>
+<div><img class="math" src="../_images/math/faa2f2bb1d854a385b858edd2bf3e0c99deeb515.svg" alt="\displaystyle b_i = 3i^2 - 4i + 2,~~{\rm for}~~ 0\leq i &lt; 8."/></div></blockquote>
 <p>(note that <em>i</em> is an index here, not the imaginary number).  Well, we
 can translate each of the pieces as follows:</p>
 <blockquote>
@@ -194,21 +193,21 @@ can translate each of the pieces as follows:</p>
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Math name</th>
-<th class="head"><span class="math">\(\rightarrow\)</span></th>
+<th class="head"><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></th>
 <th class="head">Comp name</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><span class="math">\(\displaystyle b_i\)</span></td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<tr class="row-even"><td><img class="math" src="../_images/math/db58a0cf6eb90a9dd229d5b7598dfb615fb846e9.svg" alt="\displaystyle b_i"/></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td><code class="docutils literal"><span class="pre">b[i]</span></code></td>
 </tr>
-<tr class="row-odd"><td><span class="math">\(\displaystyle 3i^2 - 4i + 2\)</span></td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<tr class="row-odd"><td><img class="math" src="../_images/math/d3fc25fae5d2de467c315bd276048d0f2c77d1af.svg" alt="\displaystyle 3i^2 - 4i + 2"/></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td><code class="docutils literal"><span class="pre">3*i**2</span> <span class="pre">-</span> <span class="pre">4*i</span> <span class="pre">+</span> <span class="pre">2</span></code></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(\displaystyle {\rm for}~~ 0\leq i &lt; 8\)</span></td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<tr class="row-even"><td><img class="math" src="../_images/math/24152638aa812328648493b4c23c9f184283fa94.svg" alt="\displaystyle {\rm for}~~ 0\leq i &lt; 8"/></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td><code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(8)</span></code></td>
 </tr>
 </tbody>
@@ -245,8 +244,8 @@ to implement.</p>
 <h2><a class="toc-backref" href="#id3">3.2.3. <code class="docutils literal"><span class="pre">for</span></code>: more with arrays</a><a class="headerlink" href="#for-more-with-arrays" title="Permalink to this headline">¶</a></h2>
 <p>This convenient pairing of arrays with for loops applies generally to
 arrays of any size/shape.  Consider a 2D matrix <strong>M</strong> with 3 rows and
-5 columns; it is made up of elements <span class="math">\(\displaystyle M_{i,j} ~~
-{\rm for}~~ 0\leq i &lt; 3, ~0\leq j &lt; 5\)</span>.  Well, if we want to go
+5 columns; it is made up of elements <img class="math" src="../_images/math/a84db5d50fd0471c6f1f699354a522f3d3d989f3.svg" alt="\displaystyle M_{i,j} ~~
+{\rm for}~~ 0\leq i &lt; 3, ~0\leq j &lt; 5"/>.  Well, if we want to go
 through each <em>row</em>, we can generate those indices with <code class="docutils literal"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span>
 <span class="pre">range(3):</span></code>.  And if we want to go through each <em>column</em>, we can
 generate those indices with <code class="docutils literal"><span class="pre">for</span> <span class="pre">j</span> <span class="pre">in</span> <span class="pre">range(5):</span></code>.  However, if we
@@ -260,7 +259,7 @@ just code something like:</p>
 </div>
 </div></blockquote>
 <p>then we will just see the 3 row indices and 5 column indices.  We want
-the full, <span class="math">\(\displaystyle 3 \times 5 = 15\)</span> <em>pairs</em> of indices,
+the full, <img class="math" src="../_images/math/94b682941dcb16059c7d6799ea0ea2e6a461b02a.svg" alt="\displaystyle 3 \times 5 = 15"/> <em>pairs</em> of indices,
 like <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">0)</span></code>, <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">1)</span></code>, <code class="docutils literal"><span class="pre">(0,</span> <span class="pre">2)</span></code>, etc.  That is, we want to
 loop through each row index and <em>for each</em> row, generate <em>each</em> of the
 column indices. This is done by putting one <code class="docutils literal"><span class="pre">for</span></code> loop inside of the
@@ -274,7 +273,7 @@ other, as</p>
 </div></blockquote>
 <p>Placing one “for” loop inside another is called a <strong>nested “for”
 loop</strong>, and the above prints out the fifteen pairs of indices that
-would be each of <span class="math">\(\displaystyle M_{i,j}\)</span>‘s values:</p>
+would be each of <img class="math" src="../_images/math/05501aef41596a519e0c06443e6afbff229bd583.svg" alt="\displaystyle M_{i,j}"/>‘s values:</p>
 <blockquote>
 <div><div class="highlight-none"><div class="highlight"><pre><span></span>i, j = 0 0
 i, j = 0 1
@@ -292,8 +291,8 @@ i, j = 1 2
 indices, we could use these to assign values to each matrix element
 according to some rule, such as</p>
 <blockquote>
-<div><span class="math">\(\displaystyle M_{i,j} = 5i + j, ~~{\rm for}~~ 0\leq i &lt; 3,
-~0\leq j &lt; 5\)</span>,</div></blockquote>
+<div><img class="math" src="../_images/math/8b4df662e04e5d271a1a29cd4c2e5fa36f73e493.svg" alt="\displaystyle M_{i,j} = 5i + j, ~~{\rm for}~~ 0\leq i &lt; 3,
+~0\leq j &lt; 5"/>,</div></blockquote>
 <p>which can be translated to:</p>
 <blockquote>
 <div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>  <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
@@ -361,9 +360,9 @@ Python style the interval is half open, specified as <code class="docutils liter
 <h2><a class="toc-backref" href="#id5">3.2.5. Practice (various topics)</a><a class="headerlink" href="#practice-various-topics" title="Permalink to this headline">¶</a></h2>
 <p>Firstly, you can download <a class="reference download internal" href="../_downloads/prac_prob_01.pdf" download=""><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">PDF</span> <span class="pre">of</span> <span class="pre">practice</span> <span class="pre">questions</span></code></a>.</p>
 <ol class="arabic">
-<li><p class="first">Make an array whose values are <span class="math">\(P = \cos(3\pi t)\)</span>, for
-<span class="math">\(t \in [-5,5]\)</span>. Also make an array whose values are <span class="math">\(Q =
-\sin(5.5\pi t)\)</span>, for <span class="math">\(t \in [-5,5]\)</span>.</p>
+<li><p class="first">Make an array whose values are <img class="math" src="../_images/math/f7d112983e84da3c2a1289cd31e7fe8b76b6e90d.svg" alt="P = \cos(3\pi t)"/>, for
+<img class="math" src="../_images/math/f7fbf7081d4a6f4284fb24ea4594c98afaea1f41.svg" alt="t \in [-5,5]"/>. Also make an array whose values are <img class="math" src="../_images/math/74ffe90dde1606d2120380ee7493bc906a86b208.svg" alt="Q =
+\sin(5.5\pi t)"/>, for <img class="math" src="../_images/math/f7fbf7081d4a6f4284fb24ea4594c98afaea1f41.svg" alt="t \in [-5,5]"/>.</p>
 <p>Plot:  P vs t and Q vs t on the same graph.</p>
 <p>Plot:  on a separate graph, P vs Q.</p>
 </li>

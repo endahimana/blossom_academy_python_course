@@ -24,7 +24,6 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/jquery.cookie.js"></script>
     <script type="text/javascript" src="../_static/cloud.base.js"></script>
     <script type="text/javascript" src="../_static/cloud.js"></script>
@@ -86,18 +85,18 @@ things like vectors and matrices?</p>
 <p>Consider an example case of a velocity vector, which might be written
 in a physics textbook as:</p>
 <blockquote>
-<div><span class="math">\(\displaystyle \textbf{v}  = ( v_x, v_y, v_z )\)</span></div></blockquote>
+<div><img class="math" src="../_images/math/2210ccc227d95132131256fc561f9e88167dcc41.svg" alt="\displaystyle \textbf{v}  = ( v_x, v_y, v_z )"/></div></blockquote>
 <p>Sometimes different sets of indices are used, and this could also be
 written using a common, and slightly more general, mathematical
 notation as either:</p>
 <blockquote>
-<div><span class="math">\(\displaystyle \textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm
-or}~~~~~~\textbf{v} = ( v_0, v_1, v_2 )\)</span></div></blockquote>
-<p>In each case, the <em>i</em>th component is referenced as <span class="math">\(v_i\)</span>, with
+<div><img class="math" src="../_images/math/589d44daf10824643c44e5bb78838d5681f1e0b5.svg" alt="\displaystyle \textbf{v} = ( v_1, v_2, v_3 )~~~~~~{\rm
+or}~~~~~~\textbf{v} = ( v_0, v_1, v_2 )"/></div></blockquote>
+<p>In each case, the <em>i</em>th component is referenced as <img class="math" src="../_images/math/fb3c41a9a30bddef43f2e990beafe42151ccc93b.svg" alt="v_i"/>, with
 allowed values of <em>i</em> determined by the length of the vector.</p>
 <p>When we translate this to Python, we have all the same parts, but some
 have slightly different names and we use just one, particular syntax.</p>
-<p>The above vector <span class="math">\(\textbf{v}\)</span> is stored as an <strong>array</strong> <code class="docutils literal"><span class="pre">v</span></code>;
+<p>The above vector <img class="math" src="../_images/math/dcdd3293949504442213e0c0b12b567476f416c9.svg" alt="\textbf{v}"/> is stored as an <strong>array</strong> <code class="docutils literal"><span class="pre">v</span></code>;
 there is no bold font or arrow we can use to denote it as a vector, we
 just have to remember it or perhaps reflect it in the variable
 name. Instead of “components”, we refer to <strong>elements</strong> of <code class="docutils literal"><span class="pre">v</span></code>, which
@@ -119,7 +118,7 @@ notations and terms apply.  Matrices typically have multiple
 dimensions and therefore multiple indices; these also translate
 directly from subscripts in the mathematics to square brackets in
 computing.  For example, the element in the first row and column of a
-2-dimensional matrix <span class="math">\(\mathbf{A}\)</span> would be <code class="docutils literal"><span class="pre">A[0,</span> <span class="pre">0]</span></code>; the next
+2-dimensional matrix <img class="math" src="../_images/math/1b009ec88d176a0e31309bf4a536fcdeedb9f38e.svg" alt="\mathbf{A}"/> would be <code class="docutils literal"><span class="pre">A[0,</span> <span class="pre">0]</span></code>; the next
 element in the column would be <code class="docutils literal"><span class="pre">A[1,</span> <span class="pre">0]</span></code>; etc.</p>
 <p>The following table summarizes the translation from mathematical
 vectors to computational arrays:</p>
@@ -132,33 +131,33 @@ vectors to computational arrays:</p>
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Math name</th>
-<th class="head"><span class="math">\(\rightarrow\)</span></th>
+<th class="head"><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></th>
 <th class="head">Comp name</th>
 </tr>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>vector</td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td>array</td>
 </tr>
 <tr class="row-odd"><td>component</td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td>element</td>
 </tr>
 <tr class="row-even"><td>index</td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td>index</td>
 </tr>
 <tr class="row-odd"><td>subscript</td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td>square bracket, <code class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></code></td>
 </tr>
-<tr class="row-even"><td><em>example:</em> <span class="math">\(~~\displaystyle x_0\)</span></td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<tr class="row-even"><td><em>example:</em> <img class="math" src="../_images/math/4ffd92f4227da70f6ad15769619c5e482419921d.svg" alt="~~\displaystyle x_0"/></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td><code class="docutils literal"><span class="pre">x[0]</span></code></td>
 </tr>
-<tr class="row-odd"><td><em>example:</em> <span class="math">\(~~\displaystyle M_{0,4}\)</span></td>
-<td><span class="math">\(\rightarrow\)</span></td>
+<tr class="row-odd"><td><em>example:</em> <img class="math" src="../_images/math/25021a78eee82d036c359906ccbced237718b708.svg" alt="~~\displaystyle M_{0,4}"/></td>
+<td><img class="math" src="../_images/math/db2555e54bec0d091b2124dccd645c2d7ddaae68.svg" alt="\rightarrow"/></td>
 <td><code class="docutils literal"><span class="pre">M[0,4]</span></code></td>
 </tr>
 </tbody>
@@ -188,11 +187,11 @@ used in helpfiles).</p>
 <p>The need to define both dimensions and element types matches both</p>
 <ul>
 <li><p class="first">formal mathematical correctness, such as stating:</p>
-<p><span class="math">\(\textbf{v} \in \mathbb{R}^4\)</span>; that is, <strong>v</strong> a vector
+<p><img class="math" src="../_images/math/b579123f8e8e97da0bd1f8254023266ccecb5455.svg" alt="\textbf{v} \in \mathbb{R}^4"/>; that is, <strong>v</strong> a vector
 contains 4 real numbers,</p>
-<p><span class="math">\(\textbf{g} \in \mathbb{R}^{4\times4}\)</span>; that is, <strong>g</strong> is a
+<p><img class="math" src="../_images/math/49ca976d44310499f4032f485314db4822702340.svg" alt="\textbf{g} \in \mathbb{R}^{4\times4}"/>; that is, <strong>g</strong> is a
 4-by-4 matrix of real numbers,</p>
-<p><span class="math">\(\textbf{c} \in \mathbb{C}^{2\times3}\)</span>; that is, <strong>c</strong> is a
+<p><img class="math" src="../_images/math/99ffc37d4fe2490141a6404f8129e335d187ad08.svg" alt="\textbf{c} \in \mathbb{C}^{2\times3}"/>; that is, <strong>c</strong> is a
 2-by-3 matrix of complex numbers,</p>
 <p>etc.</p>
 </li>
@@ -451,7 +450,7 @@ system or rule for them</em>.  Consider values just assigned to
 <code class="docutils literal"><span class="pre">Z</span></code>. We can see a relation between each index and value, which we
 could write mathematically as this:</p>
 <blockquote>
-<div><span class="math">\(\displaystyle Z_i = i^2, ~~{\rm for}~0 \leq i &lt; 5.\)</span></div></blockquote>
+<div><img class="math" src="../_images/math/76a942276182201f6139a5d8be03dc4c0be558d6.svg" alt="\displaystyle Z_i = i^2, ~~{\rm for}~0 \leq i &lt; 5."/></div></blockquote>
 <p>The first “rule” part of that can be expressed directly in
 programming-ese: <code class="docutils literal"><span class="pre">Z[i]</span> <span class="pre">=</span> <span class="pre">i**2</span></code>.  The second part just says to
 iterate through values of <code class="docutils literal"><span class="pre">i</span></code> in a specified range; that
@@ -484,39 +483,39 @@ of zeros.</p>
 <ol class="arabic">
 <li><p class="first">Make the following arrays with NumPy functions:</p>
 <ol class="lowerroman simple">
-<li><span class="math">\(\displaystyle \textbf{v} = (-1.1, 5, 7.6)\)</span>.</li>
-<li><span class="math">\(\displaystyle \textbf{u} = (2, 4, 6)\)</span>.</li>
-<li><span class="math">\(\displaystyle \textbf{w} = (2+3i, -4-3i, 6)\)</span>.</li>
-<li>An <span class="math">\(\displaystyle 2\times3\)</span> matrix of bools, with the
+<li><img class="math" src="../_images/math/41c079f69fc4cf7c2a7a849b544ea98e5bf44e0c.svg" alt="\displaystyle \textbf{v} = (-1.1, 5, 7.6)"/>.</li>
+<li><img class="math" src="../_images/math/76d336aaa518dcf0fc3b540c7012458b2f39ea5a.svg" alt="\displaystyle \textbf{u} = (2, 4, 6)"/>.</li>
+<li><img class="math" src="../_images/math/bd5d51ef40ecf4563aa008f005f3d61dfbe893c5.svg" alt="\displaystyle \textbf{w} = (2+3i, -4-3i, 6)"/>.</li>
+<li>An <img class="math" src="../_images/math/341dff3394d07c324e798740f0394ee7388ed365.svg" alt="\displaystyle 2\times3"/> matrix of bools, with the
 first row <code class="docutils literal"><span class="pre">True</span></code> and the second row <code class="docutils literal"><span class="pre">False</span></code>.</li>
-<li>A matrix of zeros: <span class="math">\(~~\displaystyle \texttt{Mint} \in
-\mathbf{Z}^{5\times10}\)</span>.</li>
-<li>A matrix of zeros: <span class="math">\(~~\displaystyle \texttt{Mfl} \in
-\mathbf{R}^{2\times3\times4}\)</span>.  Print the shape of <code class="docutils literal"><span class="pre">Mfl</span></code> to
+<li>A matrix of zeros: <img class="math" src="../_images/math/7457053768a430ae742a108a61f256ebfa401d63.svg" alt="~~\displaystyle \texttt{Mint} \in
+\mathbf{Z}^{5\times10}"/>.</li>
+<li>A matrix of zeros: <img class="math" src="../_images/math/76f49e19bf70491b6b6232ddb6d9f37e8abbeb68.svg" alt="~~\displaystyle \texttt{Mfl} \in
+\mathbf{R}^{2\times3\times4}"/>.  Print the shape of <code class="docutils literal"><span class="pre">Mfl</span></code> to
 verify its dimensions.</li>
-<li>An array <code class="docutils literal"><span class="pre">A</span></code> of integers in the range <span class="math">\([0, 11]\)</span>.</li>
-<li>An array <code class="docutils literal"><span class="pre">xint</span></code> of integers in the range <span class="math">\([-15, 15]\)</span>.</li>
+<li>An array <code class="docutils literal"><span class="pre">A</span></code> of integers in the range <img class="math" src="../_images/math/ed2961c914571412a0e979dd2ac92a1cc3f5ce9e.svg" alt="[0, 11]"/>.</li>
+<li>An array <code class="docutils literal"><span class="pre">xint</span></code> of integers in the range <img class="math" src="../_images/math/c2c3407f02fd91e65869c4edffb1d84c189da6a3.svg" alt="[-15, 15]"/>.</li>
 <li>An array <code class="docutils literal"><span class="pre">xfl</span></code> of 81 evenly spaced values in the range
-<span class="math">\([0, 20]\)</span>.</li>
+<img class="math" src="../_images/math/9e8afbf9921ec1dc72f88dc87b85b15b2fcd1553.svg" alt="[0, 20]"/>.</li>
 </ol>
 </li>
 <li><p class="first">Use <code class="docutils literal"><span class="pre">for</span></code> loops to make the following:</p>
 <ol class="lowerroman simple">
-<li><span class="math">\(~\displaystyle x_i = \log_{10}(i+1)\)</span>, for
-<span class="math">\(~\displaystyle 0 \leq i &lt; 11\)</span></li>
-<li><span class="math">\(~\displaystyle y_n = \sqrt{4n}+1\)</span>, for
-<span class="math">\(~\displaystyle 0\leq n &lt; 17\)</span></li>
-<li><span class="math">\(~\displaystyle z_k = (3k + 4i)^3\)</span>, for
-<span class="math">\(~\displaystyle k \in [0, 20]\)</span>. Note that <code class="docutils literal"><span class="pre">i</span></code> in this
+<li><img class="math" src="../_images/math/18cc5c92cf0e469e3aad282e4289e839fb73328b.svg" alt="~\displaystyle x_i = \log_{10}(i+1)"/>, for
+<img class="math" src="../_images/math/96e1d9f0d8a0199e183a0711e97eac288c41743a.svg" alt="~\displaystyle 0 \leq i &lt; 11"/></li>
+<li><img class="math" src="../_images/math/77d5aa554199e12c4f36f21bf1c1812741f7ad5f.svg" alt="~\displaystyle y_n = \sqrt{4n}+1"/>, for
+<img class="math" src="../_images/math/d58caa3938d5fbac327c265e007476766687db08.svg" alt="~\displaystyle 0\leq n &lt; 17"/></li>
+<li><img class="math" src="../_images/math/0a0262709e1b68aef34b8d5b03c65ea6e33a1342.svg" alt="~\displaystyle z_k = (3k + 4i)^3"/>, for
+<img class="math" src="../_images/math/f42ff3a21a7e36a08fb05031f2f8d3a538f27d11.svg" alt="~\displaystyle k \in [0, 20]"/>. Note that <code class="docutils literal"><span class="pre">i</span></code> in this
 expression is the imaginary number.</li>
 <li>Define an array <code class="docutils literal"><span class="pre">flip</span></code> as follows: <code class="docutils literal"><span class="pre">flip[i]</span></code> equals
-<span class="math">\(\displaystyle i^3\)</span> for even <code class="docutils literal"><span class="pre">i</span></code> and
-<span class="math">\(\displaystyle i^2\)</span> for odd <code class="docutils literal"><span class="pre">i</span></code>, over the
-interval <span class="math">\(~\displaystyle 0\leq i &lt; 20\)</span></li>
+<img class="math" src="../_images/math/f29e1c56fb97863340fc3031faadfb255ba1b482.svg" alt="\displaystyle i^3"/> for even <code class="docutils literal"><span class="pre">i</span></code> and
+<img class="math" src="../_images/math/c8d1346eded98738a9245d6179b89f7665ec0a69.svg" alt="\displaystyle i^2"/> for odd <code class="docutils literal"><span class="pre">i</span></code>, over the
+interval <img class="math" src="../_images/math/392639f2babf74fefb2ab4b40028474ff89c30ab.svg" alt="~\displaystyle 0\leq i &lt; 20"/></li>
 <li>An array <code class="docutils literal"><span class="pre">zabs</span></code> whose values are the absolute values of <code class="docutils literal"><span class="pre">z</span></code>
 from the previous question.</li>
-<li><span class="math">\(~\displaystyle M_{i,j} = 30 - 6i - j\)</span>, for
-<span class="math">\(~\displaystyle 0 \leq i &lt; 6;~ 0 \leq j &lt; 5\)</span></li>
+<li><img class="math" src="../_images/math/2a0717b341872f892975fd5a45f9399c63481275.svg" alt="~\displaystyle M_{i,j} = 30 - 6i - j"/>, for
+<img class="math" src="../_images/math/59c0cb9de16b99e77932694abb5e55c73d790709.svg" alt="~\displaystyle 0 \leq i &lt; 6;~ 0 \leq j &lt; 5"/></li>
 </ol>
 </li>
 <li><p class="first">Use whatever seems best to make the following:</p>
@@ -524,8 +523,8 @@ from the previous question.</li>
 <li><p class="first">An array <code class="docutils literal"><span class="pre">t</span></code> of <em>N = 25</em> evenly spaced values between [-10,
 10].</p>
 </li>
-<li><p class="first">Using the above result, <span class="math">\(~\displaystyle s_n = \sin(2\pi
-t_n)\)</span>, over the <code class="docutils literal"><span class="pre">len(t)</span></code> (i.e., over all the values in <code class="docutils literal"><span class="pre">t</span></code>).</p>
+<li><p class="first">Using the above result, <img class="math" src="../_images/math/124b4cf1af60a8e9e0e36aa060231c207f6d9ec6.svg" alt="~\displaystyle s_n = \sin(2\pi
+t_n)"/>, over the <code class="docutils literal"><span class="pre">len(t)</span></code> (i.e., over all the values in <code class="docutils literal"><span class="pre">t</span></code>).</p>
 </li>
 <li><p class="first">Make sure your code answering the first two parts makes it easy
 to adjust the number of elements in <code class="docutils literal"><span class="pre">t</span></code> and have the number of
@@ -573,6 +572,7 @@ you increase <em>N</em>?</p>
 <li class="toctree-l2"><a class="reference internal" href="loop_for.html">3.2. Loops:  <strong>for</strong></a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/main_toc.html">4. Week 3</a></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
