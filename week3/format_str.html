@@ -70,7 +70,7 @@
 <li><a class="reference internal" href="#formatting-data-in-strings" id="id2">Formatting data in strings</a><ul>
 <li><a class="reference internal" href="#ordering-of-variables" id="id3">Ordering of variables</a></li>
 <li><a class="reference internal" href="#control-characters" id="id4">Control characters</a></li>
-<li><a class="reference internal" href="#whitespace-characters" id="id5">Whitespace characters</a></li>
+<li><a class="reference internal" href="#whitespace-and-escape-characters" id="id5">Whitespace and escape characters</a></li>
 </ul>
 </li>
 </ul>
@@ -298,8 +298,8 @@ val [3] --&gt;     99.99999990
 </table>
 </div></blockquote>
 </div>
-<div class="section" id="whitespace-characters">
-<h3><a class="toc-backref" href="#id5">Whitespace characters</a><a class="headerlink" href="#whitespace-characters" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="whitespace-and-escape-characters">
+<h3><a class="toc-backref" href="#id5">Whitespace and escape characters</a><a class="headerlink" href="#whitespace-and-escape-characters" title="Permalink to this headline">¶</a></h3>
 <p>Spacing can be controlled in several ways.  The following are all
 examples of white space:</p>
 <blockquote>
@@ -314,24 +314,61 @@ Whitespace example with a
  newline char inserted
 </pre></div>
 </div>
-<table border="1" class="colwidths-given docutils">
+</div></blockquote>
+<p>Note that <code class="docutils literal"><span class="pre">\t</span></code> and <code class="docutils literal"><span class="pre">\n</span></code> are actually treated as a <em>single</em>
+character.  You can see this by checking the length of a string:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc d&quot;</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc</span><span class="se">\t</span><span class="s2">d))</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;abc</span><span class="se">\n</span><span class="s2">d&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>which is 5 in each case.  The backslash <code class="docutils literal"><span class="pre">\</span></code> in this (and most)
+contexts is an <strong>escape character</strong> that alters the typical
+interpretation of the character following it.  Thus, <code class="docutils literal"><span class="pre">abc\td</span></code> has
+different interpretation than <code class="docutils literal"><span class="pre">abctd</span></code>; we say that <code class="docutils literal"><span class="pre">\t</span></code> is an
+<strong>escape sequence</strong> (typically just the escape and the character
+following it).</p>
+<p>Sometimes the escape character <code class="docutils literal"><span class="pre">\</span></code> is used to make a “normal”
+character signify something else (such as <code class="docutils literal"><span class="pre">\t</span></code>, and sometimes it is
+used to escape the behavior of a “special” character.  As an example
+of the latter, consider what the following prints as:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The backslash looks like: </span><span class="se">\&quot;</span><span class="s2">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>It actually leads to a syntax error, because Python wants to interpret
+the slash as escaping whatever follows it, and the second quotation
+marks <code class="docutils literal"><span class="pre">&quot;</span></code> are excaped, and don’t pair up to close the string
+anymore.  One can actually use the escape character itself to escape
+the escape character’s escaping behavior:</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;The backslash looks like: </span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Escapade successful.</p>
+<blockquote>
+<div><table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="17%" />
 <col width="83%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Control character</th>
+<tr class="row-odd"><th class="head">Whitespace character</th>
 <th class="head">description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>`` ``</td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'</span> <span class="pre">'</span></code></td>
 <td>space</td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal"><span class="pre">\t</span></code></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">'\t'</span></code></td>
 <td>tab character</td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal"><span class="pre">\n</span></code></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">'\n'</span></code></td>
 <td>newline character</td>
 </tr>
 </tbody>
@@ -360,7 +397,7 @@ Whitespace example with a
 <li class="toctree-l3"><a class="reference internal" href="#formatting-data-in-strings">4.2.2. Formatting data in strings</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ordering-of-variables">Ordering of variables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#control-characters">Control characters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#whitespace-characters">Whitespace characters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#whitespace-and-escape-characters">Whitespace and escape characters</a></li>
 </ul>
 </li>
 </ul>

@@ -223,7 +223,7 @@ which produces
      * - Control character 
        - description
      * - ``f``
-       -
+       - 
      * - ``e``
        -
      * - ``d``
@@ -244,7 +244,7 @@ which produces
 
 
 
-Whitespace characters
+Whitespace and escape characters
 ##########################################################################
 
 .. NTS: move this section earlier
@@ -265,18 +265,55 @@ examples of white space:
      Whitespace example with a 
       newline char inserted
 
+Note that ``\t`` and ``\n`` are actually treated as a *single*
+character.  You can see this by checking the length of a string:
+
+  .. code-block::  python
+
+     print(len("abc d"))
+     print(len("abc\td))
+     print(len("abc\nd"))
+
+which is 5 in each case.  The backslash ``\`` in this (and most)
+contexts is an **escape character** that alters the typical
+interpretation of the character following it.  Thus, ``abc\td`` has
+different interpretation than ``abctd``; we say that ``\t`` is an
+**escape sequence** (typically just the escape and the character
+following it).
+
+Sometimes the escape character ``\`` is used to make a "normal"
+character signify something else (such as ``\t``, and sometimes it is
+used to escape the behavior of a "special" character.  As an example
+of the latter, consider what the following prints as:
+
+  .. code-block::  python
+
+     print("The backslash looks like: \")
+
+It actually leads to a syntax error, because Python wants to interpret
+the slash as escaping whatever follows it, and the second quotation
+marks ``"`` are excaped, and don't pair up to close the string
+anymore.  One can actually use the escape character itself to escape
+the escape character's escaping behavior:
+
+  .. code-block::  python
+
+     print("The backslash looks like: \\")
+
+Escapade successful.
+
 
   .. list-table::
      :header-rows: 1
      :widths: 10 50
 
-     * - Control character 
+     * - Whitespace character 
        - description
-     * - `` ``
+     * - ``' '``
        - space
-     * - ``\t``
+     * - ``'\t'``
        - tab character
-     * - ``\n``
+     * - ``'\n'``
        - newline character
 
 
